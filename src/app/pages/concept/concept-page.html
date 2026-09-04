@@ -1,4 +1,4 @@
-<div class="concept-page" [class.theme-a]="concept() === 'a'" [class.theme-c]="concept() === 'c'">
+<div class="concept-page" [class.theme-a]="concept() === 'a'" [class.theme-b]="concept() === 'c'">
   <a class="skip-link" href="#main-content">跳至主要內容</a>
   <app-site-header [concept]="concept()" />
 
@@ -18,7 +18,7 @@
           }
         </div>
         <span class="hero-scrim" aria-hidden="true"></span>
-        <div class="hero-copy hero-copy--c" appRevealOnView>
+        <div class="hero-copy hero-copy--b" appRevealOnView>
           <h1 id="hero-title">{{ content.hero.title }}</h1>
           <div class="hero-intro">
             <p class="hero-description">{{ content.hero.description }}</p>
@@ -131,7 +131,7 @@
           <div class="event-list">
             @for (event of content.events; track event.key) {
               @if (concept() === 'c') {
-                <article class="event-item event-item--c">
+                <article class="event-item event-item--b">
                   <div class="event-item-body">
                     <p>{{ event.eyebrow }}</p>
                     <h3>{{ event.title }}</h3>
@@ -318,7 +318,7 @@
 
   <nav class="concept-switcher" aria-label="切換設計方案">
     <a routerLink="/">比較</a>
-    <a [routerLink]="concept() === 'a' ? '/concept-c' : '/concept-a'">
+    <a [routerLink]="concept() === 'a' ? '/concept-b' : '/concept-a'">
       切換至 {{ concept() === 'a' ? 'B' : 'A' }} 方案
     </a>
   </nav>

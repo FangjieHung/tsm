@@ -12,6 +12,6 @@ describe('ComparisonPage', () => {
     fixture.detectChanges();
     const text = (fixture.nativeElement as HTMLElement).textContent ?? '';
     expect(text.match(/查看 A 方案/g)).toHaveLength(1);
-    expect(text.match(/查看 C 方案/g)).toHaveLength(1);
+    expect(text.match(/查看 B 方案/g)).toHaveLength(1);
   });
 });

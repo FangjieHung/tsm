@@ -4,7 +4,7 @@
 
 **Goal:** Remove the unused conditional header brand mark and all CSS that exists only to style it.
 
-**Architecture:** Keep the existing Angular header structure and concept-c navigation behavior. Make a surgical template/style cleanup, retaining `concept()` and all shared and concept-c rules that serve other header elements.
+**Architecture:** Keep the existing Angular header structure and concept-b navigation behavior. Make a surgical template/style cleanup, retaining `concept()` and all shared and concept-b rules that serve other header elements.
 
 **Tech Stack:** Angular 22, TypeScript, SCSS, Vitest/Angular build tooling.
 
@@ -52,4 +52,4 @@ Expected: Angular build completes successfully with exit code 0.
 
 **Step 2: Read back the changed files**
 
-Confirm the brand link contains only the logo image and the concept-c header styles contain no `.brand-mark` selector or square-specific comment.
+Confirm the brand link contains only the logo image and the concept-b header styles contain no `.brand-mark` selector or square-specific comment.

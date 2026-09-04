@@ -40,9 +40,9 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 }
 @media (prefers-reduced-motion: reduce) { nav, nav a::after { transition: none; } }
 
-/* Swiss International Style header overrides for concept-c only — flat white background,
+/* Swiss International Style header overrides for concept-b only — flat white background,
    thick black rule, uppercase wide-tracked nav labels, hard color-invert hover states.
-   Colors/radius already flow through the .theme-c CSS custom properties (--surface,
+   Colors/radius already flow through the .theme-b CSS custom properties (--surface,
    --ink, --button-bg, --radius-sm are already swapped globally); this block only adds the
    typography treatment, the thicker border, and removes the shared glassmorphism blur. */
 .site-header--c {

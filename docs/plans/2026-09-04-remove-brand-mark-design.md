@@ -8,7 +8,7 @@ element.
 
 ## Preserved behavior
 
-Keep the `concept()` input, `site-header--c` class, concept-c navigation
+Keep the `concept()` input, `site-header--c` class, concept-b navigation
 markup, and their remaining styles because they are independently used by the
 header.
 
