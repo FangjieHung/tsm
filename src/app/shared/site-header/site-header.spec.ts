@@ -13,7 +13,7 @@ describe('SiteHeaderComponent', () => {
 
     const host = fixture.nativeElement as HTMLElement;
     const logo = host.querySelector<HTMLImageElement>('img');
-    expect(logo?.getAttribute('src')).toBe('/assets/logo/mark.webp');
+    expect(logo?.getAttribute('src')).toBe('assets/logo/mark.webp');
     expect(logo?.getAttribute('alt')).toContain('台灣微生物學會');
     expect(host.querySelectorAll('[data-primary-nav] a')).toHaveLength(5);
 

@@ -8,7 +8,7 @@
         <div class="hero-media hero-media--c" [class.image-fallback]="!imageAvailable('hero')" aria-hidden="true">
           @if (imageAvailable('hero')) {
             <img
-              [src]="'/media/' + concept() + '/hero.webp'"
+              [src]="'media/' + concept() + '/hero.webp'"
               alt=""
               width="1672"
               height="941"
@@ -50,7 +50,7 @@
         <div class="hero-media" [class.image-fallback]="!imageAvailable('hero')" aria-hidden="true">
           @if (imageAvailable('hero')) {
             <img
-              [src]="'/media/' + concept() + '/hero.webp'"
+              [src]="'media/' + concept() + '/hero.webp'"
               alt=""
               width="1672"
               height="941"
@@ -108,11 +108,11 @@
       }
     </section>
 
-    <section id="events" class="events section-shell" aria-labelledby="events-title">
+    <section id="events" class="events" aria-labelledby="events-title">
       <div class="events-media" [class.image-fallback]="!imageAvailable('events')" appRevealOnView>
         @if (imageAvailable('events')) {
           <img
-            [src]="'/media/' + concept() + '/academic-events.webp'"
+            [src]="'media/' + concept() + '/academic-events.webp'"
             alt="顯微鏡、培養皿與微生物研究設備"
             width="1672"
             height="941"
@@ -214,7 +214,7 @@
               >
                 <div class="news-image" aria-hidden="true">
                   <img
-                    [src]="'/media/' + concept() + '/' + item.image + '.webp'"
+                    [src]="'media/' + concept() + '/' + item.image + '.webp'"
                     alt=""
                     width="1672"
                     height="941"
@@ -239,7 +239,7 @@
       <div class="resources-media" [class.image-fallback]="!imageAvailable('resources')" appRevealOnView>
         @if (imageAvailable('resources')) {
           <img
-            [src]="'/media/' + concept() + '/professional-resources.webp'"
+            [src]="'media/' + concept() + '/professional-resources.webp'"
             alt="培養皿、研究標本與專業期刊"
             width="1672"
             height="941"
@@ -249,14 +249,16 @@
         }
       </div>
       <div class="resources-copy" appRevealOnView>
+        <div class="resources-heading">
         @if (concept() === 'c') {
           <p class="swiss-number" aria-hidden="true">04 — 專業資源</p>
         }
         <p class="section-code">04 · PROFESSIONAL RESOURCES</p>
         <h2 id="resources-title">專業資源</h2>
+        </div>
         <div class="resource-grid">
-          @for (item of content.resources; track item.key; let index = $index) {
-            <article class="resource-item" [class.resource-item--lead]="index === 0">
+          @for (item of content.resources; track item.key) {
+            <article class="resource-item">
               <app-symbol [name]="item.symbol" />
               <div>
                 <h3>{{ item.title }}</h3>
@@ -280,10 +282,10 @@
         @if (imageAvailable('membership')) {
           <picture>
             @if (concept() === 'c') {
-              <source media="(max-width: 767px)" srcset="/media/c/membership-mobile.webp" />
+              <source media="(max-width: 767px)" srcset="media/c/membership-mobile.webp" />
             }
             <img
-              [src]="'/media/' + concept() + '/membership.webp'"
+              [src]="'media/' + concept() + '/membership.webp'"
               alt=""
               width="1672"
               height="941"

@@ -60,6 +60,6 @@ describe('ConceptPage', () => {
     const source = host.querySelector<HTMLSourceElement>(
       'source[media="(max-width: 767px)"]',
     );
-    expect(source?.getAttribute('srcset')).toBe('/media/c/membership-mobile.webp');
+    expect(source?.getAttribute('srcset')).toBe('media/c/membership-mobile.webp');
   });
 });
