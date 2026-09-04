@@ -1,0 +1,42 @@
+<header class="site-header" [class.site-header--c]="concept() === 'c'">
+  <a class="brand" routerLink="/" aria-label="返回方案選擇首頁">
+    <img src="/assets/logo/mark.webp" alt="台灣微生物學會標誌" width="596" height="596" />
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    data-menu-toggle
+    aria-controls="primary-navigation"
+    [attr.aria-expanded]="menuOpen()"
+    (click)="toggleMenu()"
+  >
+    <span class="sr-only">{{ menuOpen() ? '關閉主選單' : '開啟主選單' }}</span>
+    <app-symbol [name]="menuOpen() ? 'close' : 'menu'" />
+  </button>
+
+  <nav
+    id="primary-navigation"
+    data-primary-nav
+    aria-label="主要導覽"
+    [class.is-open]="menuOpen()"
+  >
+    @for (item of content.navigation; track item.key) {
+      @if (concept() === 'c') {
+        <a class="nav-link" [href]="item.href" (click)="closeMenu()">
+          <span class="nav-link-track">
+            <span class="nav-link-label">{{ item.label }}</span>
+            <span class="nav-link-label nav-link-label--accent" aria-hidden="true">{{ item.label }}</span>
+          </span>
+        </a>
+      } @else {
+        <a [href]="item.href" (click)="closeMenu()">{{ item.label }}</a>
+      }
+    }
+  </nav>
+
+  <a class="login-link" href="#membership" (click)="closeMenu()">
+    <app-symbol name="login" />
+    <span>會員登入</span>
+  </a>
+</header>

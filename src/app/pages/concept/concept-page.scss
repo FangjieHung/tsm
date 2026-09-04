@@ -1,0 +1,468 @@
+:host { display: block; }
+.concept-page { min-height: 100%; overflow: clip; background: var(--surface); color: var(--ink); }
+.section-shell { width: min(var(--container), calc(100% - clamp(40px, 8vw, 144px))); margin-inline: auto; padding-block: clamp(88px, 10vw, 148px); }
+.section-code { margin: 0 0 18px; color: var(--link); font-size: 12px; font-weight: 800; letter-spacing: .15em; }
+h1, h2, h3, p { text-wrap: pretty; }
+h1, h2, h3 { margin-top: 0; letter-spacing: -.035em; }
+h2 { margin-bottom: 0; font-size: clamp(44px, 5vw, 70px); line-height: 1.06; font-weight: 650; }
+h3 { margin-bottom: 0; }
+.text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 10px; color: var(--link); font-weight: 750; text-decoration: none; background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat; }
+.button { min-height: 52px; padding: 0 26px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; border-radius: var(--radius-sm); text-decoration: none; font-weight: 760; }
+.button--primary { background: var(--accent); color: var(--accent-ink); }
+.theme-c .button--primary { background: #000; color: #fff; border-color: #000; }
+.theme-c .button--primary:hover, .theme-c .button--primary:focus-visible { background: var(--accent); color: #fff; border-color: var(--accent); }
+.button--secondary { color: var(--ink); border-color: var(--ink); background: color-mix(in srgb, var(--surface) 82%, transparent); }
+.theme-c .button--secondary { background: #fff; color: #000; border-color: #000; }
+.theme-c .button--secondary:hover, .theme-c .button--secondary:focus-visible { background: #000; color: #fff; border-color: #000; }
+.theme-c .button { border-radius: 0; text-transform: uppercase; font-weight: 700; letter-spacing: .08em; transition: background .18s ease-out, color .18s ease-out, border-color .18s ease-out; }
+.image-fallback { background: linear-gradient(135deg, var(--surface-muted), color-mix(in srgb, var(--accent) 18%, var(--surface))); }
+.theme-c .image-fallback { background: repeating-linear-gradient(45deg, var(--surface-muted), var(--surface-muted) 10px, #fff 10px, #fff 20px); }
+
+/* Swiss numbered section label (01 — 快速入口, etc.) — decorative, aria-hidden in markup,
+   sits ahead of each numbered section's heading; the English `.section-code` eyebrow that
+   used to sit there for concept-c is hidden via the adjacent-sibling rule below so the two
+   labels don't double up. */
+.theme-c .swiss-number { margin: 0 0 10px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .22em; }
+.theme-c .swiss-number + .section-code { display: none; }
+
+/* Swiss page-grain texture — extremely faint fractal-noise film over the whole concept-c
+   page only (scoped under .theme-c, never touches the shared/global body). */
+.theme-c { position: relative; }
+.theme-c::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: .015;
+  mix-blend-mode: multiply;
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.hero { min-height: min(810px, calc(100svh - 78px)); display: grid; grid-template-columns: minmax(0, 46%) minmax(0, 54%); position: relative; isolation: isolate; background: var(--surface); }
+.hero-copy { padding: clamp(72px, 10vh, 124px) clamp(28px, 3.8vw, 72px) 72px max(24px, calc((100vw - var(--container)) / 2)); display: flex; flex-direction: column; justify-content: center; align-items: flex-start; position: relative; z-index: 2; }
+.hero h1 { max-width: 12ch; margin: 0; font-size: clamp(54px, 5.6vw, 84px); line-height: 1.08; font-weight: 650; }
+.hero-description { margin: 32px 0 0; font-size: clamp(18px, 1.45vw, 22px); color: var(--text-muted); }
+.hero-actions { margin-top: 42px; display: flex; flex-wrap: wrap; gap: 16px; }
+.hero-media { min-width: 0; position: relative; overflow: hidden; }
+.hero-media > img:first-child { width: 100%; height: 100%; object-fit: cover; object-position: 68% 48%; }
+.theme-a .hero::after { content: ''; position: absolute; left: 46%; top: 0; bottom: 0; width: 1px; background: var(--line); z-index: 3; }
+.hero-divider { display: none; }
+
+/* CONCEPT B hero: full-bleed background photo with corner content and a giant
+   ghost-text watermark bleeding across the bottom edge, replacing the split-column
+   hero used elsewhere. `.hero-media--c` / `.hero-copy--c` / `.hero-scrim` /
+   `.hero-watermark` only ever render inside the `concept() === 'c'` template branch,
+   so they don't need `.theme-c` ancestor scoping, but it's added anyway for
+   consistency with the rest of this stylesheet's convention. */
+.theme-c .hero { display: block; position: relative; overflow: hidden; min-height: min(920px, 100svh - 78px); background: #000; }
+.theme-c .hero-media--c { position: absolute; inset: 0; z-index: 0; opacity: 1; }
+.theme-c .hero-media--c > img:first-child { width: 100%; height: 100%; object-fit: cover; object-position: 55% 38%; }
+.theme-c .hero-scrim { position: absolute; inset: 0; z-index: 1; background: rgb(0 0 0 / .45); pointer-events: none; }
+
+.theme-c .hero-copy--c {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 22.5rem);
+  align-items: start;
+  column-gap: clamp(32px, 5vw, 72px);
+  min-height: min(920px, 100svh - 78px);
+  padding: 6rem clamp(20px, 4.8vw, 72px);
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #fff;
+}
+.theme-c .hero-copy--c h1 {
+  grid-column: 1;
+  margin: 0;
+  
+  color: #fff;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  font-size: clamp(5rem, 2vw + 2rem, 7rem);
+}
+.theme-c .hero-intro { grid-column: 2; justify-self: stretch; }
+.theme-c .hero-intro .hero-description { margin: 0; color: rgb(255 255 255 / .82); font-size: clamp(15px, 1vw, 17px); line-height: 1.65; }
+.theme-c .hero-intro .hero-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
+.theme-c .hero-intro .button--primary { background: #fff; color: #000; border-color: #fff; }
+.theme-c .hero-intro .button--primary:hover, .theme-c .hero-intro .button--primary:focus-visible { background: var(--accent); color: #fff; border-color: var(--accent); }
+.theme-c .hero-intro .button--secondary { background: transparent; color: #fff; border-color: rgb(255 255 255 / .7); }
+.theme-c .hero-intro .button--secondary:hover, .theme-c .hero-intro .button--secondary:focus-visible { background: #fff; color: #000; border-color: #fff; }
+
+.theme-c .hero-watermark {
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* line-height .82 makes the line box shorter than the glyphs, so the caps hang below it;
+     an em-based offset compensates proportionally at every size instead of the old negative
+     px value, which pushed the whole lockup past the hero's overflow:hidden edge and sliced
+     the bottom off the letterforms. */
+  bottom: .1em;
+  z-index: 2;
+  margin: 0;
+  padding-inline: clamp(16px, 3vw, 48px);
+  color: rgb(255 255 255 / .16);
+  text-transform: uppercase;
+  letter-spacing: -.02em;
+  line-height: .82;
+  
+  font-size: min(14vw, 15rem);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  font-weight: 200;
+}
+
+.section-heading { display: grid; gap: 4px; margin-bottom: clamp(44px, 6vw, 84px); }
+.quick-access { padding-bottom: clamp(96px, 12vw, 180px); }
+.quick-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr; border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; background: var(--surface); }
+.quick-item { min-height: 370px; padding: clamp(30px, 4vw, 58px); display: grid; grid-template-rows: auto auto auto 1fr auto; align-items: start; border-left: 1px solid var(--line); position: relative; overflow: hidden; }
+.quick-item:first-child { border-left: 0; }
+.quick-item::before { content: ''; position: absolute; inset: 0; opacity: .08; background-image: url('/media/a/quick-access.webp'); background-size: cover; transition: opacity .3s, transform .5s; }
+.quick-item:hover::before { opacity: .16; transform: scale(1.025); }
+.quick-item > * { position: relative; z-index: 1; }
+.quick-item .item-number { justify-self: end; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.quick-item > app-symbol { font-size: 38px; color: var(--link); }
+.quick-item h3 { margin-top: 42px; font-size: clamp(27px, 2.3vw, 38px); }
+.quick-item p { color: var(--text-muted); font-size: 18px; }
+.quick-item a { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); text-decoration: none; font-weight: 760; border-top: 1px solid var(--line); padding-top: 18px; }
+.quick-item--lead a { width: fit-content; min-width: 190px; padding: 14px 18px; border: 0; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-ink); }
+.theme-c .quick-access { width: 100%; padding-inline: max(24px, calc((100vw - var(--container)) / 2)); background: var(--surface); color: var(--ink); }
+
+/* Reference "numbered content section" pattern (spec section 5): a sticky left label
+   panel with the page-level eyebrow + heading, paired with a right-hand vertically
+   stacked list of full-width rows (not a card grid) — each row hover-fills solid accent
+   with white text, 4px black rules divide rows and split the two panels. */
+.quick-split { display: grid; grid-template-columns: 34% 66%; border: 4px solid var(--ink); }
+/* The label panel fills its whole grid cell (so the dotted muted column runs the full height
+   of the bordered split, instead of collapsing to text height and leaving a white void under
+   it); the heading inside is what sticks while the row list scrolls past. */
+.quick-label { padding: clamp(40px, 5vw, 88px); border-right: 4px solid var(--ink); position: relative; background: var(--surface-muted); }
+.quick-label-inner { position: sticky; top: 112px; }
+.quick-label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgb(0 0 0 / .05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.quick-label h2 { text-transform: uppercase; font-weight: 900; letter-spacing: -.03em; font-size: clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem); }
+.quick-list { display: grid; background: var(--surface); }
+.quick-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(28px, 3.6vw, 48px) clamp(28px, 4vw, 56px);
+  border-bottom: 4px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background .18s ease-out, color .18s ease-out;
+}
+.quick-list .quick-row:last-child { border-bottom: 0; }
+.quick-row-index { font-size: clamp(28px, 2.4vw, 40px); font-weight: 900; letter-spacing: -.02em; font-variant-numeric: tabular-nums; color: var(--text-muted); }
+.quick-row-body { display: grid; gap: 10px; }
+.quick-row-heading { display: flex; align-items: center; gap: 14px; }
+.quick-row-heading app-symbol { font-size: 26px; color: var(--accent); }
+.quick-row-heading h3 { text-transform: uppercase; font-weight: 700; font-size: clamp(22px, 1.8vw, 30px); }
+.quick-row-body p { margin: 0; max-width: 46ch; color: var(--text-muted); font-size: 17px; }
+.quick-row-arrow { font-size: 30px; transform: rotate(-45deg); transition: transform .18s ease-out; }
+.quick-row:hover,
+.quick-row:focus-visible { background: var(--accent); color: #fff; }
+.quick-row:hover .quick-row-index,
+.quick-row:focus-visible .quick-row-index,
+.quick-row:hover .quick-row-body p,
+.quick-row:focus-visible .quick-row-body p { color: rgb(255 255 255 / .82); }
+.quick-row:hover .quick-row-heading app-symbol,
+.quick-row:focus-visible .quick-row-heading app-symbol { color: #fff; }
+.quick-row:hover .quick-row-arrow,
+.quick-row:focus-visible .quick-row-arrow { transform: rotate(0deg); }
+
+.events { display: grid; grid-template-columns: 47% 53%; align-items: stretch; }
+.events-media { min-height: 760px; overflow: hidden; border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.events-media img { width: 100%; height: 100%; object-fit: cover; object-position: 36% 50%; }
+.events-copy { padding: clamp(42px, 6vw, 86px); border: 1px solid var(--line); border-left: 0; border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--surface); }
+.events-copy h2 { margin-bottom: 60px; }
+.event-list { display: grid; }
+.event-item { padding: 34px 0; border-top: 1px solid var(--line); }
+.event-item > p { margin: 0 0 10px; color: var(--link); font-weight: 750; }
+.event-item h3 { font-size: clamp(24px, 2vw, 33px); }
+.event-item time { margin-top: 12px; display: block; color: var(--text-muted); }
+.event-actions { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; }
+/* Full-bleed banded sections: the shared `.section-shell` contributes 144px of padding-block,
+   which left the media/copy columns floating inside the band with white gaps above and below
+   and the media column's divider rule stopping short of the band's own 4px rules. The inner
+   panels already carry their own 84-96px padding, so the band itself is flush. */
+.theme-c .events { width: 100%; max-width: none; padding-block: 0;grid-template-columns: 42% 58%; background: var(--surface); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+.theme-c .events-media { order: 1; min-height: 640px; opacity: 1; border-radius: 0; border-right: 4px solid var(--ink); }
+.theme-c .events-media img { object-position: 50% 45%; }
+.theme-c .events-copy { order: 2; padding: clamp(48px, 6vw, 96px); border: 0; border-radius: 0; background: var(--surface-muted); position: relative; }
+.theme-c .events-copy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(45deg, rgb(0 0 0 / .025) 0 1px, transparent 1px 10px);
+}
+.theme-c .events-copy h2 { text-transform: uppercase; font-weight: 900; letter-spacing: -.03em; }
+.theme-c .event-item { border-top: 2px solid var(--ink); }
+.theme-c .event-item > p { text-transform: uppercase; letter-spacing: .12em; font-size: 13px; }
+
+.theme-c .event-item--c { padding: 30px 0; border-top: 2px solid var(--ink); transition: background .18s ease-out, color .18s ease-out; }
+.theme-c .event-item--c:first-child { border-top: 2px solid var(--ink); }
+.theme-c .event-item-body > p { margin: 0 0 8px; text-transform: uppercase; letter-spacing: .12em; font-size: 13px; color: var(--accent); }
+
+.news-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+.news-heading .section-code { margin-bottom: 18px; }
+.news-list { border-top: 1px solid var(--line); }
+.news-item { min-width: 0; position: relative; border-bottom: 1px solid var(--line); }
+.news-item > a { min-height: 150px; padding: 30px 18px; display: grid; grid-template-columns: 220px 1fr 40px; align-items: center; gap: 32px; color: var(--ink); text-decoration: none; }
+.news-meta { display: flex; gap: 22px; color: var(--text-muted); }
+.news-meta b { color: var(--link); }
+.news-item h3 { font-size: clamp(23px, 2vw, 31px); }
+.news-image { display: none; }
+.theme-c .news { width: 100%; padding-inline: 0; background: var(--surface); }
+
+/* Reference "04. Journal" section (spec section 10): a left label column (eyebrow +
+   heading + a bottom-pinned "view archive" CTA, textured/muted background) paired with a
+   right-hand article-card grid. Runs full-bleed like the reference (no container gutter),
+   date stamp styled uppercase + wide-tracked in the existing font stack instead of adding
+   a monospace face. */
+.news-split { display: grid; grid-template-columns: 25% 75%; border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+.news-label { padding: clamp(40px, 5vw, 80px) clamp(28px, 3.2vw, 56px); border-right: 4px solid var(--ink); display: flex; flex-direction: column; justify-content: space-between; gap: 48px; position: relative; background: var(--surface-muted); }
+.news-label::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgb(0 0 0 / .04) 1px, transparent 1px), linear-gradient(to bottom, rgb(0 0 0 / .04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.news-label h2 { text-transform: uppercase; font-weight: 900; letter-spacing: -.03em; font-size: clamp(2rem, 1.6vw + 1.6rem, 3.2rem); }
+.news-archive { width: 100%; }
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--surface); }
+.news-card { border-left: 4px solid var(--ink); border-top: 0; transition: background .18s ease-out, color .18s ease-out; }
+.news-card:first-child { border-left: 0; }
+.news-card.is-active { outline: 3px solid var(--accent); outline-offset: 0; }
+.news-card > a { min-height: 100%; padding: clamp(28px, 3vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; color: var(--ink); text-decoration: none; }
+.news-card .news-meta { display: block; }
+.news-card .news-meta b { display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; color: var(--accent); }
+.news-card .news-meta time { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--text-muted); }
+.news-card h3 { margin-top: 4px; font-size: clamp(21px, 1.8vw, 28px); font-weight: 700; line-height: 1.2; }
+.news-read { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; }
+.news-card:hover,
+.news-card:focus-within { background: var(--ink); }
+.news-card:hover > a,
+.news-card:focus-within > a { color: #fff; }
+.news-card:hover .news-meta time,
+.news-card:focus-within .news-meta time { color: rgb(255 255 255 / .78); }
+.news-card:hover .news-read,
+.news-card:focus-within .news-read { color: #fff; }
+
+.resources { display: grid; grid-template-columns: 50% 50%; align-items: stretch; }
+.resources-media { min-height: 760px; overflow: hidden; border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.resources-media img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 50%; }
+.resources-copy { padding: clamp(42px, 6vw, 84px); border: 1px solid var(--line); border-left: 0; background: var(--surface); }
+.resources-copy h2 { margin-bottom: 54px; }
+.resource-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.resource-item { min-height: 220px; padding: 26px; display: grid; grid-template-columns: 36px 1fr; gap: 18px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.resource-item:nth-child(odd) { border-left: 0; }
+.resource-item > app-symbol { font-size: 30px; color: var(--link); }
+.resource-item h3 { font-size: clamp(22px, 1.8vw, 29px); }
+.resource-item p { margin: 10px 0; color: var(--text-muted); }
+.resource-item a { grid-column: 1 / -1; align-self: end; min-height: 44px; display: flex; align-items: center; justify-content: space-between; color: var(--link); font-weight: 750; text-decoration: none; }
+.resource-item--lead { grid-column: 1 / -1; min-height: 240px; padding: 32px; }
+.theme-c .resources { width: 100%; max-width: none; padding-block: 0; grid-template-columns: 55% 45%; background: var(--surface-muted); border-bottom: 4px solid var(--ink); position: relative; }
+.theme-c .resources::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(rgb(0 0 0 / .04) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+.theme-c .resources-media { order: 2; border-radius: 0; border-left: 4px solid var(--ink); }
+.theme-c .resources-copy { order: 1; border: 0; background: transparent; }
+.theme-c .resources-copy h2 { text-transform: uppercase; font-weight: 900; letter-spacing: -.03em; }
+
+/* Hairline grid technique (spec sections 4/12): a `gap` grid on a black background so the
+   hairline gaps themselves become the dividers, with each card sitting on top as a white
+   cell — a different rhythm from quick-access's fused full-width rows and events' bordered
+   badge rows. Hover fills solid accent (page-level variety vs. events' black hover-fill). */
+/* Same auto-fit treatment as .member-grid: the fixed 2-column track clipped its cards
+   (269px of content into a 167px cell) once the copy column narrowed at tablet widths. */
+.theme-c .resource-grid { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 4px; background: var(--ink); border: 4px solid var(--ink); }
+.theme-c .resource-item { border: 0; background: var(--surface); transition: background .18s ease-out, color .18s ease-out; }
+.theme-c .resource-item > app-symbol { color: var(--accent); }
+.theme-c .resource-item a { color: var(--ink); text-transform: uppercase; font-weight: 700; letter-spacing: .04em; }
+.theme-c .resource-item--lead a { width: fit-content; min-width: 0; padding: 0; color: var(--ink); background: transparent; border-radius: 0; border-top: 2px solid var(--ink); }
+.theme-c .resource-item:hover,
+.theme-c .resource-item:focus-within { background: var(--accent); color: #fff; }
+.theme-c .resource-item:hover > app-symbol,
+.theme-c .resource-item:focus-within > app-symbol { color: #fff; }
+.theme-c .resource-item:hover p,
+.theme-c .resource-item:focus-within p { color: rgb(255 255 255 / .82); }
+.theme-c .resource-item:hover a,
+.theme-c .resource-item:focus-within a { color: #fff; }
+
+.membership { width: 100%; max-width: none; min-height: 860px;display: grid; place-items: center; position: relative; isolation: isolate; background: #e5e9ed; }
+.membership-media { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.membership-media picture, .membership-media img { width: 100%; height: 100%; }
+.membership-media img { object-fit: cover; object-position: 55% 48%; }
+.membership-media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(245 247 248 / .96), rgb(245 247 248 / .55) 55%, transparent); }
+.membership-content { width: 100%; display: grid; grid-template-columns: 26% 74%; border: 1px solid var(--line); background: rgb(245 247 248 / .9); backdrop-filter: blur(18px); }
+.membership-content > .section-heading { margin: 0; padding: 56px 38px; border-right: 1px solid var(--line); }
+.member-grid { display: grid; grid-template-columns: 1fr 1fr; }
+.member-action { min-height: 190px; padding: 34px; display: grid; grid-template-columns: 42px 1fr 28px; align-items: center; gap: 22px; color: var(--ink); text-decoration: none; border: 1px solid var(--line); border-width: 0 0 1px 1px; }
+.member-action:nth-child(n+3) { border-bottom: 0; }
+.member-action > app-symbol:first-child { font-size: 36px; color: var(--link); }
+.member-action span { display: grid; gap: 8px; }
+.member-action strong { font-size: clamp(24px, 2vw, 32px); }
+.member-action small { color: var(--text-muted); font-size: 16px; }
+.member-action--primary { background: #24272a; color: #fff; }
+.member-action--primary small { color: rgb(255 255 255 / .7); }
+.member-action--primary > app-symbol:first-child { color: var(--accent); }
+.theme-c .membership { width: 100%; max-width: none; min-height: 0; padding-block: 0;display: grid; grid-template-columns: 45% 55%; place-items: stretch; align-items: stretch; position: relative; isolation: isolate; background: var(--surface); border-top: 4px solid var(--ink); }
+.theme-c .membership-media { position: static; inset: auto; z-index: auto; min-height: 640px; border-right: 4px solid var(--ink); }
+.theme-c .membership-media::after { content: none; }
+.theme-c .membership-content { width: auto; grid-template-columns: 1fr; max-width: none; padding: clamp(48px, 6vw, 96px); border: 0; background: var(--surface-muted); box-shadow: none; backdrop-filter: none; position: relative; }
+.theme-c .membership-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: linear-gradient(to right, rgb(0 0 0 / .03) 1px, transparent 1px), linear-gradient(to bottom, rgb(0 0 0 / .03) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.theme-c .membership-content > .section-heading { padding: 0 0 40px; border-right: 0; }
+.theme-c .membership-content h2 { text-transform: uppercase; font-weight: 900; letter-spacing: -.03em; }
+
+/* Reference's "Investment" pricing-card device (spec section 11): each card gets its own
+   full 4px border with visible gap between cards, reading as standalone boxes rather than
+   a fused hairline grid — appropriate here since login/join/renew are meaningfully
+   different individual actions, not a repeating list. */
+/* Auto-fit instead of a hard 2-column track: inside the 45/55 split each card was squeezed to
+   ~153px at tablet widths, which drove the action's `42px 1fr 28px` inner grid to a negative
+   1fr — the CJK labels collapsed to one character per line and the grid overran the viewport.
+   The min() guard keeps the track from overflowing containers narrower than the floor. */
+.theme-c .member-grid { gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+.theme-c .member-action { min-height: 170px; border: 4px solid var(--ink); background: var(--surface); transition: background .18s ease-out, color .18s ease-out; }
+.theme-c .member-action:hover,
+.theme-c .member-action:focus-visible { background: var(--ink); color: #fff; }
+.theme-c .member-action:hover > app-symbol:first-child,
+.theme-c .member-action:focus-visible > app-symbol:first-child { color: var(--accent); }
+.theme-c .member-action--primary { background: #000; color: #fff; }
+.theme-c .member-action--primary:hover,
+.theme-c .member-action--primary:focus-visible { background: var(--accent); }
+
+.concept-switcher { position: fixed; z-index: 60; right: 18px; bottom: 18px; display: flex; gap: 2px; padding: 4px; background: rgb(32 34 37 / .92); border-radius: 12px; box-shadow: 0 12px 30px rgb(0 0 0 / .25); backdrop-filter: blur(14px); }
+.concept-switcher a { min-height: 40px; padding: 0 13px; display: flex; align-items: center; color: white; text-decoration: none; font-size: 13px; border-radius: 8px; }
+.concept-switcher a:hover { background: rgb(255 255 255 / .12); }
+
+.reveal-on-view { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.reveal-on-view.is-visible { opacity: 1; transform: translateY(0); }
+.theme-c .reveal-on-view { transition: opacity .18s ease-out, transform .18s ease-out; }
+
+@media (max-width: 1199px) {
+  .hero { min-height: 676px; grid-template-columns: 52% 48%; }
+  .hero-copy { padding-left: 48px; }
+  .theme-c .hero { min-height: min(760px, 100svh - 68px); }
+  .theme-c .hero-copy--c { min-height: min(760px, 100svh - 68px); padding: clamp(72px, 11vh, 120px) 32px clamp(140px, 22vw, 200px); }
+  .theme-c .hero-copy--c h1 { font-size: clamp(2.1rem, 2.4vw + 1.5rem, 3rem); }
+  .quick-grid { grid-template-columns: 1fr 1fr; }
+  .quick-item--lead { grid-column: 1 / -1; }
+  .quick-item:nth-child(3) { border-top: 1px solid var(--line); }
+  .quick-split { grid-template-columns: 40% 60%; }
+  .events, .resources { grid-template-columns: 44% 56%; }
+  .events-copy, .resources-copy { padding: 42px; }
+  .news-split { grid-template-columns: 32% 68%; }
+  .news-grid { grid-template-columns: 1fr 1fr; }
+  .news-card:nth-child(3) { border-left: 0; border-top: 4px solid var(--ink); }
+  .membership-content { grid-template-columns: 1fr; }
+  .membership-content > .section-heading { border-right: 0; border-bottom: 1px solid var(--line); }
+}
+
+@media (max-width: 767px) {
+  .section-shell { width: calc(100% - 40px); padding-block: 72px; }
+  h2 { font-size: clamp(38px, 12vw, 52px); }
+  .hero { min-height: auto; display: flex; flex-direction: column; background: var(--surface); }
+  .hero-copy { order: 1; width: auto; min-height: auto; margin: 0; padding: 64px 20px 44px; border: 0; border-radius: 0; box-shadow: none; background: var(--surface); }
+  .hero h1 { font-size: clamp(42px, 12vw, 58px); }
+  .hero-description { margin-top: 24px; font-size: 17px; }
+  .hero-actions { width: 100%; margin-top: 32px; display: grid; }
+  .hero-actions .button { width: 100%; }
+  .hero-media { order: 2; height: 58vw; min-height: 310px; opacity: 1; border-radius: 20px 20px 0 0; }
+  /* CONCEPT B full-bleed hero stays a single stacked block at mobile (photo behind, corner
+     content + watermark on top) rather than switching to the split-column mobile layout above. */
+  .theme-c .hero { min-height: min(620px, 100svh - 60px); }
+  .theme-c .hero-copy--c { grid-template-columns: 1fr; row-gap: 24px; min-height: min(620px, 100svh - 60px); padding: 56px 20px clamp(120px, 34vw, 170px); }
+  .theme-c .hero-copy--c h1 { grid-column: 1; max-width: none; font-size: clamp(2rem, 9vw, 2.6rem); }
+  .theme-c .hero-intro { grid-column: 1; }
+  .theme-c .hero-intro .hero-actions { width: 100%; }
+  .theme-c .hero-intro .hero-actions .button { flex: 1 1 auto; }
+  .theme-a .hero::after { display: none; }
+  .quick-grid { display: grid; grid-template-columns: 1fr; min-height: 0; padding: 0; border: 1px solid var(--line); overflow: hidden; }
+  .quick-item { width: auto; min-height: 260px; margin: 0 !important; padding: 28px; transform: none !important; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; }
+  .theme-c .quick-access { padding-inline: 20px; }
+  .theme-c .quick-access h2, .theme-c .membership-content h2 { font-size: clamp(44px, 13vw, 60px); }
+  .quick-split { grid-template-columns: 1fr; border-width: 3px; }
+  .quick-label { position: static; border-right: 0; border-bottom: 3px solid var(--ink); padding: 32px 24px; }
+  .quick-row { grid-template-columns: auto 1fr; padding: 24px; gap: 16px 18px; border-bottom-width: 3px; }
+  .quick-row-arrow { grid-column: 1 / -1; justify-self: end; }
+  .events, .theme-c .events, .resources, .theme-c .resources { width: calc(100% - 40px); padding-inline: 0; display: flex; flex-direction: column; background: var(--surface); }
+  /* The desktop rules zero padding-block so the full-bleed bands sit flush against their own
+     rules; at mobile these become stacked cards again and need the shared 72px rhythm back,
+     otherwise they butt straight into the neighbouring sections. */
+  .theme-c .events, .theme-c .resources { padding-block: 72px; }
+  .events-media, .resources-media, .theme-c .events-media, .theme-c .resources-media { order: 1; width: 100%; min-height: 0; aspect-ratio: 16 / 10; opacity: 1; border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .theme-c .events-media { border-right: 0; border-bottom: 4px solid var(--ink); }
+  .theme-c .resources-media { border-left: 0; border-bottom: 4px solid var(--ink); }
+  .events-copy, .resources-copy, .theme-c .events-copy, .theme-c .resources-copy { order: 2; padding: 32px 24px; border: 1px solid var(--line); border-top: 0; border-radius: 0 0 var(--radius-md) var(--radius-md); background: var(--surface); }
+  .events-copy h2 { margin-bottom: 36px; }
+  .event-actions { align-items: stretch; flex-direction: column; }
+  .news-heading { align-items: start; flex-direction: column; }
+  .news-item > a { min-height: 136px; padding: 24px 0; grid-template-columns: 1fr 28px; gap: 16px; }
+  .news-meta { grid-column: 1 / -1; justify-content: space-between; }
+  .news-split { grid-template-columns: 1fr; border-width: 3px; }
+  .news-label { border-right: 0; border-bottom: 3px solid var(--ink); flex-direction: column; gap: 32px; padding: 32px 24px; }
+  .news-grid { grid-template-columns: 1fr; }
+  .news-card { border-left: 0; border-top: 3px solid var(--ink); }
+  .news-card:first-child { border-top: 0; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .resource-item, .resource-item:nth-child(odd) { grid-column: 1; border-left: 0; }
+  .theme-c .resource-grid { grid-template-columns: 1fr; border-width: 3px; }
+  .membership { min-height: 900px; padding-inline: 20px; }
+  .membership-media::after { background: linear-gradient(180deg, rgb(245 247 248 / .65), rgb(245 247 248 / .9)); }
+  .theme-c .membership { grid-template-columns: 1fr; padding-inline: 20px; padding-block: 72px; }
+  .theme-c .membership-media { border-right: 0; border-bottom: 4px solid var(--ink); min-height: 320px; }
+  .membership-content, .theme-c .membership-content { padding: 0; grid-template-columns: 1fr; }
+  .theme-c .membership-content { padding: clamp(28px, 6vw, 48px) 20px; }
+  .membership-content > .section-heading { padding: 34px 24px; }
+  .member-grid { grid-template-columns: 1fr; }
+  .member-action { min-height: 112px; padding: 22px; border-left: 0; }
+  .theme-c .member-grid { gap: 14px; }
+  .theme-c .member-action { min-height: 112px; padding: 22px; }
+  .concept-switcher { right: 10px; bottom: 10px; }
+  .reveal-on-view { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-view { opacity: 1; transform: none; }
+  .news-card,
+  .quick-row, .quick-row-arrow,
+  .theme-c .event-item--c,
+  .theme-c .resource-item,
+  .theme-c .member-action { transition: none; }
+}

@@ -1,0 +1,39 @@
+<footer class="site-footer" [class.site-footer--c]="concept() === 'c'">
+  @if (concept() === 'c') {
+    <div class="footer-identity footer-identity--c">
+      <a class="footer-logo" routerLink="/" aria-label="返回方案選擇首頁">
+        <img src="/assets/logo/mark.webp" alt="台灣微生物學會標誌" width="596" height="596" />
+      </a>
+      <div class="footer-wordmark">
+        <strong>{{ content.name }}</strong>
+        <a href="https://www.microbiologytw.org.tw">{{ content.website }}</a>
+      </div>
+    </div>
+  } @else {
+    <div class="footer-identity">
+      <a class="footer-logo" routerLink="/" aria-label="返回方案選擇首頁">
+        <img src="/assets/logo/mark.webp" alt="台灣微生物學會標誌" width="596" height="596" />
+      </a>
+      <div>
+        <strong>{{ content.name }}</strong>
+        <a href="https://www.microbiologytw.org.tw">{{ content.website }}</a>
+      </div>
+    </div>
+  }
+  <nav aria-label="頁尾導覽" [class.footer-nav--c]="concept() === 'c'">
+    @if (concept() === 'c') {
+      <p class="footer-eyebrow">導覽</p>
+    }
+    @for (item of content.navigation; track item.key) {
+      <a [href]="item.href">{{ item.label }}</a>
+    }
+  </nav>
+  <div class="footer-utility" [class.footer-utility--c]="concept() === 'c'">
+    @if (concept() === 'c') {
+      <p class="footer-eyebrow">其他</p>
+    }
+    <a href="/sitemap">網站地圖</a>
+    <a href="/privacy">隱私權政策</a>
+  </div>
+  <small [class.is-c]="concept() === 'c'">© 2026 台灣微生物學會</small>
+</footer>

@@ -1,0 +1,79 @@
+@layer reset, base, utilities;
+
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { min-height: 100%; margin: 0; }
+  body { min-width: 320px; }
+  img { display: block; max-width: 100%; }
+  button, input, textarea, select { font: inherit; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}
+
+@layer base {
+  :root {
+    --radius-sm: 12px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
+    --container: 1392px;
+    --focus: #f59e0b;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    color-scheme: light;
+  }
+  body { font-size: 16px; line-height: 1.5; text-rendering: optimizeLegibility; }
+  :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+  /* Swiss spec: crisp 2px solid Swiss-Blue focus ring, no glow/blur — narrower than the
+     shared 3px default, scoped so concept-a's focus ring is untouched. */
+  .theme-c :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; box-shadow: none; }
+  .theme-a {
+    --accent: #62cfa7;
+    --accent-ink: #24272a;
+    --link: #176b52;
+    --surface: #f5f7f8;
+    --surface-muted: #e5e9ed;
+    --ink: #24272a;
+    --text-muted: #596067;
+    --line: #cbd2d8;
+    --button-bg: #24272a;
+    --button-ink: #f5f7f8;
+    --focus: #176b52;
+    /* Explicitly pin the pre-existing fallback chain (minus "Inter") so that loading the
+       Inter webfont for the Swiss (C) redesign cannot shift concept-A's rendered typeface —
+       "Inter" was already first in the shared :root stack above but was never actually
+       loaded, so A always rendered in the system-ui fallback. Keeping A pinned there
+       preserves pixel-identical output now that Inter is a real, loadable font. */
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+  .theme-c {
+    /* Swiss International Typographic Style palette — pure black/white with a single
+       accent signal color. Fully replaces the former navy/cyan glassmorphism palette. */
+    --accent: #0150b3;
+    --accent-highlight: #0150b3;
+    --accent-deep: #0150b3;
+    --accent-ink: #ffffff;
+    --link: #0150b3;
+    --surface: #ffffff;
+    --surface-muted: #f2f2f2;
+    --ink: #000000;
+    --text-muted: #3a3a3a;
+    --line: #000000;
+    --button-bg: #000000;
+    --button-ink: #ffffff;
+    --focus: #0150b3;
+    --radius-sm: 0;
+    --radius-md: 0;
+    --radius-lg: 0;
+    font-family: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+  }
+}
+
+@layer utilities {
+  .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .skip-link { position: fixed; left: 16px; top: 12px; z-index: 999; padding: 12px 18px; background: #fff; color: #111; opacity: 0; pointer-events: none; transform: translateY(-160%); }
+  .skip-link:focus { opacity: 1; pointer-events: auto; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
