@@ -1,0 +1,16 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^source \"\\$NVM_DIR/nvm\\.sh\" && nvm use && npm test -- --watch=false && npm run build -- --base-href /tsm/$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^pwd; git rev-parse --show-toplevel; git status --short; git branch --show-current$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "/^npm test -- --watch=false$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

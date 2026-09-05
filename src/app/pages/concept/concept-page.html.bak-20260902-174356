@@ -1,0 +1,324 @@
+<div class="concept-page" [class.theme-a]="concept() === 'a'" [class.theme-b]="concept() === 'c'">
+  <a class="skip-link" href="#main-content">跳至主要內容</a>
+  <app-site-header [concept]="concept()" />
+
+  <main id="main-content">
+    <section id="about" class="hero" aria-labelledby="hero-title">
+      @if (concept() === 'c') {
+        <div class="hero-media hero-media--c" [class.image-fallback]="!imageAvailable('hero')" aria-hidden="true">
+          @if (imageAvailable('hero')) {
+            <img
+              [src]="'/media/' + concept() + '/hero.webp'"
+              alt=""
+              width="1672"
+              height="941"
+              fetchpriority="high"
+              (error)="markImageFailed('hero')"
+            />
+          }
+        </div>
+        <span class="hero-scrim" aria-hidden="true"></span>
+        <div class="hero-copy hero-copy--b" appRevealOnView>
+          <h1 id="hero-title">{{ content.hero.title }}</h1>
+          <div class="hero-intro">
+            <p class="hero-description">{{ content.hero.description }}</p>
+            <div class="hero-actions">
+              <a class="button button--primary" [href]="content.hero.primaryAction.href">
+                {{ content.hero.primaryAction.label }} <app-symbol name="arrow_forward" />
+              </a>
+              <a class="button button--secondary" [href]="content.hero.secondaryAction.href">
+                {{ content.hero.secondaryAction.label }}
+              </a>
+            </div>
+          </div>
+        </div>
+        <p class="hero-watermark" aria-hidden="true">TAIWAN &middot; MICROBIOLOGY</p>
+      } @else {
+        <div class="hero-copy" appRevealOnView>
+          <p class="section-code">TAIWAN · MICROBIOLOGY · 1968</p>
+          <h1 id="hero-title">{{ content.hero.title }}</h1>
+          <p class="hero-description">{{ content.hero.description }}</p>
+          <div class="hero-actions">
+            <a class="button button--primary" [href]="content.hero.primaryAction.href">
+              {{ content.hero.primaryAction.label }} <app-symbol name="arrow_forward" />
+            </a>
+            <a class="button button--secondary" [href]="content.hero.secondaryAction.href">
+              {{ content.hero.secondaryAction.label }}
+            </a>
+          </div>
+        </div>
+        <div class="hero-media" [class.image-fallback]="!imageAvailable('hero')" aria-hidden="true">
+          @if (imageAvailable('hero')) {
+            <img
+              [src]="'/media/' + concept() + '/hero.webp'"
+              alt=""
+              width="1672"
+              height="941"
+              fetchpriority="high"
+              (error)="markImageFailed('hero')"
+            />
+          }
+        </div>
+      }
+    </section>
+
+    <section class="quick-access section-shell" aria-labelledby="quick-title">
+      @if (concept() === 'c') {
+        <div class="quick-split">
+          <div class="quick-label" appRevealOnView>
+            <p class="swiss-number" aria-hidden="true">01 — 快速入口</p>
+            <p class="section-code">01 · QUICK ACCESS</p>
+            <h2 id="quick-title">快速入口</h2>
+          </div>
+          <div class="quick-list">
+            @for (item of content.quickAccess; track item.key; let index = $index) {
+              <a class="quick-row" [href]="item.href" appRevealOnView>
+                <span class="quick-row-index" aria-hidden="true">0{{ index + 1 }}</span>
+                <span class="quick-row-body">
+                  <span class="quick-row-heading">
+                    <app-symbol [name]="item.symbol" />
+                    <h3>{{ item.title }}</h3>
+                  </span>
+                  <p>{{ item.description }}</p>
+                  <span class="sr-only">{{ item.label }}</span>
+                </span>
+                <app-symbol name="arrow_forward" class="quick-row-arrow" />
+              </a>
+            }
+          </div>
+        </div>
+      } @else {
+        <div class="section-heading" appRevealOnView>
+          <p class="section-code">01 · QUICK ACCESS</p>
+          <h2 id="quick-title">快速入口</h2>
+        </div>
+        <div class="quick-grid">
+          @for (item of content.quickAccess; track item.key; let index = $index) {
+            <article class="quick-item" [class.quick-item--lead]="index === 0" appRevealOnView>
+              <span class="item-number">0{{ index + 1 }}</span>
+              <app-symbol [name]="item.symbol" />
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.description }}</p>
+              <a [href]="item.href">{{ item.label }} <app-symbol name="arrow_forward" /></a>
+            </article>
+          }
+        </div>
+      }
+    </section>
+
+    <section id="events" class="events section-shell" aria-labelledby="events-title">
+      <div class="events-media" [class.image-fallback]="!imageAvailable('events')" appRevealOnView>
+        @if (imageAvailable('events')) {
+          <img
+            [src]="'/media/' + concept() + '/academic-events.webp'"
+            alt="顯微鏡、培養皿與微生物研究設備"
+            width="1672"
+            height="941"
+            loading="lazy"
+            (error)="markImageFailed('events')"
+          />
+        }
+      </div>
+      <div class="events-copy" appRevealOnView>
+        @if (concept() === 'c') {
+          <p class="swiss-number" aria-hidden="true">02 — 學術活動與論文投稿</p>
+        }
+        <p class="section-code">02 · ACADEMIC PROGRAM</p>
+        <h2 id="events-title">學術活動與<br />論文投稿</h2>
+        @if (content.events.length) {
+          <div class="event-list">
+            @for (event of content.events; track event.key; let index = $index) {
+              @if (concept() === 'c') {
+                <article class="event-item event-item--b">
+                  <span class="event-index" aria-hidden="true">0{{ index + 1 }}</span>
+                  <div class="event-item-body">
+                    <p>{{ event.eyebrow }}</p>
+                    <h3>{{ event.title }}</h3>
+                    <time>{{ event.meta }}</time>
+                    <div class="event-actions">
+                      <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
+                      <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
+                    </div>
+                  </div>
+                </article>
+              } @else {
+                <article class="event-item">
+                  <p>{{ event.eyebrow }}</p>
+                  <h3>{{ event.title }}</h3>
+                  <time>{{ event.meta }}</time>
+                  <div class="event-actions">
+                    <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
+                    <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
+                  </div>
+                </article>
+              }
+            }
+          </div>
+        } @else {
+          <app-content-state message="目前尚無近期活動" />
+        }
+      </div>
+    </section>
+
+    <section id="news" class="news section-shell" aria-labelledby="news-title">
+      @if (concept() === 'c') {
+        <div class="news-split">
+          <div class="news-label" appRevealOnView>
+            <div>
+              <p class="swiss-number" aria-hidden="true">03 — 最新消息</p>
+              <p class="section-code">03 · NEWS INDEX</p>
+              <h2 id="news-title">最新消息</h2>
+            </div>
+            <a class="button button--secondary news-archive" href="#all-news">查看所有消息 <app-symbol name="arrow_forward" /></a>
+          </div>
+          @if (content.news.length) {
+            <div class="news-grid">
+              @for (item of content.news; track item.key; let index = $index) {
+                <article
+                  class="news-card"
+                  [class.is-active]="activeNews() === index"
+                  (mouseenter)="activeNews.set(index)"
+                  (focusin)="activeNews.set(index)"
+                  appRevealOnView
+                >
+                  <a [href]="item.href">
+                    <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
+                    <h3>{{ item.title }}</h3>
+                    <span class="news-read">閱讀更多 <app-symbol name="arrow_forward" /></span>
+                  </a>
+                </article>
+              }
+            </div>
+          } @else {
+            <app-content-state message="目前尚無最新消息" />
+          }
+        </div>
+      } @else {
+        <div class="section-heading news-heading" appRevealOnView>
+          <div>
+            <p class="section-code">03 · NEWS INDEX</p>
+            <h2 id="news-title">最新消息</h2>
+          </div>
+          <a class="text-link" href="#all-news">查看所有消息 <app-symbol name="arrow_forward" /></a>
+        </div>
+        @if (content.news.length) {
+          <div class="news-list">
+            @for (item of content.news; track item.key; let index = $index) {
+              <article
+                class="news-item"
+                [class.is-active]="activeNews() === index"
+                (mouseenter)="activeNews.set(index)"
+                (focusin)="activeNews.set(index)"
+                appRevealOnView
+              >
+                <div class="news-image" aria-hidden="true">
+                  <img
+                    [src]="'/media/' + concept() + '/' + item.image + '.webp'"
+                    alt=""
+                    width="1672"
+                    height="941"
+                    loading="lazy"
+                  />
+                </div>
+                <a [href]="item.href">
+                  <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
+                  <h3>{{ item.title }}</h3>
+                  <app-symbol name="arrow_forward" />
+                </a>
+              </article>
+            }
+          </div>
+        } @else {
+          <app-content-state message="目前尚無最新消息" />
+        }
+      }
+    </section>
+
+    <section id="resources" class="resources section-shell" aria-labelledby="resources-title">
+      <div class="resources-media" [class.image-fallback]="!imageAvailable('resources')" appRevealOnView>
+        @if (imageAvailable('resources')) {
+          <img
+            [src]="'/media/' + concept() + '/professional-resources.webp'"
+            alt="培養皿、研究標本與專業期刊"
+            width="1672"
+            height="941"
+            loading="lazy"
+            (error)="markImageFailed('resources')"
+          />
+        }
+      </div>
+      <div class="resources-copy" appRevealOnView>
+        @if (concept() === 'c') {
+          <p class="swiss-number" aria-hidden="true">04 — 專業資源</p>
+        }
+        <p class="section-code">04 · PROFESSIONAL RESOURCES</p>
+        <h2 id="resources-title">專業資源</h2>
+        <div class="resource-grid">
+          @for (item of content.resources; track item.key; let index = $index) {
+            <article class="resource-item" [class.resource-item--lead]="index === 0">
+              <app-symbol [name]="item.symbol" />
+              <div>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+              </div>
+              <a
+                [href]="item.href"
+                [attr.target]="item.external ? '_blank' : null"
+                [attr.rel]="item.external ? 'noopener noreferrer' : null"
+              >
+                {{ item.label }} <app-symbol [name]="item.external ? 'arrow_outward' : 'arrow_forward'" />
+              </a>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="membership" class="membership section-shell" aria-labelledby="membership-title">
+      <div class="membership-media" [class.image-fallback]="!imageAvailable('membership')" aria-hidden="true">
+        @if (imageAvailable('membership')) {
+          <picture>
+            @if (concept() === 'c') {
+              <source media="(max-width: 767px)" srcset="/media/c/membership-mobile.webp" />
+            }
+            <img
+              [src]="'/media/' + concept() + '/membership.webp'"
+              alt=""
+              width="1672"
+              height="941"
+              loading="lazy"
+              (error)="markImageFailed('membership')"
+            />
+          </picture>
+        }
+      </div>
+      <div class="membership-content" appRevealOnView>
+        <div class="section-heading">
+          @if (concept() === 'c') {
+            <p class="swiss-number" aria-hidden="true">05 — 會員服務</p>
+          }
+          <p class="section-code">05 · MEMBER PORTAL</p>
+          <h2 id="membership-title">會員服務</h2>
+        </div>
+        <div class="member-grid">
+          @for (item of content.memberActions; track item.key) {
+            <a class="member-action" [class]="'member-action member-action--' + item.emphasis" [href]="item.href">
+              <app-symbol [name]="item.symbol" />
+              <span><strong>{{ item.title }}</strong><small>{{ item.label }}</small></span>
+              <app-symbol name="arrow_forward" />
+            </a>
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-site-footer [concept]="concept()" />
+
+  <nav class="concept-switcher" aria-label="切換設計方案">
+    <a routerLink="/">比較</a>
+    <a [routerLink]="concept() === 'a' ? '/concept-b' : '/concept-a'">
+      切換至 {{ concept() === 'a' ? 'C' : 'A' }} 方案
+    </a>
+  </nav>
+</div>
