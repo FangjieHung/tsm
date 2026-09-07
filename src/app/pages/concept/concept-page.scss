@@ -1316,6 +1316,16 @@ h3 {
    .theme-b .hero {
       min-height: min(620px, 100svh - 60px);
    }
+   /* Undo the concept-a `.hero-media` mobile rule's fixed height/border-radius, which also
+     matches this element (it carries both `.hero-media` and `.hero-media--c`) and was
+     overriding the absolute `inset: 0` full-bleed sizing — the background photo was
+     clamped to 310px tall instead of stretching the full hero, exposing the hero's black
+     base beneath it. */
+   .theme-b .hero-media--c {
+      height: 100%;
+      min-height: 0;
+      border-radius: 0;
+   }
    .theme-b .hero-copy--b {
       grid-template-columns: 1fr;
       row-gap: 24px;
