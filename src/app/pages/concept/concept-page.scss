@@ -981,21 +981,20 @@ h3 {
    color: #fff;
 }
 
+/* Concept-a membership: was a full-bleed background photo with a translucent, backdrop-blurred
+   content panel stretched over the top of it — the panel's blur washed out the photo across
+   its whole width instead of just tinting the area meant to stay legible, so the photo read as
+   covered rather than paired with the content. Rebuilt as a plain side-by-side 2-column band
+   (image | copy), matching the `.events` / `.resources` pattern used elsewhere on this page. */
 .membership {
-   width: 100%;
-   max-width: none;
-   min-height: 860px;
    display: grid;
-   place-items: center;
-   position: relative;
-   isolation: isolate;
-   background: #e5e9ed;
+   grid-template-columns: 45% 55%;
+   align-items: stretch;
 }
 .membership-media {
-   position: absolute;
-   inset: 0;
-   z-index: -1;
+   min-height: 760px;
    overflow: hidden;
+   border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
 .membership-media picture,
 .membership-media img {
@@ -1006,24 +1005,14 @@ h3 {
    object-fit: cover;
    object-position: 55% 48%;
 }
-.membership-media::after {
-   content: "";
-   position: absolute;
-   inset: 0;
-   background: linear-gradient(90deg, rgb(245 247 248 / 0.96), rgb(245 247 248 / 0.55) 55%, transparent);
-}
 .membership-content {
-   width: 100%;
+   padding: clamp(42px, 6vw, 86px);
    display: grid;
-   grid-template-columns: 26% 74%;
+   grid-template-columns: 1fr;
    border: 1px solid var(--line);
-   background: rgb(245 247 248 / 0.9);
-   backdrop-filter: blur(18px);
-}
-.membership-content > .section-heading {
-   margin: 0;
-   padding: 56px 38px;
-   border-right: 1px solid var(--line);
+   border-left: 0;
+   border-radius: 0 var(--radius-md) var(--radius-md) 0;
+   background: var(--surface);
 }
 .member-grid {
    display: grid;
@@ -1089,9 +1078,6 @@ h3 {
    z-index: auto;
    min-height: 640px;
    border-right: 4px solid var(--ink);
-}
-.theme-b .membership-media::after {
-   content: none;
 }
 .theme-b .membership-content {
    width: auto;
@@ -1238,12 +1224,29 @@ h3 {
       grid-template-columns: 40% 60%;
    }
    .events,
-   .resources {
+   .resources,
+   .membership {
       grid-template-columns: 44% 56%;
    }
    .events-copy,
-   .resources-copy {
+   .resources-copy,
+   .membership-content {
       padding: 42px;
+   }
+   /* The narrower 56%-of-container copy column no longer fits `.member-grid`'s fixed 2
+     columns — each card's text collapsed to one CJK character per line. Stack instead,
+     same as the mobile treatment further down. */
+   .member-grid {
+      grid-template-columns: 1fr;
+   }
+   .member-action {
+      border-left: 0;
+   }
+   .member-action:nth-child(n + 3) {
+      border-bottom: 1px solid var(--line);
+   }
+   .member-action:last-child {
+      border-bottom: 0;
    }
    .news-split {
       grid-template-columns: 32% 68%;
@@ -1254,13 +1257,6 @@ h3 {
    .news-card:nth-child(3) {
       border-left: 0;
       border-top: 4px solid var(--ink);
-   }
-   .membership-content {
-      grid-template-columns: 1fr;
-   }
-   .membership-content > .section-heading {
-      border-right: 0;
-      border-bottom: 1px solid var(--line);
    }
 }
 
@@ -1315,6 +1311,16 @@ h3 {
      content + watermark on top) rather than switching to the split-column mobile layout above. */
    .theme-b .hero {
       min-height: min(620px, 100svh - 60px);
+   }
+   /* Undo the concept-a `.hero-media` mobile rule's fixed height/border-radius, which also
+     matches this element (it carries both `.hero-media` and `.hero-media--c`) and was
+     overriding the absolute `inset: 0` full-bleed sizing — the background photo was
+     clamped to 310px tall instead of stretching the full hero, exposing the hero's black
+     base beneath it. */
+   .theme-b .hero-media--c {
+      height: 100%;
+      min-height: 0;
+      border-radius: 0;
    }
    .theme-b .hero-copy--b {
       grid-template-columns: 1fr;
@@ -1388,8 +1394,10 @@ h3 {
    .events,
    .theme-b .events,
    .resources,
-   .theme-b .resources {
+   .theme-b .resources,
+   .membership {
       width: calc(100% - 40px);
+      margin-inline: auto;
       padding-inline: 0;
       display: flex;
       flex-direction: column;
@@ -1405,7 +1413,8 @@ h3 {
    .events-media,
    .resources-media,
    .theme-b .events-media,
-   .theme-b .resources-media {
+   .theme-b .resources-media,
+   .membership-media {
       order: 1;
       width: 100%;
       min-height: 0;
@@ -1424,7 +1433,8 @@ h3 {
    .events-copy,
    .resources-copy,
    .theme-b .events-copy,
-   .theme-b .resources-copy {
+   .theme-b .resources-copy,
+   .membership-content {
       order: 2;
       padding: 32px 24px;
       border: 1px solid var(--line);
@@ -1486,13 +1496,6 @@ h3 {
       grid-template-columns: 1fr;
       border-width: 3px;
    }
-   .membership {
-      min-height: 900px;
-      padding-inline: 20px;
-   }
-   .membership-media::after {
-      background: linear-gradient(180deg, rgb(245 247 248 / 0.65), rgb(245 247 248 / 0.9));
-   }
    .theme-b .membership {
       grid-template-columns: 1fr;
       padding-inline: 20px;
@@ -1503,16 +1506,8 @@ h3 {
       border-bottom: 4px solid var(--ink);
       min-height: 320px;
    }
-   .membership-content,
-   .theme-b .membership-content {
-      padding: 0;
-      grid-template-columns: 1fr;
-   }
    .theme-b .membership-content {
       padding: clamp(28px, 6vw, 48px) 20px;
-   }
-   .membership-content > .section-heading {
-      padding: 34px 24px;
    }
    .member-grid {
       grid-template-columns: 1fr;
