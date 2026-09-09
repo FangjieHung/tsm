@@ -17,7 +17,7 @@ import { SymbolComponent } from '../symbol/symbol';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiteHeaderComponent {
-  readonly concept = input<'a' | 'c'>('a');
+  readonly concept = input<'a' | 'b' | 'c'>('a');
   readonly menuOpen = signal(false);
   protected readonly content = SITE_CONTENT;
 

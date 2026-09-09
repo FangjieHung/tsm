@@ -42,7 +42,7 @@ header span {
 }
 .concept-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: clamp(18px, 2vw, 32px);
 }
 .concept-bard {
@@ -63,6 +63,9 @@ header span {
 .concept-bard--c .preview {
     background-image: url("/tsm/media/c/hero.webp");
 }
+.concept-bard--b .preview {
+    background-image: url("/tsm/media/b/hero.png");
+}
 .concept-bopy {
     padding: clamp(24px, 3vw, 44px);
     display: grid;
@@ -77,6 +80,9 @@ header span {
 }
 .concept-bard--c small {
     color: #005a9c;
+}
+.concept-bard--b small {
+    color: #367df1;
 }
 .concept-bopy h2 {
     margin: 10px 0 12px;
@@ -120,6 +126,13 @@ header span {
 .concept-bard--c a:hover {
     background: #064a91;
     color: white;
+}
+.concept-bard--b a:hover {
+    background: #367df1;
+    color: white;
+}
+@media (max-width: 1180px) {
+    .concept-grid { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 860px) {
     .concept-grid {

@@ -10,6 +10,6 @@ import { SITE_CONTENT } from '../../core/site-content';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SiteFooterComponent {
-  readonly concept = input<'a' | 'c'>('a');
+  readonly concept = input<'a' | 'b' | 'c'>('a');
   protected readonly content = SITE_CONTENT;
 }

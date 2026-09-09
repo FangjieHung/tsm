@@ -17,6 +17,13 @@ export const routes: Routes = [
   {
     path: 'concept-b',
     title: 'B 方案｜台灣微生物學會',
+    data: { concept: 'b' },
+    loadComponent: () =>
+      import('./pages/concept/concept-page').then((module) => module.ConceptPage),
+  },
+  {
+    path: 'concept-c',
+    title: 'C 方案｜台灣微生物學會',
     data: { concept: 'c' },
     loadComponent: () =>
       import('./pages/concept/concept-page').then((module) => module.ConceptPage),

@@ -66,13 +66,13 @@ h3 {
    background: var(--accent);
    color: var(--accent-ink);
 }
-.theme-b .button--primary {
+.theme-c .button--primary {
    background: #000;
    color: #fff;
    border-color: #000;
 }
-.theme-b .button--primary:hover,
-.theme-b .button--primary:focus-visible {
+.theme-c .button--primary:hover,
+.theme-c .button--primary:focus-visible {
    background: var(--accent);
    color: #fff;
    border-color: var(--accent);
@@ -82,18 +82,18 @@ h3 {
    border-color: var(--ink);
    background: color-mix(in srgb, var(--surface) 82%, transparent);
 }
-.theme-b .button--secondary {
+.theme-c .button--secondary {
    background: #fff;
    color: #000;
    border-color: #000;
 }
-.theme-b .button--secondary:hover,
-.theme-b .button--secondary:focus-visible {
+.theme-c .button--secondary:hover,
+.theme-c .button--secondary:focus-visible {
    background: #000;
    color: #fff;
    border-color: #000;
 }
-.theme-b .button {
+.theme-c .button {
    border-radius: 0;
    text-transform: uppercase;
    font-weight: 700;
@@ -106,7 +106,7 @@ h3 {
 .image-fallback {
    background: linear-gradient(135deg, var(--surface-muted), color-mix(in srgb, var(--accent) 18%, var(--surface)));
 }
-.theme-b .image-fallback {
+.theme-c .image-fallback {
    background: repeating-linear-gradient(45deg, var(--surface-muted), var(--surface-muted) 10px, #fff 10px, #fff 20px);
 }
 
@@ -114,7 +114,7 @@ h3 {
    sits ahead of each numbered section's heading; the English `.section-code` eyebrow that
    used to sit there for concept-b is hidden via the adjacent-sibling rule below so the two
    labels don't double up. */
-.theme-b .swiss-number {
+.theme-c .swiss-number {
    margin: 0 0 10px;
    color: var(--accent);
    font-size: 12px;
@@ -122,16 +122,16 @@ h3 {
    text-transform: uppercase;
    letter-spacing: 0.22em;
 }
-.theme-b .swiss-number + .section-code {
+.theme-c .swiss-number + .section-code {
    display: none;
 }
 
 /* Swiss page-grain texture — extremely faint fractal-noise film over the whole concept-b
-   page only (scoped under .theme-b, never touches the shared/global body). */
-.theme-b {
+   page only (scoped under .theme-c, never touches the shared/global body). */
+.theme-c {
    position: relative;
 }
-.theme-b::before {
+.theme-c::before {
    content: "";
    position: fixed;
    inset: 0;
@@ -206,30 +206,30 @@ h3 {
 
 /* CONCEPT B hero: full-bleed background photo with corner content and a giant
    ghost-text watermark bleeding across the bottom edge, replacing the split-column
-   hero used elsewhere. `.hero-media--c` / `.hero-copy--b` / `.hero-scrim` /
+   hero used elsewhere. `.hero-media--c` / `.hero-copy--c` / `.hero-scrim` /
    `.hero-watermark` only ever render inside the `concept() === 'c'` template branch,
-   so they don't need `.theme-b` ancestor scoping, but it's added anyway for
+   so they don't need `.theme-c` ancestor scoping, but it's added anyway for
    consistency with the rest of this stylesheet's convention. */
-.theme-b .hero {
+.theme-c .hero {
    display: block;
    position: relative;
    overflow: hidden;
    min-height: min(920px, 100svh - 78px);
    background: #000;
 }
-.theme-b .hero-media--c {
+.theme-c .hero-media--c {
    position: absolute;
    inset: 0;
    z-index: 0;
    opacity: 1;
 }
-.theme-b .hero-media--c > img:first-child {
+.theme-c .hero-media--c > img:first-child {
    width: 100%;
    height: 100%;
    object-fit: cover;
    object-position: 55% 38%;
 }
-.theme-b .hero-scrim {
+.theme-c .hero-scrim {
    position: absolute;
    inset: 0;
    z-index: 1;
@@ -237,7 +237,7 @@ h3 {
    pointer-events: none;
 }
 
-.theme-b .hero-copy--b {
+.theme-c .hero-copy--c {
    position: relative;
    z-index: 2;
    display: grid;
@@ -253,7 +253,7 @@ h3 {
    box-shadow: none;
    color: #fff;
 }
-.theme-b .hero-copy--b h1 {
+.theme-c .hero-copy--c h1 {
    grid-column: 1;
    margin: 0;
 
@@ -262,46 +262,46 @@ h3 {
    line-height: 1.25;
    font-size: clamp(5rem, 2vw + 2rem, 7rem);
 }
-.theme-b .hero-intro {
+.theme-c .hero-intro {
    grid-column: 2;
    justify-self: stretch;
 }
-.theme-b .hero-intro .hero-description {
+.theme-c .hero-intro .hero-description {
    margin: 0;
    color: rgb(255 255 255 / 0.82);
    font-size: clamp(15px, 1vw, 17px);
    line-height: 1.65;
 }
-.theme-b .hero-intro .hero-actions {
+.theme-c .hero-intro .hero-actions {
    margin-top: 22px;
    display: flex;
    flex-wrap: wrap;
    gap: 12px;
 }
-.theme-b .hero-intro .button--primary {
+.theme-c .hero-intro .button--primary {
    background: #fff;
    color: #000;
    border-color: #fff;
 }
-.theme-b .hero-intro .button--primary:hover,
-.theme-b .hero-intro .button--primary:focus-visible {
+.theme-c .hero-intro .button--primary:hover,
+.theme-c .hero-intro .button--primary:focus-visible {
    background: var(--accent);
    color: #fff;
    border-color: var(--accent);
 }
-.theme-b .hero-intro .button--secondary {
+.theme-c .hero-intro .button--secondary {
    background: transparent;
    color: #fff;
    border-color: rgb(255 255 255 / 0.7);
 }
-.theme-b .hero-intro .button--secondary:hover,
-.theme-b .hero-intro .button--secondary:focus-visible {
+.theme-c .hero-intro .button--secondary:hover,
+.theme-c .hero-intro .button--secondary:focus-visible {
    background: #fff;
    color: #000;
    border-color: #fff;
 }
 
-.theme-b .hero-watermark {
+.theme-c .hero-watermark {
    position: absolute;
    left: 0;
    right: 0;
@@ -410,7 +410,7 @@ h3 {
    background: var(--accent);
    color: var(--accent-ink);
 }
-.theme-b .quick-access {
+.theme-c .quick-access {
    width: 100%;
    padding-inline: max(24px, calc((100vw - var(--container)) / 2));
    background: var(--surface);
@@ -585,7 +585,7 @@ h3 {
    which left the media/copy columns floating inside the band with white gaps above and below
    and the media column's divider rule stopping short of the band's own 4px rules. The inner
    panels already carry their own 84-96px padding, so the band itself is flush. */
-.theme-b .events {
+.theme-c .events {
    width: 100%;
    max-width: none;
    padding-block: 0;
@@ -594,17 +594,17 @@ h3 {
    border-top: 4px solid var(--ink);
    border-bottom: 4px solid var(--ink);
 }
-.theme-b .events-media {
+.theme-c .events-media {
    order: 1;
    min-height: 640px;
    opacity: 1;
    border-radius: 0;
    border-right: 4px solid var(--ink);
 }
-.theme-b .events-media img {
+.theme-c .events-media img {
    object-position: 50% 45%;
 }
-.theme-b .events-copy {
+.theme-c .events-copy {
    order: 2;
    padding: clamp(48px, 6vw, 96px);
    border: 0;
@@ -612,7 +612,7 @@ h3 {
    background: var(--surface-muted);
    position: relative;
 }
-.theme-b .events-copy::before {
+.theme-c .events-copy::before {
    content: "";
    position: absolute;
    inset: 0;
@@ -620,31 +620,31 @@ h3 {
    pointer-events: none;
    background-image: repeating-linear-gradient(45deg, rgb(0 0 0 / 0.025) 0 1px, transparent 1px 10px);
 }
-.theme-b .events-copy h2 {
+.theme-c .events-copy h2 {
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
 }
-.theme-b .event-item {
+.theme-c .event-item {
    border-top: 2px solid var(--ink);
 }
-.theme-b .event-item > p {
+.theme-c .event-item > p {
    text-transform: uppercase;
    letter-spacing: 0.12em;
    font-size: 13px;
 }
 
-.theme-b .event-item--b {
+.theme-c .event-item--c {
    padding: 30px 0;
    border-top: 2px solid var(--ink);
    transition:
       background 0.18s ease-out,
       color 0.18s ease-out;
 }
-.theme-b .event-item--b:first-child {
+.theme-c .event-item--c:first-child {
    border-top: 2px solid var(--ink);
 }
-.theme-b .event-item-body > p {
+.theme-c .event-item-body > p {
    margin: 0 0 8px;
    text-transform: uppercase;
    letter-spacing: 0.12em;
@@ -693,7 +693,7 @@ h3 {
 .news-image {
    display: none;
 }
-.theme-b .news {
+.theme-c .news {
    width: 100%;
    padding-inline: 0;
    background: var(--surface);
@@ -893,7 +893,7 @@ h3 {
 .theme-a .resources-heading {
    padding: 32px 36px;
 }
-.theme-b .resources {
+.theme-c .resources {
    width: 100%;
    max-width: none;
    padding-block: 0;
@@ -902,7 +902,7 @@ h3 {
    border-bottom: 4px solid var(--ink);
    position: relative;
 }
-.theme-b .resources::before {
+.theme-c .resources::before {
    content: "";
    position: absolute;
    inset: 0;
@@ -911,46 +911,46 @@ h3 {
    background-image: radial-gradient(rgb(0 0 0 / 0.04) 1px, transparent 1px);
    background-size: 16px 16px;
 }
-.theme-b .resources-media {
+.theme-c .resources-media {
    order: 2;
    border-radius: 0;
    border-left: 4px solid var(--ink);
 }
-.theme-b .resources-copy {
+.theme-c .resources-copy {
    order: 1;
    border: 0;
    background: transparent;
    padding: clamp(48px, 6vw, 96px) clamp(28px, 4vw, 72px);
 }
-.theme-b .resources-copy h2 {
+.theme-c .resources-copy h2 {
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
 }
 
-.theme-b .resource-grid {
+.theme-c .resource-grid {
    grid-template-columns: repeat(2, minmax(min(220px, 100%), 1fr));
    gap: 4px;
    background: var(--ink);
    border: 4px solid var(--ink);
 }
-.theme-b .resource-item {
+.theme-c .resource-item {
    border: 0;
    background: var(--surface);
    transition:
       background 0.18s ease-out,
       color 0.18s ease-out;
 }
-.theme-b .resource-item > app-symbol {
+.theme-c .resource-item > app-symbol {
    color: var(--accent);
 }
-.theme-b .resource-item a {
+.theme-c .resource-item a {
    color: var(--ink);
    text-transform: uppercase;
    font-weight: 700;
    letter-spacing: 0.04em;
 }
-.theme-b .resource-item--lead a {
+.theme-c .resource-item--lead a {
    width: fit-content;
    min-width: 0;
    padding: 0;
@@ -959,21 +959,21 @@ h3 {
    border-radius: 0;
    border-top: 2px solid var(--ink);
 }
-.theme-b .resource-item:hover,
-.theme-b .resource-item:focus-within {
+.theme-c .resource-item:hover,
+.theme-c .resource-item:focus-within {
    background: var(--accent);
    color: #fff;
 }
-.theme-b .resource-item:hover > app-symbol,
-.theme-b .resource-item:focus-within > app-symbol {
+.theme-c .resource-item:hover > app-symbol,
+.theme-c .resource-item:focus-within > app-symbol {
    color: #fff;
 }
-.theme-b .resource-item:hover p,
-.theme-b .resource-item:focus-within p {
+.theme-c .resource-item:hover p,
+.theme-c .resource-item:focus-within p {
    color: rgb(255 255 255 / 0.82);
 }
-.theme-b .resource-item:hover a,
-.theme-b .resource-item:focus-within a {
+.theme-c .resource-item:hover a,
+.theme-c .resource-item:focus-within a {
    color: #fff;
 }
 
@@ -1057,7 +1057,7 @@ h3 {
 .member-action--primary > app-symbol:first-child {
    color: var(--accent);
 }
-.theme-b .membership {
+.theme-c .membership {
    width: 100%;
    max-width: none;
    min-height: 0;
@@ -1071,14 +1071,14 @@ h3 {
    background: var(--surface);
    border-top: 4px solid var(--ink);
 }
-.theme-b .membership-media {
+.theme-c .membership-media {
    position: static;
    inset: auto;
    z-index: auto;
    min-height: 640px;
    border-right: 4px solid var(--ink);
 }
-.theme-b .membership-content {
+.theme-c .membership-content {
    width: auto;
    grid-template-columns: 1fr;
    max-width: none;
@@ -1089,7 +1089,7 @@ h3 {
    backdrop-filter: none;
    position: relative;
 }
-.theme-b .membership-content::before {
+.theme-c .membership-content::before {
    content: "";
    position: absolute;
    inset: 0;
@@ -1100,11 +1100,11 @@ h3 {
       linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
    background-size: 24px 24px;
 }
-.theme-b .membership-content > .section-heading {
+.theme-c .membership-content > .section-heading {
    padding: 0 0 40px;
    border-right: 0;
 }
-.theme-b .membership-content h2 {
+.theme-c .membership-content h2 {
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
@@ -1118,11 +1118,11 @@ h3 {
    ~153px at tablet widths, which drove the action's `42px 1fr 28px` inner grid to a negative
    1fr — the CJK labels collapsed to one character per line and the grid overran the viewport.
    The min() guard keeps the track from overflowing containers narrower than the floor. */
-.theme-b .member-grid {
+.theme-c .member-grid {
    gap: 20px;
    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
 }
-.theme-b .member-action {
+.theme-c .member-action {
    min-height: 170px;
    border: 4px solid var(--ink);
    background: var(--surface);
@@ -1130,22 +1130,217 @@ h3 {
       background 0.18s ease-out,
       color 0.18s ease-out;
 }
-.theme-b .member-action:hover,
-.theme-b .member-action:focus-visible {
+.theme-c .member-action:hover,
+.theme-c .member-action:focus-visible {
    background: var(--ink);
    color: #fff;
 }
-.theme-b .member-action:hover > app-symbol:first-child,
-.theme-b .member-action:focus-visible > app-symbol:first-child {
+.theme-c .member-action:hover > app-symbol:first-child,
+.theme-c .member-action:focus-visible > app-symbol:first-child {
    color: var(--accent);
 }
-.theme-b .member-action--primary {
+.theme-c .member-action--primary {
    background: #000;
    color: #fff;
 }
-.theme-b .member-action--primary:hover,
-.theme-b .member-action--primary:focus-visible {
+.theme-c .member-action--primary:hover,
+.theme-c .member-action--primary:focus-visible {
    background: var(--accent);
+}
+
+/* Concept B — a bright, rounded scientific collage.  The large media tiles use real
+   B artwork while the small information tiles remain semantic HTML so their copy stays
+   accessible and responsive. */
+.theme-b .site-header {
+   background: rgb(255 255 255 / 82%);
+   border-bottom-color: #d6e2f5;
+}
+.theme-b .button {
+   box-shadow: 0 9px 18px rgb(41 101 210 / 18%);
+   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.theme-b .button:hover,
+.theme-b .button:focus-visible {
+   transform: translateY(-2px);
+   box-shadow: 0 13px 24px rgb(41 101 210 / 24%);
+}
+.theme-b .button--secondary { background: #fff; border-color: #b7c9e5; }
+
+.hero--b {
+   width: min(1440px, calc(100% - clamp(28px, 5vw, 96px)));
+   min-height: 760px;
+   margin: clamp(20px, 3vw, 44px) auto clamp(48px, 6vw, 94px);
+   display: grid;
+   grid-template-columns: 1.2fr 1.04fr 0.76fr;
+   grid-template-rows: minmax(210px, 0.72fr) minmax(250px, 1fr) minmax(190px, 0.68fr);
+   gap: clamp(12px, 1.45vw, 22px);
+   background: transparent;
+}
+.b-hero-copy,
+.b-hero-cell,
+.b-hero-researcher,
+.b-hero-dna,
+.b-hero-data,
+.b-hero-equipment {
+   min-width: 0;
+   overflow: hidden;
+   border-radius: var(--radius-lg);
+   background: #fff;
+   box-shadow: 0 18px 42px rgb(35 83 161 / 10%);
+}
+.b-hero-copy {
+   grid-column: 1 / 3;
+   grid-row: 1;
+   padding: clamp(28px, 4vw, 66px);
+   display: grid;
+   align-content: center;
+   justify-items: start;
+   background: rgb(255 255 255 / 92%);
+}
+.b-hero-copy .section-code { margin-bottom: 14px; font-size: 10px; }
+.b-hero-copy h1 {
+   max-width: 12ch;
+   margin: 0;
+   font-size: clamp(44px, 4.65vw, 76px);
+   line-height: 1.04;
+   font-weight: 720;
+}
+.b-hero-copy > p:not(.section-code) {
+   max-width: 38ch;
+   margin: 18px 0 26px;
+   color: var(--text-muted);
+   font-size: 17px;
+}
+.b-hero-cell { grid-column: 1 / 3; grid-row: 2; }
+.b-hero-cell img,
+.b-hero-researcher img,
+.b-hero-dna img,
+.b-hero-equipment img { width: 100%; height: 100%; object-fit: cover; }
+.b-hero-cell img { object-position: 32% center; }
+.b-hero-researcher {
+   grid-column: 3;
+   grid-row: 1 / 3;
+   position: relative;
+   min-height: 0;
+}
+.b-hero-researcher img { object-position: 68% center; }
+.b-hero-researcher strong {
+   position: absolute;
+   left: 20px;
+   bottom: 20px;
+   max-width: 7ch;
+   font-size: clamp(20px, 1.9vw, 30px);
+   line-height: 1.2;
+}
+.b-hero-dna {
+   grid-column: 3;
+   grid-row: 3;
+   position: relative;
+   padding: 20px;
+   color: var(--ink);
+}
+.b-hero-dna img { position: absolute; inset: 0; opacity: 0.66; object-position: right center; }
+.b-hero-dna span,
+.b-hero-dna b { position: relative; display: block; }
+.b-hero-dna span { font-size: 12px; font-weight: 700; }
+.b-hero-dna b { margin-top: 6px; font-size: clamp(32px, 3vw, 52px); line-height: 1; }
+.b-hero-data {
+   grid-column: 1;
+   grid-row: 3;
+   padding: 24px;
+   display: grid;
+   align-content: end;
+   background: linear-gradient(135deg, #f8fbff, #dbe9ff);
+}
+.b-hero-data span { color: var(--text-muted); font-size: 12px; font-weight: 700; }
+.b-hero-data strong { margin-top: 4px; font-size: clamp(42px, 4vw, 64px); line-height: 1; }
+.b-hero-data i { width: 68%; height: 34px; margin-top: 10px; border-radius: 50% 50% 0 0; border: 2px solid #5c93f7; border-bottom: 0; transform: rotate(-8deg); }
+.b-hero-equipment { grid-column: 2; grid-row: 3; }
+.b-hero-equipment img { object-position: right 62%; }
+
+.theme-b .section-shell { padding-block: clamp(54px, 7vw, 108px); }
+.theme-b h2 { color: var(--ink); }
+.theme-b .quick-grid {
+   border: 0;
+   gap: 16px;
+   overflow: visible;
+   background: transparent;
+}
+.theme-b .quick-item {
+   min-height: 310px;
+   border: 0;
+   border-radius: var(--radius-md);
+   background: #fff;
+   box-shadow: 0 14px 32px rgb(35 83 161 / 9%);
+}
+.theme-b .quick-item::before { background-image: url('/tsm/media/b/latest-news.png'); }
+.theme-b .quick-item--lead { background: linear-gradient(140deg, #ffffff, #e0edff); }
+.theme-b .events,
+.theme-b .resources,
+.theme-b .membership {
+   width: min(1440px, calc(100% - clamp(28px, 5vw, 96px)));
+   margin-inline: auto;
+   gap: 0;
+}
+.theme-b .events-media,
+.theme-b .resources-media,
+.theme-b .membership-media { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.theme-b .events-media img { content: url('/tsm/media/b/academic-events.png'); }
+.theme-b .resources-media img { content: url('/tsm/media/b/professional-resources.png'); }
+.theme-b .membership-media img { content: url('/tsm/media/b/laboratory-instrument.png'); }
+.theme-b .events-copy,
+.theme-b .resources-copy,
+.theme-b .membership-content {
+   border-radius: 0 var(--radius-md) var(--radius-md) 0;
+   background: #fff;
+   border: 1px solid #d5e1f4;
+   border-left: 0;
+}
+.theme-b .resources-copy.b-resource-panel {
+   padding: clamp(34px, 4.5vw, 68px);
+   display: grid;
+   grid-template-rows: auto minmax(0, 1fr);
+}
+.theme-b .b-resource-panel .resources-heading { padding: 0; }
+.theme-b .b-resource-panel .resource-grid { min-height: 0; }
+.theme-b .b-resource-panel .resource-item { min-height: 0; }
+.theme-b .news { padding-block: clamp(54px, 7vw, 108px); }
+.theme-b .news-list { border: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.theme-b .news-item { overflow: hidden; border: 0; border-radius: var(--radius-md); background: #fff; box-shadow: 0 14px 32px rgb(35 83 161 / 9%); }
+.theme-b .news-image { display: block; aspect-ratio: 16 / 10; }
+.theme-b .news-image img { width: 100%; height: 100%; object-fit: cover; }
+.theme-b .news-item:nth-child(1) .news-image img { content: url('/tsm/media/b/latest-news.png'); }
+.theme-b .news-item:nth-child(2) .news-image img { content: url('/tsm/media/b/academic-events.png'); }
+.theme-b .news-item:nth-child(3) .news-image img { content: url('/tsm/media/b/professional-resources.png'); }
+.theme-b .news-item > a { min-height: 200px; padding: 24px; grid-template-columns: 1fr 28px; gap: 16px; }
+.theme-b .news-meta { grid-column: 1 / -1; justify-content: space-between; }
+.theme-b .news-item h3 { font-size: 23px; }
+.theme-b .membership-content { background: rgb(255 255 255 / 94%); }
+
+@media (max-width: 1199px) {
+   .hero--b { min-height: 680px; grid-template-columns: 1fr 1fr; grid-template-rows: 230px 280px 180px; }
+   .b-hero-copy { grid-column: 1; grid-row: 1 / 3; }
+   .b-hero-cell { grid-column: 2; grid-row: 1 / 3; }
+   .b-hero-researcher { grid-column: 1; grid-row: 3; }
+   .b-hero-dna { grid-column: 2; grid-row: 3; }
+   .b-hero-data, .b-hero-equipment { display: none; }
+   .theme-b .news-list { grid-template-columns: 1fr 1fr; }
+   .theme-b .news-item:nth-child(3) { grid-column: 1 / -1; }
+}
+
+@media (max-width: 767px) {
+   .hero--b { width: calc(100% - 32px); min-height: 0; display: grid; grid-template-columns: 1fr; grid-template-rows: auto 320px 300px 180px; gap: 12px; margin-block: 16px 52px; }
+   .b-hero-copy { grid-column: 1; grid-row: 1; padding: 36px 28px; }
+   .b-hero-copy h1 { font-size: clamp(38px, 11vw, 52px); }
+   .b-hero-cell { grid-column: 1; grid-row: 2; }
+   .b-hero-researcher { grid-column: 1; grid-row: 3; }
+   .b-hero-dna { grid-column: 1; grid-row: 4; }
+   .theme-b .quick-grid, .theme-b .news-list { display: grid; grid-template-columns: 1fr; }
+   .theme-b .events, .theme-b .resources, .theme-b .membership { width: calc(100% - 40px); }
+   .theme-b .events-media, .theme-b .resources-media, .theme-b .membership-media { border-radius: var(--radius-md) var(--radius-md) 0 0; }
+   .theme-b .events-copy, .theme-b .resources-copy, .theme-b .membership-content { border-left: 1px solid #d5e1f4; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+   .theme-b .resources-copy.b-resource-panel { padding: 32px 24px; }
+   .theme-b .news-item:nth-child(3) { grid-column: auto; }
 }
 
 .concept-switcher {
@@ -1186,7 +1381,7 @@ h3 {
    opacity: 1;
    transform: translateY(0);
 }
-.theme-b .reveal-on-view {
+.theme-c .reveal-on-view {
    transition:
       opacity 0.18s ease-out,
       transform 0.18s ease-out;
@@ -1200,14 +1395,14 @@ h3 {
    .hero-copy {
       padding-left: 48px;
    }
-   .theme-b .hero {
+   .theme-c .hero {
       min-height: min(760px, 100svh - 68px);
    }
-   .theme-b .hero-copy--b {
+   .theme-c .hero-copy--c {
       min-height: min(760px, 100svh - 68px);
       padding: clamp(72px, 11vh, 120px) 32px clamp(140px, 22vw, 200px);
    }
-   .theme-b .hero-copy--b h1 {
+   .theme-c .hero-copy--c h1 {
       font-size: clamp(2.1rem, 2.4vw + 1.5rem, 3rem);
    }
    .quick-grid {
@@ -1308,7 +1503,7 @@ h3 {
    }
    /* CONCEPT B full-bleed hero stays a single stacked block at mobile (photo behind, corner
      content + watermark on top) rather than switching to the split-column mobile layout above. */
-   .theme-b .hero {
+   .theme-c .hero {
       min-height: min(620px, 100svh - 60px);
    }
    /* Undo the concept-a `.hero-media` mobile rule's fixed height/border-radius, which also
@@ -1316,29 +1511,29 @@ h3 {
      overriding the absolute `inset: 0` full-bleed sizing — the background photo was
      clamped to 310px tall instead of stretching the full hero, exposing the hero's black
      base beneath it. */
-   .theme-b .hero-media--c {
+   .theme-c .hero-media--c {
       height: 100%;
       min-height: 0;
       border-radius: 0;
    }
-   .theme-b .hero-copy--b {
+   .theme-c .hero-copy--c {
       grid-template-columns: 1fr;
       row-gap: 24px;
       min-height: min(620px, 100svh - 60px);
       padding: 56px 20px clamp(120px, 34vw, 170px);
    }
-   .theme-b .hero-copy--b h1 {
+   .theme-c .hero-copy--c h1 {
       grid-column: 1;
       max-width: none;
       font-size: clamp(2rem, 9vw, 2.6rem);
    }
-   .theme-b .hero-intro {
+   .theme-c .hero-intro {
       grid-column: 1;
    }
-   .theme-b .hero-intro .hero-actions {
+   .theme-c .hero-intro .hero-actions {
       width: 100%;
    }
-   .theme-b .hero-intro .hero-actions .button {
+   .theme-c .hero-intro .hero-actions .button {
       flex: 1 1 auto;
    }
    .theme-a .hero::after {
@@ -1363,11 +1558,11 @@ h3 {
       border-radius: 0;
       box-shadow: none;
    }
-   .theme-b .quick-access {
+   .theme-c .quick-access {
       padding-inline: 20px;
    }
-   .theme-b .quick-access h2,
-   .theme-b .membership-content h2 {
+   .theme-c .quick-access h2,
+   .theme-c .membership-content h2 {
       font-size: clamp(44px, 13vw, 60px);
    }
    .quick-split {
@@ -1391,9 +1586,9 @@ h3 {
       justify-self: end;
    }
    .events,
-   .theme-b .events,
+   .theme-c .events,
    .resources,
-   .theme-b .resources,
+   .theme-c .resources,
    .membership {
       width: calc(100% - 40px);
       margin-inline: auto;
@@ -1405,14 +1600,14 @@ h3 {
    /* The desktop rules zero padding-block so the full-bleed bands sit flush against their own
      rules; at mobile these become stacked cards again and need the shared 72px rhythm back,
      otherwise they butt straight into the neighbouring sections. */
-   .theme-b .events,
-   .theme-b .resources {
+   .theme-c .events,
+   .theme-c .resources {
       padding-block: 72px;
    }
    .events-media,
    .resources-media,
-   .theme-b .events-media,
-   .theme-b .resources-media,
+   .theme-c .events-media,
+   .theme-c .resources-media,
    .membership-media {
       order: 1;
       width: 100%;
@@ -1421,18 +1616,18 @@ h3 {
       opacity: 1;
       border-radius: var(--radius-md) var(--radius-md) 0 0;
    }
-   .theme-b .events-media {
+   .theme-c .events-media {
       border-right: 0;
       border-bottom: 4px solid var(--ink);
    }
-   .theme-b .resources-media {
+   .theme-c .resources-media {
       border-left: 0;
       border-bottom: 4px solid var(--ink);
    }
    .events-copy,
    .resources-copy,
-   .theme-b .events-copy,
-   .theme-b .resources-copy,
+   .theme-c .events-copy,
+   .theme-c .resources-copy,
    .membership-content {
       order: 2;
       padding: 32px 24px;
@@ -1491,21 +1686,21 @@ h3 {
       grid-column: 1;
       border-left: 0;
    }
-   .theme-b .resource-grid {
+   .theme-c .resource-grid {
       grid-template-columns: 1fr;
       border-width: 3px;
    }
-   .theme-b .membership {
+   .theme-c .membership {
       grid-template-columns: 1fr;
       padding-inline: 20px;
       padding-block: 72px;
    }
-   .theme-b .membership-media {
+   .theme-c .membership-media {
       border-right: 0;
       border-bottom: 4px solid var(--ink);
       min-height: 320px;
    }
-   .theme-b .membership-content {
+   .theme-c .membership-content {
       padding: clamp(28px, 6vw, 48px) 20px;
    }
    .member-grid {
@@ -1516,10 +1711,10 @@ h3 {
       padding: 22px;
       border-left: 0;
    }
-   .theme-b .member-grid {
+   .theme-c .member-grid {
       gap: 14px;
    }
-   .theme-b .member-action {
+   .theme-c .member-action {
       min-height: 112px;
       padding: 22px;
    }
@@ -1541,9 +1736,9 @@ h3 {
    .news-card,
    .quick-row,
    .quick-row-arrow,
-   .theme-b .event-item--b,
-   .theme-b .resource-item,
-   .theme-b .member-action {
+   .theme-c .event-item--c,
+   .theme-c .resource-item,
+   .theme-c .member-action {
       transition: none;
    }
 }

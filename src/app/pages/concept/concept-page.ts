@@ -7,7 +7,7 @@ import { SiteFooterComponent } from '../../shared/site-footer/site-footer';
 import { SiteHeaderComponent } from '../../shared/site-header/site-header';
 import { SymbolComponent } from '../../shared/symbol/symbol';
 
-type Concept = 'a' | 'c';
+type Concept = 'a' | 'b' | 'c';
 
 @Component({
   selector: 'app-concept-page',
@@ -25,7 +25,11 @@ type Concept = 'a' | 'c';
 })
 export class ConceptPage {
   private readonly route = inject(ActivatedRoute);
-  readonly concept = signal<Concept>(this.route.snapshot.data['concept'] === 'c' ? 'c' : 'a');
+  readonly concept = signal<Concept>(
+    this.route.snapshot.data['concept'] === 'b' || this.route.snapshot.data['concept'] === 'c'
+      ? this.route.snapshot.data['concept']
+      : 'a',
+  );
   readonly activeNews = signal(0);
   readonly failedImages = signal<ReadonlySet<string>>(new Set());
   protected readonly content = SITE_CONTENT;
@@ -36,5 +40,33 @@ export class ConceptPage {
 
   imageAvailable(key: string): boolean {
     return !this.failedImages().has(key);
+  }
+
+  mediaPath(key: 'events' | 'resources' | 'membership'): string {
+    if (this.concept() === 'b') {
+      const bMedia = {
+        events: 'academic-events.png',
+        resources: 'professional-resources.png',
+        membership: 'laboratory-instrument.png',
+      } as const;
+      return `media/b/${bMedia[key]}`;
+    }
+
+    const legacyMedia = {
+      events: 'academic-events.webp',
+      resources: 'professional-resources.webp',
+      membership: 'membership.webp',
+    } as const;
+    return `media/${this.concept()}/${legacyMedia[key]}`;
+  }
+
+  newsImage(index: number, fallback: string): string {
+    if (this.concept() !== 'b') {
+      return `media/${this.concept()}/${fallback}.webp`;
+    }
+
+    return ['media/b/latest-news.png', 'media/b/academic-events.png', 'media/b/professional-resources.png'][
+      index % 3
+    ];
   }
 }

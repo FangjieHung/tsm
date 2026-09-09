@@ -24,7 +24,7 @@
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
   /* Swiss spec: crisp 2px solid Swiss-Blue focus ring, no glow/blur — narrower than the
      shared 3px default, scoped so concept-a's focus ring is untouched. */
-  .theme-b :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; box-shadow: none; }
+  .theme-c :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; box-shadow: none; }
   .theme-a {
     --accent: #82e8c3;
     --accent-ink: #011e14;
@@ -45,6 +45,22 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   }
   .theme-b {
+    --accent: #367df1;
+    --accent-ink: #ffffff;
+    --link: #2866d4;
+    --surface: #eef4ff;
+    --surface-muted: #dfeaff;
+    --ink: #13264b;
+    --text-muted: #536887;
+    --line: #c9d7ee;
+    --button-bg: #367df1;
+    --button-ink: #ffffff;
+    --focus: #174ea6;
+    --radius-sm: 999px;
+    --radius-md: 22px;
+    --radius-lg: 30px;
+  }
+  .theme-c {
     /* Swiss International Typographic Style palette — pure black/white with a single
        accent signal color. Fully replaces the former navy/cyan glassmorphism palette. */
     --accent: #0150b3;
