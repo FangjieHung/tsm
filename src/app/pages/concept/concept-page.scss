@@ -67,15 +67,15 @@ h3 {
    color: var(--accent-ink);
 }
 .theme-c .button--primary {
-   background: #000;
-   color: #fff;
-   border-color: #000;
-}
-.theme-c .button--primary:hover,
-.theme-c .button--primary:focus-visible {
    background: var(--accent);
    color: #fff;
    border-color: var(--accent);
+}
+.theme-c .button--primary:hover,
+.theme-c .button--primary:focus-visible {
+   background: var(--accent-deep);
+   color: #fff;
+   border-color: var(--accent-deep);
 }
 .button--secondary {
    color: var(--ink);
@@ -279,15 +279,15 @@ h3 {
    gap: 12px;
 }
 .theme-c .hero-intro .button--primary {
-   background: #fff;
-   color: #000;
-   border-color: #fff;
-}
-.theme-c .hero-intro .button--primary:hover,
-.theme-c .hero-intro .button--primary:focus-visible {
    background: var(--accent);
    color: #fff;
    border-color: var(--accent);
+}
+.theme-c .hero-intro .button--primary:hover,
+.theme-c .hero-intro .button--primary:focus-visible {
+   background: var(--accent-deep);
+   color: #fff;
+   border-color: var(--accent-deep);
 }
 .theme-c .hero-intro .button--secondary {
    background: transparent;
@@ -1048,8 +1048,8 @@ h3 {
    font-size: 16px;
 }
 .member-action--primary {
-   background: #24272a;
-   color: #fff;
+   background: var(--accent);
+   color: var(--accent-ink);
 }
 .member-action--primary small {
    color: rgb(255 255 255 / 0.7);
@@ -1140,12 +1140,12 @@ h3 {
    color: var(--accent);
 }
 .theme-c .member-action--primary {
-   background: #000;
+   background: var(--accent);
    color: #fff;
 }
 .theme-c .member-action--primary:hover,
 .theme-c .member-action--primary:focus-visible {
-   background: var(--accent);
+   background: var(--accent-deep);
 }
 
 /* Concept B — a bright, rounded scientific collage.  The large media tiles use real
