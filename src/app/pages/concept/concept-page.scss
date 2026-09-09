@@ -1153,18 +1153,18 @@ h3 {
    accessible and responsive. */
 .theme-b .site-header {
    background: rgb(255 255 255 / 82%);
-   border-bottom-color: #d6e2f5;
+   border-bottom-color: #c9e5e2;
 }
 .theme-b .button {
-   box-shadow: 0 9px 18px rgb(41 101 210 / 18%);
+   box-shadow: 0 9px 18px rgb(5 122 120 / 18%);
    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 .theme-b .button:hover,
 .theme-b .button:focus-visible {
    transform: translateY(-2px);
-   box-shadow: 0 13px 24px rgb(41 101 210 / 24%);
+   box-shadow: 0 13px 24px rgb(5 122 120 / 24%);
 }
-.theme-b .button--secondary { background: #fff; border-color: #b7c9e5; }
+.theme-b .button--secondary { background: #fff; border-color: #a9d5d2; }
 
 .hero--b {
    width: min(1440px, calc(100% - clamp(28px, 5vw, 96px)));
@@ -1186,7 +1186,7 @@ h3 {
    overflow: hidden;
    border-radius: var(--radius-lg);
    background: #fff;
-   box-shadow: 0 18px 42px rgb(35 83 161 / 10%);
+   box-shadow: 0 18px 42px rgb(8 124 121 / 10%);
 }
 .b-hero-copy {
    grid-column: 1 / 3;
@@ -1250,11 +1250,11 @@ h3 {
    padding: 24px;
    display: grid;
    align-content: end;
-   background: linear-gradient(135deg, #f8fbff, #dbe9ff);
+   background: linear-gradient(135deg, #f4fcfb, #d9f1ef);
 }
 .b-hero-data span { color: var(--text-muted); font-size: 12px; font-weight: 700; }
 .b-hero-data strong { margin-top: 4px; font-size: clamp(42px, 4vw, 64px); line-height: 1; }
-.b-hero-data i { width: 68%; height: 34px; margin-top: 10px; border-radius: 50% 50% 0 0; border: 2px solid #5c93f7; border-bottom: 0; transform: rotate(-8deg); }
+.b-hero-data i { width: 68%; height: 34px; margin-top: 10px; border-radius: 50% 50% 0 0; border: 2px solid #4ebdb9; border-bottom: 0; transform: rotate(-8deg); }
 .b-hero-equipment { grid-column: 2; grid-row: 3; }
 .b-hero-equipment img { object-position: right 62%; }
 
@@ -1271,10 +1271,10 @@ h3 {
    border: 0;
    border-radius: var(--radius-md);
    background: #fff;
-   box-shadow: 0 14px 32px rgb(35 83 161 / 9%);
+   box-shadow: 0 14px 32px rgb(8 124 121 / 9%);
 }
 .theme-b .quick-item::before { background-image: url('/tsm/media/b/latest-news.png'); }
-.theme-b .quick-item--lead { background: linear-gradient(140deg, #ffffff, #e0edff); }
+.theme-b .quick-item--lead { background: linear-gradient(140deg, #ffffff, #d7efed); }
 .theme-b .events,
 .theme-b .resources,
 .theme-b .membership {
@@ -1293,7 +1293,7 @@ h3 {
 .theme-b .membership-content {
    border-radius: 0 var(--radius-md) var(--radius-md) 0;
    background: #fff;
-   border: 1px solid #d5e1f4;
+   border: 1px solid #c7e5e2;
    border-left: 0;
 }
 .theme-b .resources-copy.b-resource-panel {
@@ -1306,7 +1306,7 @@ h3 {
 .theme-b .b-resource-panel .resource-item { min-height: 0; }
 .theme-b .news { padding-block: clamp(54px, 7vw, 108px); }
 .theme-b .news-list { border: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.theme-b .news-item { overflow: hidden; border: 0; border-radius: var(--radius-md); background: #fff; box-shadow: 0 14px 32px rgb(35 83 161 / 9%); }
+.theme-b .news-item { overflow: hidden; border: 0; border-radius: var(--radius-md); background: #fff; box-shadow: 0 14px 32px rgb(8 124 121 / 9%); }
 .theme-b .news-image { display: block; aspect-ratio: 16 / 10; }
 .theme-b .news-image img { width: 100%; height: 100%; object-fit: cover; }
 .theme-b .news-item:nth-child(1) .news-image img { content: url('/tsm/media/b/latest-news.png'); }
@@ -1338,7 +1338,7 @@ h3 {
    .theme-b .quick-grid, .theme-b .news-list { display: grid; grid-template-columns: 1fr; }
    .theme-b .events, .theme-b .resources, .theme-b .membership { width: calc(100% - 40px); }
    .theme-b .events-media, .theme-b .resources-media, .theme-b .membership-media { border-radius: var(--radius-md) var(--radius-md) 0 0; }
-   .theme-b .events-copy, .theme-b .resources-copy, .theme-b .membership-content { border-left: 1px solid #d5e1f4; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+   .theme-b .events-copy, .theme-b .resources-copy, .theme-b .membership-content { border-left: 1px solid #c7e5e2; border-radius: 0 0 var(--radius-md) var(--radius-md); }
    .theme-b .resources-copy.b-resource-panel { padding: 32px 24px; }
    .theme-b .news-item:nth-child(3) { grid-column: auto; }
 }
