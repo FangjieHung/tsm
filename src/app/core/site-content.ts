@@ -69,6 +69,7 @@ export const SITE_CONTENT = {
     eventsLead: '掌握研討交流、投稿時程與微生物學界的重要學術資訊。',
     eventsArchive: { label: '查看所有活動', href: '#events-list' },
     resourcesLead: '提供期刊、獎學金與學會資訊，協助研究與專業發展。',
+    newsLead: '掌握學會公告、研究交流與近期學術動態。',
   },
   news: [
     {

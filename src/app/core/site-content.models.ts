@@ -63,6 +63,7 @@ export interface SiteContent {
     readonly eventsLead: string;
     readonly eventsArchive: SiteAction;
     readonly resourcesLead: string;
+    readonly newsLead: string;
   };
   readonly news: readonly NewsItem[];
   readonly resources: readonly ResourceItem[];

@@ -278,6 +278,9 @@
           <div>
             <p class="section-code">03 · NEWS INDEX</p>
             <h2 id="news-title">最新消息</h2>
+            @if (concept() === 'b') {
+              <p class="b-news-lead">{{ content.bReference.newsLead }}</p>
+            }
           </div>
           <a class="text-link" [class.b-news-archive]="concept() === 'b'" href="#all-news">查看所有消息 <app-symbol name="arrow_forward" /></a>
         </div>
@@ -304,7 +307,6 @@
                   <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
                   <h3>{{ item.title }}</h3>
                   @if (concept() === 'b') {
-                    <p class="b-news-summary">掌握學會重要訊息與近期學術動態。</p>
                     <span class="b-news-read">閱讀更多</span>
                     <span class="b-news-arrow"><span class="sr-only">閱讀 {{ item.title }}</span><app-symbol name="arrow_forward" /></span>
                   } @else {
@@ -379,7 +381,10 @@
             <h2 id="membership-title">會員服務</h2>
             <p class="b-membership-lead">專屬會員服務，讓學術交流與專業成長持續發生。</p>
           </div>
-          <p class="b-membership-support">登入會員帳號，查詢會費、申請服務並管理活動紀錄。</p>
+          <p class="b-membership-support">
+            登入會員帳號，查詢會費、申請服務並管理活動紀錄。
+            <span class="b-membership-rule" aria-hidden="true"></span>
+          </p>
         </div>
         <div class="member-grid b-member-grid" appRevealOnView>
           @for (item of content.memberActions; track item.key) {

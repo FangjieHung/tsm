@@ -126,6 +126,15 @@ describe('ConceptPage', () => {
     expect(featuredMember?.querySelector('.b-member-featured-media img')).not.toBeNull();
   });
 
+  it('renders the B editorial lead and membership support rule outside the repeated cards', async () => {
+    const host = await renderConcept('b');
+
+    expect(host.querySelector('.b-news-lead')?.textContent?.trim()).toBe(
+      SITE_CONTENT.bReference.newsLead,
+    );
+    expect(host.querySelector('.b-membership-support .b-membership-rule')).not.toBeNull();
+  });
+
   it('keeps the reference-only featured membership hook scoped to concept B', async () => {
     const host = await renderConcept('a');
 
