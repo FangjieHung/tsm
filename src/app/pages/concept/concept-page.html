@@ -131,12 +131,19 @@
         </div>
         <div class="quick-grid">
           @for (item of content.quickAccess; track item.key; let index = $index) {
-            <article class="quick-item" [class.quick-item--lead]="index === 0" appRevealOnView>
+            <article
+              class="quick-item"
+              [class.quick-item--lead]="index === 0"
+              [class.b-quick-card]="concept() === 'b'"
+              appRevealOnView
+            >
               <span class="item-number">0{{ index + 1 }}</span>
-              <app-symbol [name]="item.symbol" />
+              <app-symbol [name]="item.symbol" [class.b-quick-visual]="concept() === 'b'" />
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
-              <a [href]="item.href">{{ item.label }} <app-symbol name="arrow_forward" /></a>
+              <a [href]="item.href" [class.b-quick-arrow]="concept() === 'b'">
+                {{ item.label }} <app-symbol name="arrow_forward" />
+              </a>
             </article>
           }
         </div>
@@ -181,7 +188,7 @@
                 <article class="event-item">
                   <p>{{ event.eyebrow }}</p>
                   <h3>{{ event.title }}</h3>
-                  <time>{{ event.meta }}</time>
+                  <time [class.b-event-date]="concept() === 'b'">{{ event.meta }}</time>
                   <div class="event-actions">
                     <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
                     <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
@@ -256,7 +263,7 @@
                     loading="lazy"
                   />
                 </div>
-                <a [href]="item.href">
+                <a [href]="item.href" [class.b-news-action]="concept() === 'b'">
                   <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
                   <h3>{{ item.title }}</h3>
                   <app-symbol name="arrow_forward" />
@@ -303,6 +310,7 @@
                 [href]="item.href"
                 [attr.target]="item.external ? '_blank' : null"
                 [attr.rel]="item.external ? 'noopener noreferrer' : null"
+                [class.b-resource-action]="concept() === 'b'"
               >
                 {{ item.label }} <app-symbol [name]="item.external ? 'arrow_outward' : 'arrow_forward'" />
               </a>
@@ -340,7 +348,12 @@
         </div>
         <div class="member-grid">
           @for (item of content.memberActions; track item.key) {
-            <a class="member-action" [class]="'member-action member-action--' + item.emphasis" [href]="item.href">
+            <a
+              class="member-action"
+              [class]="'member-action member-action--' + item.emphasis"
+              [class.b-member-featured]="concept() === 'b' && item.emphasis === 'primary'"
+              [href]="item.href"
+            >
               <app-symbol [name]="item.symbol" />
               <span><strong>{{ item.title }}</strong><small>{{ item.label }}</small></span>
               <app-symbol name="arrow_forward" />

@@ -80,4 +80,24 @@ describe('ConceptPage', () => {
     expect(resourcePanel).not.toBeNull();
     expect(resourcePanel?.querySelectorAll('.resource-item')).toHaveLength(SITE_CONTENT.resources.length);
   });
+
+  it('renders B-specific reference regions with complete data mappings', async () => {
+    const host = await renderConcept('b');
+    expect(host.querySelector('.b-hero-copy')).not.toBeNull();
+    expect(host.querySelectorAll('.theme-b .quick-item')).toHaveLength(SITE_CONTENT.quickAccess.length);
+    expect(host.querySelectorAll('.theme-b .event-item')).toHaveLength(SITE_CONTENT.events.length);
+    expect(host.querySelectorAll('.theme-b .resource-item')).toHaveLength(SITE_CONTENT.resources.length);
+    expect(host.querySelectorAll('.theme-b .news-item')).toHaveLength(SITE_CONTENT.news.length);
+    expect(host.querySelectorAll('.theme-b .member-action')).toHaveLength(SITE_CONTENT.memberActions.length);
+
+    const quickItems = host.querySelectorAll('.theme-b .quick-item');
+    for (const item of quickItems) {
+      expect(item.querySelector('.b-quick-visual')).not.toBeNull();
+      expect(item.querySelector('.b-quick-arrow')).not.toBeNull();
+    }
+    expect(host.querySelectorAll('.theme-b .b-event-date')).toHaveLength(SITE_CONTENT.events.length);
+    expect(host.querySelectorAll('.theme-b .b-resource-action')).toHaveLength(SITE_CONTENT.resources.length);
+    expect(host.querySelectorAll('.theme-b .b-news-action')).toHaveLength(SITE_CONTENT.news.length);
+    expect(host.querySelector('.theme-b .member-action--primary.b-member-featured')).not.toBeNull();
+  });
 });
