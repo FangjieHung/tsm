@@ -101,4 +101,23 @@ describe('ConceptPage', () => {
     expect(host.querySelectorAll('.theme-b .b-news-action')).toHaveLength(SITE_CONTENT.news.length);
     expect(host.querySelector('.theme-b .member-action--primary.b-member-featured')).not.toBeNull();
   });
+
+  it('renders B event date rails and circular resource actions from every data item', async () => {
+    const host = await renderConcept('b');
+
+    const events = host.querySelectorAll<HTMLElement>('.theme-b .b-event-item');
+    expect(events).toHaveLength(SITE_CONTENT.events.length);
+    for (const event of events) {
+      expect(event.querySelector(':scope > .b-event-date')).not.toBeNull();
+      expect(event.querySelector('.b-event-body')).not.toBeNull();
+    }
+
+    const actions = host.querySelectorAll<HTMLAnchorElement>('.theme-b .b-resource-action');
+    expect(actions).toHaveLength(SITE_CONTENT.resources.length);
+    for (const action of actions) {
+      expect(action.querySelector('app-symbol')).not.toBeNull();
+      expect(action.querySelector('.sr-only')?.textContent?.trim()).toBeTruthy();
+    }
+    expect(host.querySelector('#resources img')?.getAttribute('src')).toBe('media/b/researcher.png');
+  });
 });

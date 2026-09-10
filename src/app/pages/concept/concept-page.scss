@@ -1401,7 +1401,7 @@ h3 {
    gap: clamp(18px, 2vw, 28px);
 }
 .theme-b .events {
-   grid-template-columns: minmax(0, 47%) minmax(0, 53%);
+   grid-template-columns: minmax(0, 48%) minmax(0, 52%);
 }
 .theme-b .events-media,
 .theme-b .resources-media,
@@ -1412,7 +1412,7 @@ h3 {
    box-shadow: 0 22px 54px rgb(9 71 92 / 8%);
 }
 .theme-b .events-media img { content: url('/tsm/media/b/academic-events.png'); }
-.theme-b .resources-media img { content: url('/tsm/media/b/professional-resources.png'); }
+.theme-b .resources-media img { object-position: 50% 28%; }
 .theme-b .membership-media img { content: url('/tsm/media/b/laboratory-instrument.png'); }
 .theme-b .events-copy,
 .theme-b .resources-copy,
@@ -1424,16 +1424,19 @@ h3 {
 .theme-b .events-copy {
    padding: clamp(38px, 4.6vw, 68px);
    box-shadow: 0 22px 54px rgb(9 71 92 / 7%);
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
 }
 .theme-b .events-copy h2 {
-   margin-bottom: 30px;
+   margin-bottom: clamp(26px, 3vw, 42px);
    font-size: clamp(38px, 3.5vw, 54px);
 }
 .theme-b .event-list {
    border-top: 1px solid #CFE4E9;
 }
 .theme-b .event-item {
-   padding: clamp(24px, 2.6vw, 34px) 0;
+   padding: clamp(22px, 2.2vw, 32px) 0;
    border-top: 0;
    border-bottom: 1px solid #CFE4E9;
 }
@@ -1441,7 +1444,26 @@ h3 {
    border-bottom: 0;
    padding-bottom: 0;
 }
-.theme-b .event-item > p {
+.theme-b .b-event-item {
+   display: grid;
+   grid-template-columns: minmax(112px, 28%) minmax(0, 1fr);
+   align-items: stretch;
+   gap: clamp(18px, 2.4vw, 34px);
+}
+.theme-b .b-event-date {
+   min-height: 100%;
+   display: flex;
+   align-items: flex-start;
+   padding: 3px clamp(14px, 1.8vw, 26px) 3px 0;
+   border-right: 1px solid #CFE4E9;
+   color: #086A84;
+   font-size: 13px;
+   font-weight: 780;
+   line-height: 1.5;
+   letter-spacing: 0.035em;
+   font-variant-numeric: tabular-nums;
+}
+.theme-b .b-event-body > p {
    margin-bottom: 8px;
    color: #086A84;
    font-size: 12px;
@@ -1449,25 +1471,22 @@ h3 {
    letter-spacing: 0.13em;
    text-transform: uppercase;
 }
-.theme-b .event-item h3 {
+.theme-b .b-event-item h3 {
    font-size: clamp(22px, 1.8vw, 29px);
    font-weight: 760;
    line-height: 1.25;
 }
-.theme-b .event-item time {
-   margin-top: 10px;
-   font-size: 15px;
-}
-.theme-b .event-actions {
+.theme-b .b-event-item .event-actions {
    margin-top: 20px;
    gap: 12px 22px;
 }
-.theme-b .event-actions .button {
+.theme-b .b-event-item .event-actions .button {
    min-height: 44px;
    padding-inline: 20px;
+   border-radius: 999px;
    box-shadow: none;
 }
-.theme-b .event-actions .text-link {
+.theme-b .b-event-item .event-actions .text-link {
    min-height: 44px;
    background: none;
    color: #086A84;
@@ -1476,11 +1495,22 @@ h3 {
    padding: clamp(38px, 4.5vw, 66px);
    display: grid;
    grid-template-rows: auto minmax(0, 1fr);
-   border-color: transparent;
+   border: 0;
+   box-shadow: none;
 }
 .theme-b .b-resource-panel .resources-heading { padding: 0; }
+.theme-b .b-resource-panel .b-resource-label {
+   width: fit-content;
+   margin-bottom: 14px;
+   padding: 7px 12px;
+   border-radius: 999px;
+   background: #EAF6F9;
+   color: #086A84;
+   font-size: 10px;
+   letter-spacing: 0.14em;
+}
 .theme-b .b-resource-panel .resources-heading h2 {
-   margin-bottom: 30px;
+   margin-bottom: clamp(26px, 3vw, 42px);
    font-size: clamp(38px, 3.5vw, 54px);
 }
 .theme-b .b-resource-panel .resource-grid {
@@ -1489,11 +1519,11 @@ h3 {
    border-top: 1px solid #CFE4E9;
 }
 .theme-b .b-resource-panel .resource-item {
-   min-height: 0;
+   min-height: 106px;
    padding: 20px 0;
-   grid-template-columns: 48px minmax(0, 1fr) auto;
+   grid-template-columns: 52px minmax(0, 1fr) 48px;
    align-items: center;
-   gap: 18px;
+   gap: 20px;
    border: 0;
    border-bottom: 1px solid #CFE4E9;
 }
@@ -1501,8 +1531,8 @@ h3 {
    border-bottom: 0;
 }
 .theme-b .b-resource-panel .resource-item > app-symbol {
-   width: 48px;
-   height: 48px;
+   width: 52px;
+   height: 52px;
    display: grid;
    place-items: center;
    border-radius: 16px;
@@ -1521,14 +1551,25 @@ h3 {
 }
 .theme-b .b-resource-panel .resource-item a {
    grid-column: 3;
-   gap: 8px;
+   width: 48px;
+   min-width: 48px;
+   height: 48px;
+   min-height: 48px;
+   padding: 0;
+   display: grid;
+   place-items: center;
+   border: 1px solid #BBDDE5;
+   border-radius: 50%;
+   background: #fff;
    color: #086A84;
-   white-space: nowrap;
    transition: color 0.2s ease, transform 0.2s ease;
 }
+.theme-b .b-resource-panel .resource-item a app-symbol { font-size: 22px; }
 .theme-b .b-resource-panel .resource-item:hover a,
 .theme-b .b-resource-panel .resource-item:focus-within a {
-   color: #086A84;
+   border-color: #086A84;
+   background: #086A84;
+   color: #fff;
    transform: translateX(3px);
 }
 .theme-b .news {
@@ -1716,16 +1757,31 @@ h3 {
    .theme-b .resources-copy.b-resource-panel,
    .theme-b .membership-content { padding: 38px; }
    .theme-b .b-resource-panel .resource-item {
-      grid-template-columns: 44px minmax(0, 1fr);
+      grid-template-columns: 44px minmax(0, 1fr) 48px;
    }
    .theme-b .b-resource-panel .resource-item a {
-      grid-column: 2;
-      justify-content: flex-start;
+      grid-column: 3;
    }
    .theme-b .member-grid { grid-template-columns: 1fr; }
    .theme-b .member-action:first-child { grid-column: auto; }
    .theme-b .news-list { grid-template-columns: 1fr 1fr; }
    .theme-b .news-item:nth-child(3) { grid-column: 1 / -1; }
+}
+
+@media (max-width: 1023px) {
+   .theme-b .events,
+   .theme-b .resources {
+      grid-template-columns: 1fr;
+   }
+   .theme-b .events-media,
+   .theme-b .resources-media {
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+   }
+   .theme-b .events-copy,
+   .theme-b .resources-copy.b-resource-panel {
+      padding: clamp(30px, 6vw, 48px);
+   }
 }
 
 @media (max-width: 767px) {
@@ -1771,10 +1827,20 @@ h3 {
    }
    .theme-b .resources-copy.b-resource-panel { padding: 32px 24px; }
    .theme-b .b-resource-panel .resource-item {
-      grid-template-columns: 42px minmax(0, 1fr);
+      grid-template-columns: 42px minmax(0, 1fr) 48px;
       gap: 14px;
    }
-   .theme-b .b-resource-panel .resource-item a { grid-column: 2; }
+   .theme-b .b-resource-panel .resource-item a { grid-column: 3; }
+   .theme-b .b-event-item {
+      grid-template-columns: 1fr;
+      gap: 14px;
+   }
+   .theme-b .b-event-date {
+      min-height: 0;
+      padding: 0 0 12px;
+      border-right: 0;
+      border-bottom: 1px solid #CFE4E9;
+   }
    .theme-b .member-action,
    .theme-b .member-action--primary {
       min-height: 132px;

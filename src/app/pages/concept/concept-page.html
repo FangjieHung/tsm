@@ -195,11 +195,23 @@
                     </div>
                   </div>
                 </article>
+              } @else if (concept() === 'b') {
+                <article class="event-item b-event-item">
+                  <time class="b-event-date">{{ event.meta }}</time>
+                  <div class="b-event-body">
+                    <p>{{ event.eyebrow }}</p>
+                    <h3>{{ event.title }}</h3>
+                    <div class="event-actions">
+                      <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
+                      <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
+                    </div>
+                  </div>
+                </article>
               } @else {
                 <article class="event-item">
                   <p>{{ event.eyebrow }}</p>
                   <h3>{{ event.title }}</h3>
-                  <time [class.b-event-date]="concept() === 'b'">{{ event.meta }}</time>
+                  <time>{{ event.meta }}</time>
                   <div class="event-actions">
                     <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
                     <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
@@ -292,8 +304,8 @@
       <div class="resources-media" [class.image-fallback]="!imageAvailable('resources')" appRevealOnView>
         @if (imageAvailable('resources')) {
           <img
-            [src]="mediaPath('resources')"
-            alt="培養皿、研究標本與專業期刊"
+            [src]="concept() === 'b' ? 'media/b/researcher.png' : mediaPath('resources')"
+            [alt]="concept() === 'b' ? '' : '培養皿、研究標本與專業期刊'"
             width="1672"
             height="941"
             loading="lazy"
@@ -306,7 +318,7 @@
         @if (concept() === 'c') {
           <p class="swiss-number" aria-hidden="true">04 — 專業資源</p>
         }
-        <p class="section-code">04 · PROFESSIONAL RESOURCES</p>
+        <p class="section-code" [class.b-resource-label]="concept() === 'b'">04 · PROFESSIONAL RESOURCES</p>
         <h2 id="resources-title">專業資源</h2>
         </div>
         <div class="resource-grid">
@@ -323,7 +335,12 @@
                 [attr.rel]="item.external ? 'noopener noreferrer' : null"
                 [class.b-resource-action]="concept() === 'b'"
               >
-                {{ item.label }} <app-symbol [name]="item.external ? 'arrow_outward' : 'arrow_forward'" />
+                @if (concept() === 'b') {
+                  <span class="sr-only">{{ item.label }}</span>
+                  <app-symbol [name]="item.external ? 'arrow_outward' : 'arrow_forward'" />
+                } @else {
+                  {{ item.label }} <app-symbol [name]="item.external ? 'arrow_outward' : 'arrow_forward'" />
+                }
               </a>
             </article>
           }
