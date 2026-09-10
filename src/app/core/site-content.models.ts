@@ -23,6 +23,12 @@ export interface EventItem {
   readonly eyebrow: string;
   readonly title: string;
   readonly meta: string;
+  readonly bDateRail: {
+    readonly year: string;
+    readonly date: string;
+    readonly day: string;
+  };
+  readonly bDescription: string;
   readonly primaryAction: SiteAction;
   readonly secondaryAction: SiteAction;
 }
@@ -53,6 +59,11 @@ export interface SiteContent {
   };
   readonly quickAccess: readonly ResourceItem[];
   readonly events: readonly EventItem[];
+  readonly bReference: {
+    readonly eventsLead: string;
+    readonly eventsArchive: SiteAction;
+    readonly resourcesLead: string;
+  };
   readonly news: readonly NewsItem[];
   readonly resources: readonly ResourceItem[];
   readonly memberActions: readonly MemberAction[];

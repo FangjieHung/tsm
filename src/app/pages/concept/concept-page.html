@@ -182,13 +182,15 @@
         <h2 id="events-title">學術活動與<br />論文投稿</h2>
         @if (concept() === 'b') {
           <div class="b-events-intro">
-            <p class="b-events-lead">掌握研討交流、投稿時程與微生物學界的重要學術資訊。</p>
-            <a class="b-events-archive" href="#events">查看所有活動 <app-symbol name="arrow_forward" /></a>
+            <p class="b-events-lead">{{ content.bReference.eventsLead }}</p>
+            <a class="b-events-archive" [href]="content.bReference.eventsArchive.href">
+              {{ content.bReference.eventsArchive.label }} <app-symbol name="arrow_forward" />
+            </a>
           </div>
         }
         @if (content.events.length) {
-          <div class="event-list">
-            @for (event of content.events; track event.key; let index = $index) {
+          <div id="events-list" class="event-list">
+            @for (event of content.events; track event.key) {
               @if (concept() === 'c') {
                 <article class="event-item event-item--c">
                   <div class="event-item-body">
@@ -204,26 +206,18 @@
               } @else if (concept() === 'b') {
                 <article class="event-item b-event-item">
                   <time class="b-event-date" [attr.aria-label]="event.meta">
-                    @if (index === 0) {
-                      <span class="b-event-year">{{ event.meta.slice(0, 4) }}</span>
-                      <strong>{{ event.meta.slice(5, 10) }}</strong>
-                      <span class="b-event-day">{{ event.meta.slice(11, 13) }}</span>
-                    } @else {
-                      <span class="b-event-year">DEADLINE</span>
-                      <strong>{{ event.meta.slice(-5) }}</strong>
-                      <span class="b-event-day">{{ event.meta.slice(-10, -6) }}</span>
-                    }
+                    <span class="b-event-year">{{ event.bDateRail.year }}</span>
+                    <strong>{{ event.bDateRail.date }}</strong>
+                    <span class="b-event-day">{{ event.bDateRail.day }}</span>
                   </time>
                   <div class="b-event-body">
                     <p>{{ event.eyebrow }}</p>
                     <h3>{{ event.title }}</h3>
                     <span class="b-event-detail">{{ event.meta }}</span>
-                    <p class="b-event-description">
-                      {{ index === 0 ? '串聯研究者與臨床專家，分享微生物學研究的新觀點。' : '邀請會員發表最新研究成果，深化跨領域的學術交流。' }}
-                    </p>
+                    <p class="b-event-description">{{ event.bDescription }}</p>
                     <div class="event-actions">
                       <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
-                      <a class="text-link" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
+                      <a class="text-link sr-only" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
                     </div>
                   </div>
                 </article>
@@ -341,7 +335,7 @@
         <p class="section-code" [class.b-resource-label]="concept() === 'b'">04 · PROFESSIONAL RESOURCES</p>
         <h2 id="resources-title">專業資源</h2>
         @if (concept() === 'b') {
-          <p class="b-resource-lead">提供期刊、獎學金與學會資訊，協助研究與專業發展。</p>
+          <p class="b-resource-lead">{{ content.bReference.resourcesLead }}</p>
         }
         </div>
         <div class="resource-grid">

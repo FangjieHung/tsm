@@ -49,6 +49,8 @@ export const SITE_CONTENT = {
       eyebrow: '近期研討會',
       title: '2026 微生物學年度研討會',
       meta: '2026.11.14-15｜臺北',
+      bDateRail: { year: '2026', date: '11.14', day: '15' },
+      bDescription: '串聯研究者與臨床專家，分享微生物學研究的新觀點。',
       primaryAction: { label: '立即報名', href: '#registration' },
       secondaryAction: { label: '查看活動資訊', href: '#event-detail' },
     },
@@ -57,10 +59,17 @@ export const SITE_CONTENT = {
       eyebrow: '學術論文投稿',
       title: '會員大會學術論文投稿',
       meta: '投稿截止｜2026.10.02',
+      bDateRail: { year: 'DEADLINE', date: '10.02', day: '2026' },
+      bDescription: '邀請會員發表最新研究成果，深化跨領域的學術交流。',
       primaryAction: { label: '申請投稿', href: '#submission' },
       secondaryAction: { label: '下載投稿說明', href: '#submission-guide' },
     },
   ],
+  bReference: {
+    eventsLead: '掌握研討交流、投稿時程與微生物學界的重要學術資訊。',
+    eventsArchive: { label: '查看所有活動', href: '#events-list' },
+    resourcesLead: '提供期刊、獎學金與學會資訊，協助研究與專業發展。',
+  },
   news: [
     {
       key: 'assembly-registration',
