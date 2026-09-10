@@ -1411,9 +1411,7 @@ h3 {
    border-radius: var(--radius-lg);
    box-shadow: 0 22px 54px rgb(9 71 92 / 8%);
 }
-.theme-b .events-media img { content: url('/tsm/media/b/academic-events.png'); }
 .theme-b .resources-media img { object-position: 50% 28%; }
-.theme-b .membership-media img { content: url('/tsm/media/b/laboratory-instrument.png'); }
 .theme-b .events-copy,
 .theme-b .resources-copy,
 .theme-b .membership-content {
@@ -1669,9 +1667,6 @@ h3 {
    object-fit: cover;
    transition: transform 0.45s ease;
 }
-.theme-b .news-item:nth-child(1) .news-image img { content: url('/tsm/media/b/latest-news.png'); }
-.theme-b .news-item:nth-child(2) .news-image img { content: url('/tsm/media/b/academic-events.png'); }
-.theme-b .news-item:nth-child(3) .news-image img { content: url('/tsm/media/b/professional-resources.png'); }
 .theme-b .news-item > a {
    min-height: 190px;
    padding: 20px 4px 4px;
