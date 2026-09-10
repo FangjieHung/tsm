@@ -2245,9 +2245,16 @@ h3 {
    font-weight: 790;
    line-height: 1.25;
 }
+.theme-b .b-news-summary {
+   grid-column: 1 / -1;
+   margin: 0;
+   color: #587887;
+   font-size: 15px;
+   line-height: 1.65;
+}
 .theme-b .b-news-read {
    grid-column: 1;
-   grid-row: 3;
+   grid-row: 4;
    align-self: end;
    color: #0F8DB2;
    font-size: 14px;

@@ -118,6 +118,11 @@ describe('ConceptPage', () => {
       expect(action.querySelector('.b-news-read')?.textContent?.trim()).toBe('閱讀更多');
       expect(action.querySelector('.b-news-arrow .sr-only')?.textContent?.trim()).toBeTruthy();
     }
+    const summaries = host.querySelectorAll<HTMLElement>('.theme-b .b-news-summary');
+    expect(summaries).toHaveLength(SITE_CONTENT.news.length);
+    summaries.forEach((summary, index) => {
+      expect(summary.textContent?.trim()).toBe(SITE_CONTENT.news[index].summary);
+    });
 
     const featuredMember = host.querySelector<HTMLElement>(
       '.theme-b .member-action--primary.b-member-featured',

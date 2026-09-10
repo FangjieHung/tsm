@@ -13,6 +13,7 @@ export interface NewsItem {
   readonly category: string;
   readonly date: string;
   readonly title: string;
+  readonly summary: string;
   readonly href: string;
   /** Base filename (no extension) under `/media/{concept}/`, e.g. resolved as `/media/${concept}/${image}.webp`. */
   readonly image: string;

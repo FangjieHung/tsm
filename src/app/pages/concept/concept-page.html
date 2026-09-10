@@ -307,6 +307,7 @@
                   <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
                   <h3>{{ item.title }}</h3>
                   @if (concept() === 'b') {
+                    <p class="b-news-summary">{{ item.summary }}</p>
                     <span class="b-news-read">閱讀更多</span>
                     <span class="b-news-arrow"><span class="sr-only">閱讀 {{ item.title }}</span><app-symbol name="arrow_forward" /></span>
                   } @else {
