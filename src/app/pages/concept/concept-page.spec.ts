@@ -1,9 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, provideRouter } from '@angular/router';
 import { SITE_CONTENT } from '../../core/site-content';
 import { ConceptPage } from './concept-page';
 
 async function renderConcept(concept: 'a' | 'b' | 'c'): Promise<HTMLElement> {
+  const fixture = await createConceptFixture(concept);
+  return fixture.nativeElement as HTMLElement;
+}
+
+async function createConceptFixture(
+  concept: 'a' | 'b' | 'c',
+): Promise<ComponentFixture<ConceptPage>> {
   TestBed.resetTestingModule();
   await TestBed.configureTestingModule({
     imports: [ConceptPage],
@@ -18,7 +25,7 @@ async function renderConcept(concept: 'a' | 'b' | 'c'): Promise<HTMLElement> {
 
   const fixture = TestBed.createComponent(ConceptPage);
   fixture.detectChanges();
-  return fixture.nativeElement as HTMLElement;
+  return fixture;
 }
 
 describe('ConceptPage', () => {
@@ -100,6 +107,39 @@ describe('ConceptPage', () => {
     expect(host.querySelectorAll('.theme-b .b-resource-action')).toHaveLength(SITE_CONTENT.resources.length);
     expect(host.querySelectorAll('.theme-b .b-news-action')).toHaveLength(SITE_CONTENT.news.length);
     expect(host.querySelector('.theme-b .member-action--primary.b-member-featured')).not.toBeNull();
+  });
+
+  it('gives every B news item an editorial read action and makes the login action image-led', async () => {
+    const host = await renderConcept('b');
+
+    const newsActions = host.querySelectorAll<HTMLElement>('.theme-b .b-news-action');
+    expect(newsActions).toHaveLength(SITE_CONTENT.news.length);
+    for (const action of newsActions) {
+      expect(action.querySelector('.b-news-read')?.textContent?.trim()).toBe('閱讀更多');
+      expect(action.querySelector('.b-news-arrow .sr-only')?.textContent?.trim()).toBeTruthy();
+    }
+
+    const featuredMember = host.querySelector<HTMLElement>(
+      '.theme-b .member-action--primary.b-member-featured',
+    );
+    expect(featuredMember).not.toBeNull();
+    expect(featuredMember?.querySelector('.b-member-featured-media img')).not.toBeNull();
+  });
+
+  it('keeps the reference-only featured membership hook scoped to concept B', async () => {
+    const host = await renderConcept('a');
+
+    expect(host.querySelector('.b-member-featured')).toBeNull();
+  });
+
+  it('falls back to the solid B membership card when its featured image is unavailable', async () => {
+    const fixture = await createConceptFixture('b');
+    fixture.componentInstance.markImageFailed('membership');
+    fixture.detectChanges();
+
+    const media = fixture.nativeElement.querySelector('.b-member-featured-media') as HTMLElement | null;
+    expect(media?.classList.contains('image-fallback')).toBe(true);
+    expect(media?.querySelector('img')).toBeNull();
   });
 
   it('renders B event date rails and circular resource actions from every data item', async () => {
