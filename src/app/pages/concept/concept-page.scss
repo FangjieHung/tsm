@@ -1456,9 +1456,10 @@ h3 {
    padding: 0 17px;
    border-radius: 999px;
    background: #0F8DB2;
-   color: #fff;
-   font-size: 19px;
+   color: #082A45;
+   font-size: 12px;
    font-weight: 760;
+   letter-spacing: 0.04em;
    text-decoration: none;
 }
 .theme-b .event-list {
@@ -1537,6 +1538,26 @@ h3 {
    border-radius: 999px;
    box-shadow: none;
 }
+.theme-b .b-event-item .event-actions > .sr-only:focus-visible {
+   position: static !important;
+   width: auto;
+   height: auto;
+   min-height: 44px;
+   margin: 0;
+   padding: 0 16px;
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   overflow: visible;
+   clip: auto;
+   white-space: normal;
+   border: 1px solid #086A84;
+   border-radius: 999px;
+   background: #fff;
+   color: #086A84;
+   outline: 3px solid rgb(15 141 178 / 42%);
+   outline-offset: 3px;
+}
 .theme-b .resources-copy.b-resource-panel {
    padding: clamp(38px, 4.5vw, 66px);
    display: grid;
@@ -1551,8 +1572,8 @@ h3 {
    padding: 7px 12px;
    border-radius: 999px;
    background: #0F8DB2;
-   color: #fff;
-   font-size: 19px;
+   color: #082A45;
+   font-size: 11px;
    font-weight: 760;
    letter-spacing: 0.14em;
 }
