@@ -110,6 +110,7 @@ describe('ConceptPage', () => {
     for (const event of events) {
       expect(event.querySelector(':scope > .b-event-date')).not.toBeNull();
       expect(event.querySelector('.b-event-body')).not.toBeNull();
+      expect(event.querySelector('.b-event-description')?.textContent?.trim()).toBeTruthy();
     }
 
     const actions = host.querySelectorAll<HTMLAnchorElement>('.theme-b .b-resource-action');
@@ -119,5 +120,7 @@ describe('ConceptPage', () => {
       expect(action.querySelector('.sr-only')?.textContent?.trim()).toBeTruthy();
     }
     expect(host.querySelector('#resources img')?.getAttribute('src')).toBe('media/b/researcher.png');
+    expect(host.querySelector('.theme-b .b-events-archive')).not.toBeNull();
+    expect(host.querySelector('.theme-b .b-resource-lead')?.textContent?.trim()).toBeTruthy();
   });
 });
