@@ -1316,13 +1316,14 @@ h3 {
 .b-quick-lead {
    max-width: 50ch;
    margin: 18px 0 0;
-   color: #6c8797;
+   color: #086A84;
 }
 .theme-b .section-code {
    margin-bottom: 12px;
-   color: #0F8DB2;
+   color: #086A84;
    letter-spacing: 0.18em;
 }
+.theme-b .button--primary { background: #086A84; }
 .theme-b .quick-grid {
    grid-template-columns: repeat(3, minmax(0, 1fr));
    gap: clamp(16px, 1.8vw, 28px);
@@ -1389,9 +1390,8 @@ h3 {
    border: 0;
    border-radius: 50%;
    background: #fff;
-   color: #0F8DB2;
+   color: #086A84;
    box-shadow: 0 8px 18px rgb(8 81 112 / 10%);
-   transition: color 0.2s ease;
 }
 .theme-b .events,
 .theme-b .resources,
@@ -1443,7 +1443,7 @@ h3 {
 }
 .theme-b .event-item > p {
    margin-bottom: 8px;
-   color: #0F8DB2;
+   color: #086A84;
    font-size: 12px;
    font-weight: 800;
    letter-spacing: 0.13em;
@@ -1470,7 +1470,7 @@ h3 {
 .theme-b .event-actions .text-link {
    min-height: 44px;
    background: none;
-   color: #0F8DB2;
+   color: #086A84;
 }
 .theme-b .resources-copy.b-resource-panel {
    padding: clamp(38px, 4.5vw, 66px);
@@ -1522,7 +1522,7 @@ h3 {
 .theme-b .b-resource-panel .resource-item a {
    grid-column: 3;
    gap: 8px;
-   color: #0F8DB2;
+   color: #086A84;
    white-space: nowrap;
    transition: color 0.2s ease, transform 0.2s ease;
 }
@@ -1583,12 +1583,12 @@ h3 {
    padding: 5px 11px;
    border-radius: 999px;
    background: #EAF6F9;
-   color: #0F8DB2;
+   color: #086A84;
    font-size: 12px;
    letter-spacing: 0.04em;
 }
 .theme-b .news-meta time {
-   color: #6D8790;
+   color: #456B7D;
    font-variant-numeric: tabular-nums;
 }
 .theme-b .news-item h3 {
@@ -1612,7 +1612,7 @@ h3 {
 }
 .theme-b .news-item:hover > a > app-symbol,
 .theme-b .news-item:focus-within > a > app-symbol {
-   background: #0F8DB2;
+   background: #086A84;
    color: #fff;
    transform: translateX(3px);
 }
@@ -1680,8 +1680,8 @@ h3 {
    grid-template-columns: 44px minmax(0, 1fr) 28px;
    align-items: center;
    align-content: center;
-   background: #0F8DB2;
-   border-color: #0F8DB2;
+   background: #086A84;
+   border-color: #086A84;
    color: #fff;
 }
 .theme-b .member-action--primary > app-symbol:first-child {

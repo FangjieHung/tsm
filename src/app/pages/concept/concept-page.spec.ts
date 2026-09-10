@@ -94,6 +94,7 @@ describe('ConceptPage', () => {
     for (const item of quickItems) {
       expect(item.querySelector('.b-quick-visual > app-symbol')).not.toBeNull();
       expect(item.querySelector('.b-quick-arrow > app-symbol')).not.toBeNull();
+      expect(item.querySelector('.b-quick-arrow .sr-only')?.textContent?.trim()).toBeTruthy();
     }
     expect(host.querySelectorAll('.theme-b .b-event-date')).toHaveLength(SITE_CONTENT.events.length);
     expect(host.querySelectorAll('.theme-b .b-resource-action')).toHaveLength(SITE_CONTENT.resources.length);
