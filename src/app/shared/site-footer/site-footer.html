@@ -1,4 +1,8 @@
-<footer class="site-footer" [class.site-footer--c]="concept() === 'c'">
+<footer
+  class="site-footer"
+  [class.site-footer--b]="concept() === 'b'"
+  [class.site-footer--c]="concept() === 'c'"
+>
   @if (concept() === 'c') {
     <div class="footer-identity footer-identity--c">
       <a class="footer-logo" routerLink="/" aria-label="返回方案選擇首頁">

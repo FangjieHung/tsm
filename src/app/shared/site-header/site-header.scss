@@ -111,3 +111,40 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 @media (prefers-reduced-motion: reduce) {
   .site-header--c .nav-link-track, .site-header--c .login-link, .site-header--c .menu-toggle { transition: none; }
 }
+
+/* Concept B: clinical editorial chrome matching the light reference compositions. */
+.site-header--b {
+  min-height: 72px;
+  padding-block: 7px;
+  grid-template-columns: 54px 1fr auto;
+  gap: clamp(18px, 3vw, 44px);
+  color: #082A45;
+  background: #fff;
+  border-bottom-color: #D5EAF0;
+  backdrop-filter: none;
+}
+.site-header--b .brand { width: 52px; height: 52px; }
+.site-header--b nav { gap: clamp(16px, 2vw, 32px); }
+.site-header--b nav a { padding-block: 12px; font-size: 15px; font-weight: 760; }
+.site-header--b nav a::after { inset-bottom: 4px; height: 2px; background: #0F8DB2; }
+.site-header--b .login-link {
+  min-height: 46px;
+  padding-inline: 20px;
+  border-radius: 999px;
+  background: #0F8DB2;
+  color: #fff;
+  box-shadow: none;
+  transition: background .2s ease, transform .2s ease;
+}
+.site-header--b .login-link:hover,
+.site-header--b .login-link:focus-visible { background: #086A84; transform: translateY(-1px); }
+.site-header--b .menu-toggle { border-color: #C8E2E9; color: #086A84; background: #F1FAFC; border-radius: 16px; }
+@media (max-width: 1199px) {
+  .site-header--b { min-height: 76px; grid-template-columns: 54px 1fr auto auto; }
+}
+@media (max-width: 767px) {
+  .site-header--b { min-height: 68px; grid-template-columns: 46px 1fr 48px; }
+  .site-header--b .brand { width: 44px; height: 44px; }
+  .site-header--b nav { background: #fff; border-bottom-color: #D5EAF0; box-shadow: 0 18px 36px rgb(8 42 69 / 10%); }
+  .site-header--b nav a { color: #082A45; }
+}
