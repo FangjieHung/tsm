@@ -13,6 +13,7 @@ export interface NewsItem {
   readonly category: string;
   readonly date: string;
   readonly title: string;
+  readonly summary: string;
   readonly href: string;
   /** Base filename (no extension) under `/media/{concept}/`, e.g. resolved as `/media/${concept}/${image}.webp`. */
   readonly image: string;
@@ -23,6 +24,12 @@ export interface EventItem {
   readonly eyebrow: string;
   readonly title: string;
   readonly meta: string;
+  readonly bDateRail: {
+    readonly year: string;
+    readonly date: string;
+    readonly day: string;
+  };
+  readonly bDescription: string;
   readonly primaryAction: SiteAction;
   readonly secondaryAction: SiteAction;
 }
@@ -53,6 +60,12 @@ export interface SiteContent {
   };
   readonly quickAccess: readonly ResourceItem[];
   readonly events: readonly EventItem[];
+  readonly bReference: {
+    readonly eventsLead: string;
+    readonly eventsArchive: SiteAction;
+    readonly resourcesLead: string;
+    readonly newsLead: string;
+  };
   readonly news: readonly NewsItem[];
   readonly resources: readonly ResourceItem[];
   readonly memberActions: readonly MemberAction[];

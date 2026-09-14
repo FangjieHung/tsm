@@ -26,7 +26,7 @@ header img {
 }
 header p {
     margin: 0;
-    color: #62cfa7;
+    color: #0f8db2;
     font-size: 12px;
     letter-spacing: 0.16em;
 }
@@ -76,13 +76,13 @@ header span {
 .concept-bopy small {
     font-weight: 800;
     letter-spacing: 0.14em;
-    color: #176b52;
+    color: #0f8db2;
 }
 .concept-bard--c small {
-    color: #005a9c;
+    color: #0f8db2;
 }
 .concept-bard--b small {
-    color: #367df1;
+    color: #0f8db2;
 }
 .concept-bopy h2 {
     margin: 10px 0 12px;
@@ -121,14 +121,15 @@ header span {
     border-radius: 12px;
 }
 .concept-bard--a a:hover {
-    background: #62cfa7;
+    background: #0f8db2;
+    color: white;
 }
 .concept-bard--c a:hover {
-    background: #064a91;
+    background: #0f8db2;
     color: white;
 }
 .concept-bard--b a:hover {
-    background: #367df1;
+    background: #0f8db2;
     color: white;
 }
 @media (max-width: 1180px) {

@@ -27,4 +27,19 @@ describe('SiteHeaderComponent', () => {
     fixture.detectChanges();
     expect(menu?.getAttribute('aria-expanded')).toBe('false');
   });
+
+  it('adds the Concept B chrome class without changing primary navigation', async () => {
+    await TestBed.configureTestingModule({
+      imports: [SiteHeaderComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
+    const fixture = TestBed.createComponent(SiteHeaderComponent);
+    fixture.componentRef.setInput('concept', 'b');
+    fixture.detectChanges();
+
+    const host = fixture.nativeElement as HTMLElement;
+    expect(host.querySelector('.site-header--b')).not.toBeNull();
+    expect(host.querySelectorAll('[data-primary-nav] a')).toHaveLength(5);
+    expect(host.querySelector<HTMLAnchorElement>('.login-link[href="#membership"]')?.textContent).toContain('會員登入');
+  });
 });

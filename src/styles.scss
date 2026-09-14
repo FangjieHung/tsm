@@ -26,17 +26,17 @@
      shared 3px default, scoped so concept-a's focus ring is untouched. */
   .theme-c :focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; box-shadow: none; }
   .theme-a {
-    --accent: #82e8c3;
-    --accent-ink: #011e14;
-    --link: #176b52;
-    --surface: #f5f7f8;
-    --surface-muted: #e5e9ed;
-    --ink: #24272a;
-    --text-muted: #596067;
-    --line: #cbd2d8;
-    --button-bg: #24272a;
-    --button-ink: #f5f7f8;
-    --focus: #176b52;
+    --accent: #0f8db2;
+    --accent-ink: #ffffff;
+    --link: #086a84;
+    --surface: #ffffff;
+    --surface-muted: #ffffff;
+    --ink: #223033;
+    --text-muted: #5a696d;
+    --line: #c5dce3;
+    --button-bg: #0f8db2;
+    --button-ink: #ffffff;
+    --focus: #0f8db2;
     /* Explicitly pin the pre-existing fallback chain (minus "Inter") so that loading the
        Inter webfont for the Swiss (C) redesign cannot shift concept-A's rendered typeface —
        "Inter" was already first in the shared :root stack above but was never actually
@@ -45,17 +45,17 @@
     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
   }
   .theme-b {
-    --accent: #367df1;
+    --accent: #0f8db2;
     --accent-ink: #ffffff;
-    --link: #2866d4;
-    --surface: #eef4ff;
-    --surface-muted: #dfeaff;
-    --ink: #13264b;
-    --text-muted: #536887;
-    --line: #c9d7ee;
-    --button-bg: #367df1;
+    --link: #086a84;
+    --surface: #ffffff;
+    --surface-muted: #ffffff;
+    --ink: #082a45;
+    --text-muted: #4d7477;
+    --line: #c5dce3;
+    --button-bg: #0f8db2;
     --button-ink: #ffffff;
-    --focus: #174ea6;
+    --focus: #0f8db2;
     --radius-sm: 999px;
     --radius-md: 22px;
     --radius-lg: 30px;
@@ -63,19 +63,19 @@
   .theme-c {
     /* Swiss International Typographic Style palette — pure black/white with a single
        accent signal color. Fully replaces the former navy/cyan glassmorphism palette. */
-    --accent: #0150b3;
-    --accent-highlight: #0150b3;
-    --accent-deep: #0150b3;
+    --accent: #0f8db2;
+    --accent-highlight: #0f8db2;
+    --accent-deep: #086a84;
     --accent-ink: #ffffff;
-    --link: #0150b3;
+    --link: #086a84;
     --surface: #ffffff;
-    --surface-muted: #f2f2f2;
+    --surface-muted: #ffffff;
     --ink: #000000;
     --text-muted: #3a3a3a;
     --line: #000000;
-    --button-bg: #000000;
+    --button-bg: #0f8db2;
     --button-ink: #ffffff;
-    --focus: #0150b3;
+    --focus: #0f8db2;
     --radius-sm: 0;
     --radius-md: 0;
     --radius-lg: 0;

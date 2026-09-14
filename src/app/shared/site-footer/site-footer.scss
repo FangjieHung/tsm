@@ -13,7 +13,7 @@
   right: -120px;
   bottom: -200px;
   border: 2px solid var(--accent);
-  outline: 8px solid rgb(1 80 179 / .12);
+  outline: 8px solid rgb(15 141 178 / .12);
   outline-offset: 10px;
   transform: rotate(45deg);
 }
@@ -52,3 +52,30 @@ nav a:hover, .footer-utility a:hover { color: var(--accent); }
 small { grid-column: 1 / -1; border-top: 1px solid rgb(255 255 255 / .25); padding-top: 28px; text-align: right; opacity: .72; }
 @media (max-width: 900px) { .site-footer { grid-template-columns: 1fr 1fr; } .footer-utility { grid-column: 2; } }
 @media (max-width: 640px) { .site-footer { grid-template-columns: 1fr; gap: 36px; } .footer-identity { align-items: flex-start; } .footer-logo { width: 96px; height: 96px; } nav { grid-template-columns: 1fr 1fr; padding: 28px 0 0; border-left: 0; border-top: 1px solid rgb(255 255 255 / .25); } .footer-utility { grid-column: 1; } small { text-align: left; } }
+
+/* Concept B keeps the white clinical canvas through the final page boundary. */
+.site-footer--b {
+  min-height: 300px;
+  padding-block: clamp(54px, 6vw, 82px) 32px;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, .7fr);
+  gap: clamp(32px, 5vw, 72px);
+  background: #fff;
+  color: #082A45;
+  border-top: 1px solid #D5EAF0;
+}
+.site-footer--b .footer-logo { width: 82px; height: 82px; padding: 7px; background: #F1FAFC; border-radius: 22px; }
+.site-footer--b .footer-identity { gap: 20px; }
+.site-footer--b .footer-identity strong { font-size: clamp(22px, 2.2vw, 32px); }
+.site-footer--b .footer-identity div > a { color: #086A84; opacity: 1; }
+.site-footer--b nav { border-left-color: #D5EAF0; padding-left: clamp(24px, 4vw, 54px); }
+.site-footer--b nav a, .site-footer--b .footer-utility a { color: #082A45; font-weight: 700; }
+.site-footer--b nav a:hover, .site-footer--b nav a:focus-visible,
+.site-footer--b .footer-utility a:hover, .site-footer--b .footer-utility a:focus-visible { color: #0F8DB2; }
+.site-footer--b small { border-top-color: #D5EAF0; color: #456B7D; opacity: 1; }
+@media (max-width: 900px) {
+  .site-footer--b { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .site-footer--b { grid-template-columns: 1fr; gap: 30px; }
+  .site-footer--b nav { border-top-color: #D5EAF0; }
+}
