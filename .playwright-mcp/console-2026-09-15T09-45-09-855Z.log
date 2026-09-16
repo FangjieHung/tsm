@@ -1,0 +1,21 @@
+[  160888ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  160888ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  160888ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[  176980ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  176980ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  176980ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[  209049ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  209049ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  209049ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[  273067ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  273068ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  273068ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[  401074ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  401074ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  401074ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[  657113ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[  657114ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[  657114ms] [INFO] [webpack-dev-server] Trying to reconnect... @ http://localhost:5210/polyfills.js:6434
+[ 1169064ms] [ERROR] WebSocket connection to 'ws://localhost:5210/ng-cli-ws' failed: Error in connection establishment: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/polyfills.js:5443
+[ 1169064ms] [ERROR] [webpack-dev-server] Event @ http://localhost:5210/polyfills.js:6444
+[58837722ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_REFUSED @ http://localhost:5210/styles.css:0

@@ -12,7 +12,7 @@ export const SITE_CONTENT = {
     { key: 'membership', label: '會員專區', href: '#membership' },
   ],
   hero: {
-    title: '探索微觀，連結更健康的未來',
+    title: '微觀世界，守護更健康的未來',
     description: '透過深化微生物科學的探索與創新，推動疾病防治、新藥研發與生態永續發展，共同攜手引領微生物學界的卓越成長，邁向國際永續新視野。',
     primaryAction: { label: '查看學術活動', href: '#events' },
     secondaryAction: { label: '會員登入', href: '#membership' },
@@ -21,7 +21,7 @@ export const SITE_CONTENT = {
     {
       key: 'news',
       title: '最新消息',
-      description: '2026 年度會員大會資訊',
+      description: '掌握學會公告、重要更新與微生物領域相關焦點資訊。',
       label: '查看消息',
       href: '#news',
       symbol: 'newspaper',
@@ -29,7 +29,7 @@ export const SITE_CONTENT = {
     {
       key: 'events',
       title: '學術活動',
-      description: '微生物學年度研討會',
+      description: '瀏覽研討會、工作坊與各類學術活動，掌握重要會議時程。',
       label: '立即報名',
       href: '#events',
       symbol: 'science',
@@ -37,7 +37,7 @@ export const SITE_CONTENT = {
     {
       key: 'membership',
       title: '會員服務',
-      description: '會費與活動紀錄',
+      description: '提供會員專屬資源與服務，促進學術交流與專業發展。',
       label: '前往會員專區',
       href: '#membership',
       symbol: 'groups',
@@ -49,7 +49,7 @@ export const SITE_CONTENT = {
       eyebrow: '近期研討會',
       title: '2026 微生物學年度研討會',
       meta: '2026.11.14-15｜臺北',
-      bDateRail: { year: '2026', date: '11.14', day: '15' },
+      bDateRail: { year: '2026', date: '11.14', day: 'SAT' },
       bDescription: '串聯研究者與臨床專家，分享微生物學研究的新觀點。',
       primaryAction: { label: '立即報名', href: '#registration' },
       secondaryAction: { label: '查看活動資訊', href: '#event-detail' },
@@ -59,7 +59,7 @@ export const SITE_CONTENT = {
       eyebrow: '學術論文投稿',
       title: '會員大會學術論文投稿',
       meta: '投稿截止｜2026.10.02',
-      bDateRail: { year: 'DEADLINE', date: '10.02', day: '2026' },
+      bDateRail: { year: '2026', date: '10.02', day: 'FRI' },
       bDescription: '邀請會員發表最新研究成果，深化跨領域的學術交流。',
       primaryAction: { label: '申請投稿', href: '#submission' },
       secondaryAction: { label: '下載投稿說明', href: '#submission-guide' },
@@ -68,8 +68,11 @@ export const SITE_CONTENT = {
   bReference: {
     eventsLead: '掌握研討交流、投稿時程與微生物學界的重要學術資訊。',
     eventsArchive: { label: '查看所有活動', href: '#events-list' },
-    resourcesLead: '提供期刊、獎學金與學會資訊，協助研究與專業發展。',
+    eventsCaption: 'ADVANCING MICROBIAL SCIENCE FOR A HEALTHIER TOMORROW',
+    eventsCaptionMeta: 'Research · Collaboration · Impact',
+    resourcesLead: '提供會員與相關領域專業人士取得學術資訊、申請資源及了解本會運作的完整管道。',
     newsLead: '掌握學會公告、研究交流與近期學術動態。',
+    membershipHeading: '會員專區服務',
   },
   news: [
     {
@@ -104,7 +107,7 @@ export const SITE_CONTENT = {
     {
       key: 'journal',
       title: '微免與感染雜誌',
-      description: 'Journal of Microbiology, Immunology and Infection',
+      description: '提供微生物學與感染症領域之最新研究成果與學術交流平台。',
       label: '前往期刊網站',
       href: 'https://jmii.org/',
       external: true,
@@ -113,7 +116,7 @@ export const SITE_CONTENT = {
     {
       key: 'scholarship',
       title: '獎學金申請',
-      description: '嚴智鍾教授獎學金申請',
+      description: '協助培育微生物相關領域之優秀人才，提供獎學金申請資訊與辦法。',
       label: '查看申請資訊',
       href: '#scholarship',
       external: false,
@@ -122,7 +125,7 @@ export const SITE_CONTENT = {
     {
       key: 'constitution',
       title: '組織章程',
-      description: '本會組織、理監事會與委員會資訊',
+      description: '查閱本會章程、組織架構及相關規範，瞭解本會運作機制。',
       label: '閱讀章程',
       href: '#constitution',
       external: false,
@@ -131,7 +134,7 @@ export const SITE_CONTENT = {
     {
       key: 'about',
       title: '本會介紹',
-      description: '認識台灣微生物學會',
+      description: '認識台灣微生物學會的宗旨、發展歷程與主要業務。',
       label: '認識本會',
       href: '#about',
       external: false,
@@ -141,6 +144,7 @@ export const SITE_CONTENT = {
   memberActions: [
     {
       key: 'login',
+      bDescription: '登入會員帳號，享有專屬會員服務與最新資訊。',
       title: '會員登入',
       label: '登入帳戶',
       href: '#login',
@@ -149,6 +153,7 @@ export const SITE_CONTENT = {
     },
     {
       key: 'register',
+      bDescription: '歡迎加入台灣微生物學會，申請成為會員並開啟更多交流與學習機會。',
       title: '新會員申請',
       label: '立即申請',
       href: '#register',
@@ -157,6 +162,7 @@ export const SITE_CONTENT = {
     },
     {
       key: 'fee',
+      bDescription: '查詢個人會費繳納紀錄與繳費狀態。',
       title: '會費查詢',
       label: '查詢會費',
       href: '#fees',
@@ -165,6 +171,7 @@ export const SITE_CONTENT = {
     },
     {
       key: 'activity-history',
+      bDescription: '瀏覽學會最新活動、研討會與學術會議，掌握重要時程。',
       title: '參與活動列表',
       label: '查看紀錄',
       href: '#activity-history',

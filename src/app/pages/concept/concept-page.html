@@ -22,7 +22,7 @@
           <img src="media/b/hero.png" alt="" width="1672" height="941" fetchpriority="high" />
         </div>
         <div class="b-hero-researcher" aria-hidden="true">
-          <img src="media/b/researcher.png" alt="" width="1122" height="1400" loading="eager" />
+          <img src="media/b/b-hero-researcher.png" alt="" width="866" height="639" loading="eager" />
           <strong>共創研究新篇章</strong>
         </div>
         <div class="b-hero-dna" aria-hidden="true">
@@ -30,10 +30,10 @@
           <span>會員服務</span><b>5.5K</b>
         </div>
         <div class="b-hero-data" aria-hidden="true">
-          <span>研究網絡</span><strong>92°</strong><i></i>
+          <img src="media/b/b-hero-data.png" alt="" width="294" height="335" loading="eager" />
         </div>
         <div class="b-hero-equipment" aria-hidden="true">
-          <img src="media/b/laboratory-instrument.png" alt="" width="1672" height="941" loading="eager" />
+          <img src="media/b/b-hero-equipment.png" alt="" width="302" height="386" loading="eager" />
         </div>
       </section>
     } @else {
@@ -97,7 +97,10 @@
     </section>
     }
 
-    <section class="quick-access section-shell" aria-labelledby="quick-title">
+    <section
+      class="quick-access section-shell"
+      aria-labelledby="quick-title"
+    >
       @if (concept() === 'c') {
         <div class="quick-split">
           <div class="quick-label" appRevealOnView>
@@ -126,7 +129,7 @@
         </div>
       } @else {
         <div class="section-heading" appRevealOnView>
-          <p class="section-code">01 · QUICK ACCESS</p>
+          <p class="section-code">{{ concept() === 'b' ? 'QUICK ACCESS' : '01 · QUICK ACCESS' }}</p>
           <h2 id="quick-title">快速入口</h2>
           @if (concept() === 'b') {
             <p class="b-quick-lead">掌握學會消息、學術活動與會員服務的重要資訊。</p>
@@ -134,16 +137,17 @@
         </div>
         <div class="quick-grid">
           @for (item of content.quickAccess; track item.key; let index = $index) {
-            <article
+            <a [href]="item.href"
               class="quick-item"
               [class.quick-item--lead]="index === 0"
               [class.b-quick-card]="concept() === 'b'"
+              [style.--quick-visual]="
+                concept() === 'b' ? 'url(media/b/quick-visual/quick-visual-0' + (index + 1) + '-cutout.png)' : null
+              "
               appRevealOnView
             >
               <span class="item-number">0{{ index + 1 }}</span>
-              @if (concept() === 'b') {
-                <span class="b-quick-visual" aria-hidden="true"><app-symbol [name]="item.symbol" /></span>
-              } @else {
+              @if (concept() !== 'b') {
                 <app-symbol [name]="item.symbol" />
               }
               <h3>{{ item.title }}</h3>
@@ -155,7 +159,7 @@
                   {{ item.label }} <app-symbol name="arrow_forward" />
                 }
               </a>
-            </article>
+            </a>
           }
         </div>
       }
@@ -173,20 +177,32 @@
             (error)="markImageFailed('events')"
           />
         }
+        @if (concept() === 'b') {
+          <div class="b-events-caption" aria-hidden="true">
+            <p class="b-events-caption-title">{{ content.bReference.eventsCaption }}</p>
+            <span class="b-events-caption-rule"></span>
+            <p class="b-events-caption-meta">{{ content.bReference.eventsCaptionMeta }}</p>
+          </div>
+        }
       </div>
       <div class="events-copy" appRevealOnView>
         @if (concept() === 'c') {
           <p class="swiss-number" aria-hidden="true">02 — 學術活動與論文投稿</p>
         }
-        <p class="section-code">02 · ACADEMIC PROGRAM</p>
-        <h2 id="events-title">學術活動與<br />論文投稿</h2>
         @if (concept() === 'b') {
-          <div class="b-events-intro">
-            <p class="b-events-lead">{{ content.bReference.eventsLead }}</p>
+          <div class="b-events-head">
+            <div class="b-events-head-text">
+              <p class="section-code">ACADEMIC EVENTS</p>
+              <h2 id="events-title">學術活動與論文投稿</h2>
+            </div>
             <a class="b-events-archive" [href]="content.bReference.eventsArchive.href">
               {{ content.bReference.eventsArchive.label }} <app-symbol name="arrow_forward" />
             </a>
           </div>
+          <p class="b-events-lead">{{ content.bReference.eventsLead }}</p>
+        } @else {
+          <p class="section-code">02 · ACADEMIC PROGRAM</p>
+          <h2 id="events-title">學術活動與<br />論文投稿</h2>
         }
         @if (content.events.length) {
           <div id="events-list" class="event-list">
@@ -211,14 +227,16 @@
                     <span class="b-event-day">{{ event.bDateRail.day }}</span>
                   </time>
                   <div class="b-event-body">
-                    <p>{{ event.eyebrow }}</p>
+                    <p class="b-event-eyebrow">{{ event.eyebrow }}</p>
                     <h3>{{ event.title }}</h3>
-                    <span class="b-event-detail">{{ event.meta }}</span>
+                    <span class="b-event-detail"><app-symbol name="location_on" />{{ event.meta }}</span>
                     <p class="b-event-description">{{ event.bDescription }}</p>
-                    <div class="event-actions">
-                      <a class="button button--primary" [href]="event.primaryAction.href">{{ event.primaryAction.label }}</a>
-                      <a class="text-link sr-only" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
-                    </div>
+                  </div>
+                  <div class="event-actions">
+                    <a class="button button--primary" [href]="event.primaryAction.href">
+                      {{ event.primaryAction.label }} <app-symbol name="arrow_forward" />
+                    </a>
+                    <a class="text-link sr-only" [href]="event.secondaryAction.href">{{ event.secondaryAction.label }} <app-symbol name="arrow_forward" /></a>
                   </div>
                 </article>
               } @else {
@@ -276,7 +294,9 @@
       } @else {
         <div class="section-heading news-heading" [class.b-news-heading]="concept() === 'b'" appRevealOnView>
           <div>
-            <p class="section-code">03 · NEWS INDEX</p>
+            @if (concept() !== 'b') {
+              <p class="section-code">03 · NEWS INDEX</p>
+            }
             <h2 id="news-title">最新消息</h2>
             @if (concept() === 'b') {
               <p class="b-news-lead">{{ content.bReference.newsLead }}</p>
@@ -308,8 +328,10 @@
                   <h3>{{ item.title }}</h3>
                   @if (concept() === 'b') {
                     <p class="b-news-summary">{{ item.summary }}</p>
-                    <span class="b-news-read">閱讀更多</span>
-                    <span class="b-news-arrow"><span class="sr-only">閱讀 {{ item.title }}</span><app-symbol name="arrow_forward" /></span>
+                    <span class="b-news-cta">
+                      <span class="b-news-read">閱讀更多</span>
+                      <span class="b-news-arrow"><span class="sr-only">閱讀 {{ item.title }}</span><app-symbol name="arrow_forward" /></span>
+                    </span>
                   } @else {
                     <app-symbol name="arrow_forward" />
                   }
@@ -341,7 +363,9 @@
         @if (concept() === 'c') {
           <p class="swiss-number" aria-hidden="true">04 — 專業資源</p>
         }
-        <p class="section-code" [class.b-resource-label]="concept() === 'b'">04 · PROFESSIONAL RESOURCES</p>
+        <p class="section-code" [class.b-resource-label]="concept() === 'b'">
+          {{ concept() === 'b' ? 'PROFESSIONAL RESOURCES' : '04 · PROFESSIONAL RESOURCES' }}
+        </p>
         <h2 id="resources-title">專業資源</h2>
         @if (concept() === 'b') {
           <p class="b-resource-lead">{{ content.bReference.resourcesLead }}</p>
@@ -378,8 +402,8 @@
       @if (concept() === 'b') {
         <div class="b-membership-heading" appRevealOnView>
           <div>
-            <p class="section-code">05 · MEMBER PORTAL</p>
-            <h2 id="membership-title">會員服務</h2>
+            <p class="section-code">MEMBER SERVICES<span class="b-membership-code-rule" aria-hidden="true"></span></p>
+            <h2 id="membership-title">{{ content.bReference.membershipHeading }}</h2>
             <p class="b-membership-lead">專屬會員服務，讓學術交流與專業成長持續發生。</p>
           </div>
           <p class="b-membership-support">
@@ -414,8 +438,11 @@
                 </span>
               }
               <span class="b-member-icon" aria-hidden="true"><app-symbol [name]="item.symbol" /></span>
-              <span><strong>{{ item.title }}</strong><small>{{ item.label }}</small></span>
-              <span class="b-member-arrow"><span class="sr-only">{{ item.label }}</span><app-symbol name="arrow_forward" /></span>
+              <span class="b-member-body"><strong>{{ item.title }}</strong><small>{{ item.bDescription }}</small></span>
+              <span class="b-member-cta">
+                <span class="b-member-arrow"><span class="sr-only">{{ item.label }}</span><app-symbol name="arrow_forward" /></span>
+                <span class="b-member-cta-label" aria-hidden="true">{{ item.label }}</span>
+              </span>
             </a>
           }
         </div>

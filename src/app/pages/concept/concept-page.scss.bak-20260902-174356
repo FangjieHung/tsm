@@ -1,13 +1,13 @@
 :host { display: block; }
 .concept-page { min-height: 100%; overflow: clip; background: var(--surface); color: var(--ink); }
 .section-shell { width: min(var(--container), calc(100% - clamp(40px, 8vw, 144px))); margin-inline: auto; padding-block: clamp(88px, 10vw, 148px); }
-.section-code { margin: 0 0 18px; color: var(--link); font-size: 12px; font-weight: 800; letter-spacing: .15em; }
+.section-code { margin: 0 0 18px; color: var(--link); font-size: 14px; font-weight: 600; letter-spacing: .15em; }
 h1, h2, h3, p { text-wrap: pretty; }
 h1, h2, h3 { margin-top: 0; letter-spacing: -.035em; }
 h2 { margin-bottom: 0; font-size: clamp(44px, 5vw, 70px); line-height: 1.06; font-weight: 650; }
 h3 { margin-bottom: 0; }
 .text-link { min-height: 44px; display: inline-flex; align-items: center; gap: 10px; color: var(--link); font-weight: 750; text-decoration-thickness: 1px; text-underline-offset: 7px; }
-.button { min-height: 52px; padding: 0 26px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; border-radius: var(--radius-sm); text-decoration: none; font-weight: 760; }
+.button { min-height: 52px; padding: 0 26px; display: inline-flex; align-items: center; justify-content: center; gap: 14px; border: 1px solid transparent; border-radius: var(--radius-sm); text-decoration: none; font-weight: 600; }
 .button--primary { background: var(--accent); color: var(--accent-ink); }
 .theme-b .button--primary { background: #000; color: #fff; border-color: #000; }
 .theme-b .button--primary:hover, .theme-b .button--primary:focus-visible { background: var(--accent); color: #fff; border-color: var(--accent); }
@@ -22,7 +22,7 @@ h3 { margin-bottom: 0; }
    sits ahead of each numbered section's heading; the English `.section-code` eyebrow that
    used to sit there for concept-b is hidden via the adjacent-sibling rule below so the two
    labels don't double up. */
-.theme-b .swiss-number { margin: 0 0 10px; color: var(--accent); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .22em; }
+.theme-b .swiss-number { margin: 0 0 10px; color: var(--accent); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .22em; }
 .theme-b .swiss-number + .section-code { display: none; }
 
 /* Swiss page-grain texture — extremely faint fractal-noise film over the whole concept-b
@@ -128,7 +128,7 @@ h3 { margin-bottom: 0; }
 .quick-item > app-symbol { font-size: 38px; color: var(--link); }
 .quick-item h3 { margin-top: 42px; font-size: clamp(27px, 2.3vw, 38px); }
 .quick-item p { color: var(--text-muted); font-size: 18px; }
-.quick-item a { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); text-decoration: none; font-weight: 760; border-top: 1px solid var(--line); padding-top: 18px; }
+.quick-item a { min-height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 18px; color: var(--ink); text-decoration: none; font-weight: 600; border-top: 1px solid var(--line); padding-top: 18px; }
 .quick-item--lead a { width: fit-content; min-width: 190px; padding: 14px 18px; border: 0; border-radius: var(--radius-sm); background: var(--accent); color: var(--accent-ink); }
 .theme-b .quick-access { width: 100%; padding-inline: max(24px, calc((100vw - var(--container)) / 2)); background: var(--surface); color: var(--ink); }
 
@@ -259,8 +259,8 @@ h3 { margin-bottom: 0; }
 .news-card.is-active { outline: 3px solid var(--accent); outline-offset: -3px; }
 .news-card > a { min-height: 100%; padding: clamp(28px, 3vw, 44px); display: flex; flex-direction: column; justify-content: space-between; gap: 32px; color: var(--ink); text-decoration: none; }
 .news-card .news-meta { display: block; }
-.news-card .news-meta b { display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; color: var(--accent); }
-.news-card .news-meta time { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--text-muted); }
+.news-card .news-meta b { display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .16em; font-size: 14px; font-weight: 600; color: var(--accent); }
+.news-card .news-meta time { display: block; text-transform: uppercase; letter-spacing: .12em; font-size: 14px; color: var(--text-muted); }
 .news-card h3 { margin-top: 4px; font-size: clamp(21px, 1.8vw, 28px); font-weight: 700; line-height: 1.2; }
 .news-read { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; }
 .news-card:hover,

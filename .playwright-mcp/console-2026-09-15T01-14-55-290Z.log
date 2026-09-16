@@ -1,0 +1,17 @@
+[     240ms] [ERROR] ErrorUtils caught an error:
+
+Action bar is null on Comet
+
+Subsequent non-fatal errors won't be logged; see https://fburl.com/debugjs. {column: 17878, clientTime: 1789434895, extra: Object, guardList: Array(1), hash: fn1k0k} @ https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/SsNaJcrmaRU.js:83
+[     295ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.facebook.com/greening.com.tw/:0
+[     295ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.facebook.com/greening.com.tw/:0
+[    1117ms] [WARNING] Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently @ https://static.xx.fbcdn.net/rsrc.php/v4/yd/r/QpQ4ZveDLN4.js:59
+[    1193ms] [LOG] 
+%c住手！ font-family:helvetica; font-size:20px; font-size:50px; font-weight:bold; color:red; -webkit-text-stroke:1px black; @ https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/SsNaJcrmaRU.js:250
+[    1194ms] [LOG] 
+%c這是專為開發人員提供的瀏覽器功能。如果有人要你在此處複製貼上某些內容，以啟用某項 Facebook 功能或「駭入」其他人的帳號，這其實是一種詐騙手法，會讓對方可存取你的 Facebook 帳號。 font-family:helvetica; font-size:20px;  @ https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/SsNaJcrmaRU.js:250
+[    1194ms] [LOG] 
+%c如需詳細資訊，請參閱 https://www.facebook.com/selfxss。 font-family:helvetica; font-size:20px;  @ https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/SsNaJcrmaRU.js:250
+[    1194ms] [LOG] 
+%c  @ https://static.xx.fbcdn.net/rsrc.php/v4/yx/r/SsNaJcrmaRU.js:250
+[   15171ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ https://www.facebook.com/greening.com.tw/:0

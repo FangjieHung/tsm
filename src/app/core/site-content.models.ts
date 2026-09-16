@@ -46,6 +46,8 @@ export interface MemberAction extends SiteAction {
   readonly title: string;
   readonly symbol: string;
   readonly emphasis: 'primary' | 'secondary' | 'tertiary';
+  /** Concept B card body copy; `label` stays the call-to-action beside the arrow. */
+  readonly bDescription: string;
 }
 
 export interface SiteContent {
@@ -63,8 +65,11 @@ export interface SiteContent {
   readonly bReference: {
     readonly eventsLead: string;
     readonly eventsArchive: SiteAction;
+    readonly eventsCaption: string;
+    readonly eventsCaptionMeta: string;
     readonly resourcesLead: string;
     readonly newsLead: string;
+    readonly membershipHeading: string;
   };
   readonly news: readonly NewsItem[];
   readonly resources: readonly ResourceItem[];

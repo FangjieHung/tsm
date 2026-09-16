@@ -70,10 +70,12 @@ describe('ConceptPage', () => {
     expect(source?.getAttribute('srcset')).toBe('media/c/membership-mobile.webp');
   });
 
-  it('renders B with dedicated pale-blue collage media and a full concept switcher', async () => {
+  it('renders B with the dedicated hero collage media and a full concept switcher', async () => {
     const host = await renderConcept('b');
     expect(host.querySelector('img[src="media/b/hero.png"]')).not.toBeNull();
-    expect(host.querySelector('img[src="media/b/researcher.png"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-researcher.png"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-data.png"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-equipment.png"]')).not.toBeNull();
 
     const switcherLinks = [...host.querySelectorAll<HTMLAnchorElement>('.concept-switcher a')].map(
       (link) => link.getAttribute('href'),
@@ -91,6 +93,8 @@ describe('ConceptPage', () => {
   it('renders B-specific reference regions with complete data mappings', async () => {
     const host = await renderConcept('b');
     expect(host.querySelector('.b-hero-copy')).not.toBeNull();
+    expect(host.querySelector('.theme-b .b-quick-media')).toBeNull();
+    expect(host.querySelector<HTMLElement>('.theme-b .quick-access')?.style.getPropertyValue('--quick-access-media')).toBe('');
     expect(host.querySelectorAll('.theme-b .quick-item')).toHaveLength(SITE_CONTENT.quickAccess.length);
     expect(host.querySelectorAll('.theme-b .event-item')).toHaveLength(SITE_CONTENT.events.length);
     expect(host.querySelectorAll('.theme-b .resource-item')).toHaveLength(SITE_CONTENT.resources.length);
@@ -99,7 +103,7 @@ describe('ConceptPage', () => {
 
     const quickItems = host.querySelectorAll('.theme-b .quick-item');
     for (const item of quickItems) {
-      expect(item.querySelector('.b-quick-visual > app-symbol')).not.toBeNull();
+      expect(item.querySelector('.b-quick-visual')).toBeNull();
       expect(item.querySelector('.b-quick-arrow > app-symbol')).not.toBeNull();
       expect(item.querySelector('.b-quick-arrow .sr-only')?.textContent?.trim()).toBeTruthy();
     }

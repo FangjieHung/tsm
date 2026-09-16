@@ -1,0 +1,7 @@
+[     108ms] [LOG] JQMIGRATE: Migrate is installed, version 3.4.1 @ https://bunnyann.tw/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1:1
+[     371ms] [WARNING] [GPT] PubAdsService.enableSingleRequest is deprecated, use googletag.setConfig({singleRequest: ...}) instead.
+https://goo.gle/gpt-message#170 @ https://securepubads.g.doubleclick.net/pagead/managed/js/gpt/m202609090201/pubads_impl.js?cb=122880986:18
+[     637ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[     637ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[     896ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[    1328ms] [LOG] Polite loading scripts @ https://s0.2mdn.net/sadbundle/1472757000932441438/js/banner.js:10

@@ -1,0 +1,9 @@
+[   34767ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://encrypted-tbn2.gstatic.com/faviconV2?url=https://tbocc.cyhg.gov.tw&client=AIM&size=128&type=FAVICON&fallback_opts=TYPE,SIZE,URL:0
+[   37703ms] [LOG] JQMIGRATE: Migrate is installed, version 1.4.1 @ https://www.abic.com.tw/jQuery/migrate/jquery.migrate.min.js?v=202504141305:1
+[   37935ms] [WARNING] Google Maps JavaScript API has been loaded directly without loading=async. This can result in suboptimal performance. For best-practice loading patterns please see https://goo.gle/js-api-loading @ https://maps.googleapis.com/maps/api/js?key=AIzaSyDIUWR8X7BcDjk-oqCXehr4B6zkVOlTlyE:330
+[   38224ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[   38224ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[   38248ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[   38224ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[   38248ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
+[   38639ms] [WARNING] Error with Permissions-Policy header: Unrecognized feature: 'attribution-reporting'. @ :0
