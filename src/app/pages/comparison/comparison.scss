@@ -22,10 +22,9 @@ header img {
     object-fit: contain;
     padding: 6px;
     filter: invert(1);
-    grid-row: 1 / 4;
 }
 header p {
-    margin: 0;
+    margin: 0 0 12px;
     color: #0f8db2;
     font-size: 14px;
     letter-spacing: 0.16em;
@@ -42,10 +41,10 @@ header span {
 }
 .concept-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
     gap: clamp(18px, 2vw, 32px);
 }
 .concept-bard {
+    display: flex;
     min-width: 0;
     overflow: hidden;
     background: #f5f7f8;
@@ -53,25 +52,18 @@ header span {
     border-radius: 20px;
 }
 .preview {
-    aspect-ratio: 16 / 9;
+    flex: 0 0 42%;
     background-position: center;
     background-size: cover;
 }
-.concept-bard--a .preview {
-    background-image: url("/tsm/media/a/hero.webp");
-}
-.concept-bard--c .preview {
-    background-image: url("/tsm/media/c/hero.webp");
-}
-.concept-bard--b .preview {
-    background-image: url("/tsm/media/b/hero.png");
-}
 .concept-bopy {
+    flex: 1 1 auto;
+    min-width: 0;
     padding: clamp(24px, 3vw, 44px);
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 28px;
-    align-items: end;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
 }
 .concept-bopy small {
     font-weight: 600;
@@ -90,25 +82,13 @@ header span {
 }
 .concept-bopy p {
     margin: 0;
-    max-width: 54ch;
+    max-width: 70ch;
     line-height: 1.7;
     color: #586067;
-}
-.swatches {
-    display: flex;
-    gap: 7px;
-    align-self: start;
-}
-.swatches i {
-    display: block;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--swatch);
-    border: 1px solid rgb(0 0 0 / 0.12);
+    font-size: 18px;
+    text-align: justify;
 }
 .concept-bopy a {
-    grid-column: 1 / -1;
     min-height: 52px;
     padding: 0 22px;
     display: inline-flex;
@@ -140,6 +120,15 @@ header span {
         grid-template-columns: 1fr;
     }
 }
+@media (max-width: 720px) {
+    .concept-bard {
+        flex-direction: column;
+    }
+    .preview {
+        flex-basis: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
 @media (max-width: 520px) {
     .comparison-shell {
         padding: 24px 18px;
@@ -150,12 +139,5 @@ header span {
     header img {
         width: 52px;
         height: 52px;
-    }
-    .concept-bopy {
-        grid-template-columns: 1fr;
-    }
-    .swatches,
-    .concept-bopy a {
-        grid-column: 1;
     }
 }

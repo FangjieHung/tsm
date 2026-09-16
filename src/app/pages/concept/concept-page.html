@@ -135,7 +135,7 @@
             <p class="b-quick-lead">掌握學會消息、學術活動與會員服務的重要資訊。</p>
           }
         </div>
-        <div class="quick-grid">
+        <div class="quick-grid" style="--quick-a-visual: url(media/a/quick-access.webp)">
           @for (item of content.quickAccess; track item.key; let index = $index) {
             <a [href]="item.href"
               class="quick-item"
@@ -493,9 +493,9 @@
   <app-site-footer [concept]="concept()" />
 
   <nav class="concept-switcher" aria-label="切換設計方案">
-    <a routerLink="/">比較</a>
-    @if (concept() !== 'a') { <a routerLink="/concept-a">A 方案</a> }
-    @if (concept() !== 'b') { <a routerLink="/concept-b">B 方案</a> }
-    @if (concept() !== 'c') { <a routerLink="/concept-c">C 方案</a> }
+    <a routerLink="/">全覽</a>
+    @if (concept() !== 'a') { <a routerLink="/concept-a">查看 A 案</a> }
+    @if (concept() !== 'b') { <a routerLink="/concept-b">查看 B 案</a> }
+    @if (concept() !== 'c') { <a routerLink="/concept-c">查看 C 案</a> }
   </nav>
 </div>

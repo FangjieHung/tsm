@@ -48,6 +48,7 @@ h3 {
    color: var(--link);
    font-weight: 750;
    text-decoration: none;
+   width: fit-content;
    background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat;
 }
 .button {
@@ -379,7 +380,7 @@ h3 {
    position: absolute;
    inset: 0;
    opacity: 0.08;
-   background-image: url("/tsm/media/a/quick-access.webp");
+   background-image: var(--quick-a-visual);
    background-size: cover;
    transition:
       opacity 0.3s,
@@ -2034,10 +2035,7 @@ h3 {
       margin-top: 4px;
    }
    .theme-b .b-event-date {
-      min-height: 0;
-      padding: 0 0 12px;
-      border-right: 0;
-      border-bottom: 1px solid #cfe4e9;
+display:none;
    }
    .theme-b .b-events-archive {
       width: 100%;
@@ -2128,7 +2126,7 @@ h3 {
       grid-column: 1 / -1;
    }
    .quick-item:nth-child(3) {
-      border-top: 1px solid var(--line);
+      // border-top: 1px solid var(--line);
    }
    .quick-split {
       grid-template-columns: 40% 60%;
@@ -2347,8 +2345,8 @@ h3 {
    .membership-content {
       order: 2;
       padding: 32px 24px;
-      border: 1px solid var(--line);
-      border-top: 0;
+      // border: 1px solid var(--line);
+      border: 0;
       border-radius: 0 0 var(--radius-md) var(--radius-md);
       background: var(--surface);
    }
