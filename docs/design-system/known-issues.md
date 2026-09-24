@@ -6,8 +6,28 @@
 |---|---|---|---|
 | 1 | 頁面層元件未升至全域層 | `concept-page.scss` 仍有 2854 行；`.quick-item`、`.event-item`、`.news-card`、`.member-action` 等仍受 encapsulation 限制 | 無法在其他元件複用；`/#/design-system` 需直接引入整份 `concept-page.scss` 才能展示 |
 | 2 | 斷點未收斂 | 仍有 9 種 `max-width`：520、640、720、767、860、900、1023、1180、1199 | 響應行為不一致，難以預測 |
-| 3 | 標記層未改用 typography class | 字級已全數 token 化，但 `concept-page.html` 的標題仍由元素選擇器上樣式，行高與字距仍是字面值 | 新舊兩種寫法並存；新程式碼應一律用 `.tsm-*` class |
+| 3 | 標記層未改用 typography class | 字級已全數 token 化，但 `concept-page.html` 的標題仍由元素選擇器上樣式 | 見下方「為什麼標記遷移不能照原計畫做」 |
 | 4 | 頁面標記未拆元件 | `concept-page.html` 501 行，以 `@if concept() === 'b'` 分支 | 新增方案的成本隨案數線性增長 |
+
+## 為什麼標記遷移不能照原計畫做
+
+原計畫是讓 `.tsm-*` class 綁定字級＋行高＋字重＋字距，再把 `concept-page.html`
+的標題改掛 class。量測後推翻：
+
+| 角色 | 行高種類 | 字重種類 | 字距種類 |
+|---|---|---|---|
+| Headline | 3 | 4（650／900／600） | 4 |
+| Title | 5 | 2 | 1 |
+| Body | 4 | 2 | 3 |
+| Label | 1 | 3 | **8** |
+
+**同一主題內也不一致**：B 案的 label 用了 0.09／0.04／0.14／0.03em 四種字距。
+字重與字距是元件層級的表達，不是角色層級的屬性——C 案的 900 配 −0.055em、
+B 案的 600 配鬆字距，正是三案之所以不同的一部分。綁進 class 等於抹平三案性格。
+
+建議改為：由階梯產生**每階一個 class**（`.tsm-headline-lg` 等，以 SCSS map
+一次產出 token 與 class 維持單一真相），class 只帶 `font-size`（必要時加
+`line-height`），weight 與 tracking 留在元件規則，標記逐區塊遷移並逐次截圖比對。
 
 ## 字級階梯的合併候選
 

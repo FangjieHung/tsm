@@ -7,10 +7,13 @@
 
 | 檔案 | 內容 |
 |---|---|
+| [`architecture.md`](architecture.md) | 架構圖：東西放哪、改一個值會流到哪 |
 | [`tokens.md`](tokens.md) | 顏色、間距、圓角 token 對照表與新增流程 |
 | [`typography.md`](typography.md) | 字級階梯、角色分類、typography class |
 | [`components.md`](components.md) | 元件清單、class 契約、原始碼位置 |
 | [`conventions.md`](conventions.md) | `@layer` 判定、反模式、Code Review checklist |
+| [`concept-briefs.md`](concept-briefs.md) | 三案的設計意圖與延伸開發規則（交接用） |
+| [`production-readiness.md`](production-readiness.md) | 選定一案後還缺什麼 |
 | [`known-issues.md`](known-issues.md) | 已知缺陷與尚未完成的遷移 |
 
 ## 檔案結構
