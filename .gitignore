@@ -42,3 +42,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Ad-hoc timestamped backups — git history is the backup
+*.bak-*
+*.bak

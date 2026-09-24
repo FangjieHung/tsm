@@ -114,7 +114,7 @@ h3 {
 
 /* Swiss numbered section label (01 — 快速入口, etc.) — decorative, aria-hidden in markup,
    sits ahead of each numbered section's heading; the English `.section-code` eyebrow that
-   used to sit there for concept-b is hidden via the adjacent-sibling rule below so the two
+   used to sit there for concept-c is hidden via the adjacent-sibling rule below so the two
    labels don't double up. */
 .theme-c .swiss-number {
    margin: 0 0 10px;
@@ -128,7 +128,7 @@ h3 {
    display: none;
 }
 
-/* Swiss page-grain texture — extremely faint fractal-noise film over the whole concept-b
+/* Swiss page-grain texture — extremely faint fractal-noise film over the whole concept-c
    page only (scoped under .theme-c, never touches the shared/global body). */
 .theme-c {
    position: relative;
@@ -225,7 +225,7 @@ h3 {
    }
 }
 
-/* CONCEPT B hero: full-bleed background photo with corner content and a giant
+/* CONCEPT C hero: full-bleed background photo with corner content and a giant
    ghost-text watermark bleeding across the bottom edge, replacing the split-column
    hero used elsewhere. `.hero-media--c` / `.hero-copy--c` / `.hero-scrim` /
    `.hero-watermark` only ever render inside the `concept() === 'c'` template branch,
@@ -2215,7 +2215,7 @@ display:none;
       opacity: 1;
       border-radius: 20px 20px 0 0;
    }
-   /* CONCEPT B full-bleed hero stays a single stacked block at mobile (photo behind, corner
+   /* CONCEPT C full-bleed hero stays a single stacked block at mobile (photo behind, corner
      content + watermark on top) rather than switching to the split-column mobile layout above. */
    .theme-c .hero {
       min-height: min(620px, 100svh - 60px);

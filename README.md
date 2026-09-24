@@ -1,6 +1,6 @@
-# 台灣微生物學會官網 A／C 設計提案
+# 台灣微生物學會官網 A／B／C 設計提案
 
-以 Angular 22 standalone components 實作的響應式提案網站。A、C 兩案共用同一份內容與資訊架構，只改變視覺語言；學會 Logo 使用客戶提供的 `mark.webp` 原檔，未重新繪製或變更。
+以 Angular 22 standalone components 實作的響應式提案網站。A、B、C 三案共用同一份內容與資訊架構，只改變視覺語言；學會 Logo 使用客戶提供的 `mark.webp` 原檔，未重新繪製或變更。
 
 ## 環境需求
 
@@ -14,10 +14,11 @@ npm install
 npm start
 ```
 
-開啟 <http://localhost:4200/>，由比較頁進入兩個版本：
+開啟 <http://localhost:4200/>，由比較頁進入三個版本：
 
 - `/concept-a`：精密生技編輯風，冷白、霧灰、薄荷綠
-- `/concept-b`：沉浸式實驗室藍，使用甲方指定的明亮藍色系
+- `/concept-b`：親和科技風，柔和漸層與圓角語彙，使用甲方指定的明亮藍色系
+- `/concept-c`：強黑實驗室風，瑞士國際主義排版，黑白高反差配單一強調色
 
 ## 驗證與建置
 
@@ -31,11 +32,12 @@ npm run build
 ## 內容與素材
 
 - 共用內容：`src/app/core/site-content.ts`
-- A／C 共用語意頁面：`src/app/pages/concept/`
+- A／B／C 共用語意頁面：`src/app/pages/concept/`
 - 主題與響應式版面：`src/app/pages/concept/concept-page.scss`
 - Logo：`public/assets/logo/mark.webp`
-- A 案影像：`public/media/a/`
-- C 案影像：`public/media/c/`
+- A 案影像：`public/media/a/`（`.webp`）
+- B 案影像：`public/media/b/`（`.png`）
+- C 案影像：`public/media/c/`（`.webp`）
 - Material Symbols：於 `src/index.html` 載入官方 Google Fonts 樣式
 
 目前導覽與內容連結是提案用錨點，未串接會員、繳費、投稿或 CMS 後端。正式開發時可保留現有元件與內容模型，再接入 API 與實際路由。
