@@ -1,0 +1,66 @@
+// Button — the site's only call-to-action control.
+//
+// Base + primary/secondary variants, plus theme C's square, uppercase
+// treatment. Theme B's shadow/pill variant and the per-section overrides
+// (.theme-c .hero-intro .button, .theme-b .b-event-item .button, and the
+// mobile tweaks) still live in concept-page.scss, because they are page
+// composition rather than the component itself.
+//
+// Markup: <a class="button button--primary">…</a> or <button class="button …">
+
+@layer components {
+  .button {
+     min-height: 52px;
+     padding: 0 var(--tsm-space-26);
+     display: inline-flex;
+     align-items: center;
+     justify-content: center;
+     gap: var(--tsm-space-14);
+     border: 1px solid transparent;
+     border-radius: var(--tsm-radius-sm);
+     text-decoration: none;
+     font-weight: 300;
+     letter-spacing: 0.02em;
+  }
+  .button--primary {
+     background: var(--tsm-color-accent);
+     color: var(--tsm-color-accent-ink);
+  }
+  .theme-c .button--primary {
+     background: var(--tsm-color-accent);
+     color: var(--tsm-color-accent-ink);
+     border-color: var(--tsm-color-accent);
+  }
+  .theme-c .button--primary:hover,
+  .theme-c .button--primary:focus-visible {
+     background: var(--tsm-color-accent-deep);
+     color: var(--tsm-color-accent-ink);
+     border-color: var(--tsm-color-accent-deep);
+  }
+  .button--secondary {
+     color: var(--tsm-color-ink);
+     border-color: var(--tsm-color-ink);
+     background: color-mix(in srgb, var(--tsm-color-surface) 82%, transparent);
+  }
+  .theme-c .button--secondary {
+     background: var(--tsm-color-surface);
+     color: var(--tsm-color-ink);
+     border-color: var(--tsm-color-ink);
+  }
+  .theme-c .button--secondary:hover,
+  .theme-c .button--secondary:focus-visible {
+     background: var(--tsm-color-surface-accent);
+     color: var(--tsm-color-ink-inverse);
+     border-color: var(--tsm-color-ink);
+  }
+  .theme-c .button {
+     border-radius: 0;
+     text-transform: uppercase;
+     font-weight: 700;
+     letter-spacing: 0.08em;
+     transition:
+        background 0.18s ease-out,
+        color 0.18s ease-out,
+        border-color 0.18s ease-out;
+  }
+}

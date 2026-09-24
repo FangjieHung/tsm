@@ -7,18 +7,8 @@
    background: var(--tsm-color-surface);
    color: var(--tsm-color-ink);
 }
-.section-shell {
-   width: min(var(--tsm-container), calc(100% - clamp(40px, 8vw, 144px)));
-   margin-inline: auto;
-   padding-block: clamp(40px, 4vw, 80px);
-}
-.section-code {
-   margin: 0 0 var(--tsm-space-18);
-   color: var(--tsm-color-link);
-   font-size: 14px;
-   font-weight: 600;
-   letter-spacing: 0.15em;
-}
+
+
 h1,
 h2,
 h3,
@@ -40,71 +30,7 @@ h2 {
 h3 {
    margin-bottom: 0;
 }
-.text-link {
-   min-height: 44px;
-   display: inline-flex;
-   align-items: center;
-   gap: var(--tsm-space-10);
-   color: var(--tsm-color-link);
-   font-weight: 750;
-   text-decoration: none;
-   width: fit-content;
-   background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat;
-}
-.button {
-   min-height: 52px;
-   padding: 0 var(--tsm-space-26);
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   gap: var(--tsm-space-14);
-   border: 1px solid transparent;
-   border-radius: var(--tsm-radius-sm);
-   text-decoration: none;
-   font-weight: 300;
-   letter-spacing: 0.02em;
-}
-.button--primary {
-   background: var(--tsm-color-accent);
-   color: var(--tsm-color-accent-ink);
-}
-.theme-c .button--primary {
-   background: var(--tsm-color-accent);
-   color: var(--tsm-color-accent-ink);
-   border-color: var(--tsm-color-accent);
-}
-.theme-c .button--primary:hover,
-.theme-c .button--primary:focus-visible {
-   background: var(--tsm-color-accent-deep);
-   color: var(--tsm-color-accent-ink);
-   border-color: var(--tsm-color-accent-deep);
-}
-.button--secondary {
-   color: var(--tsm-color-ink);
-   border-color: var(--tsm-color-ink);
-   background: color-mix(in srgb, var(--tsm-color-surface) 82%, transparent);
-}
-.theme-c .button--secondary {
-   background: var(--tsm-color-surface);
-   color: var(--tsm-color-ink);
-   border-color: var(--tsm-color-ink);
-}
-.theme-c .button--secondary:hover,
-.theme-c .button--secondary:focus-visible {
-   background: var(--tsm-color-surface-accent);
-   color: var(--tsm-color-ink-inverse);
-   border-color: var(--tsm-color-ink);
-}
-.theme-c .button {
-   border-radius: 0;
-   text-transform: uppercase;
-   font-weight: 700;
-   letter-spacing: 0.08em;
-   transition:
-      background 0.18s ease-out,
-      color 0.18s ease-out,
-      border-color 0.18s ease-out;
-}
+
 .image-fallback {
    background: linear-gradient(135deg, var(--tsm-color-surface-muted), color-mix(in srgb, var(--tsm-color-accent) 18%, var(--tsm-color-surface)));
 }

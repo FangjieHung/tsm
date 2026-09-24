@@ -1,0 +1,19 @@
+// Section shell — the shared horizontal gutter and vertical rhythm every
+// top-level <section> on a concept page sits in.
+//
+// Markup: <section class="section-shell">…</section>
+@layer components {
+  .section-shell {
+     width: min(var(--tsm-container), calc(100% - clamp(40px, 8vw, 144px)));
+     margin-inline: auto;
+     padding-block: clamp(40px, 4vw, 80px);
+  }
+
+  .section-code {
+     margin: 0 0 var(--tsm-space-18);
+     color: var(--tsm-color-link);
+     font-size: 14px;
+     font-weight: 600;
+     letter-spacing: 0.15em;
+  }
+}

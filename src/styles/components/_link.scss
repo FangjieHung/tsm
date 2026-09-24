@@ -1,0 +1,17 @@
+// Text link — an inline call to action with a 1px underline drawn as a
+// background gradient so it clears the descenders.
+//
+// Markup: <a class="text-link">…</a>
+@layer components {
+  .text-link {
+     min-height: 44px;
+     display: inline-flex;
+     align-items: center;
+     gap: var(--tsm-space-10);
+     color: var(--tsm-color-link);
+     font-weight: 750;
+     text-decoration: none;
+     width: fit-content;
+     background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat;
+  }
+}
