@@ -40,6 +40,10 @@
     --tsm-radius-md: 18px;
     --tsm-radius-lg: 28px;
 
+    // Neutral defaults so these tokens still resolve outside a theme container.
+    --tsm-color-surface: #ffffff;
+    --tsm-color-ink-inverse: #ffffff;
+
     // Brand accent — identical in all three themes, so it doubles as the
     // unthemed default for surfaces rendered outside a theme (comparison page).
     --tsm-color-accent: #0f8db2;

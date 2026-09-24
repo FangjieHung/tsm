@@ -81,10 +81,10 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 
 .site-header--c .login-link { text-transform: uppercase; font-weight: 700; letter-spacing: .06em; transition: background .18s ease-out, color .18s ease-out; }
 .site-header--c .login-link:hover,
-.site-header--c .login-link:focus-visible { background: var(--tsm-color-accent); color: #fff; }
+.site-header--c .login-link:focus-visible { background: var(--tsm-color-accent); color: var(--tsm-color-accent-ink); }
 .site-header--c .menu-toggle { border-color: var(--tsm-color-ink); transition: background .18s ease-out, color .18s ease-out; }
 .site-header--c .menu-toggle:hover,
-.site-header--c .menu-toggle:focus-visible { background: var(--tsm-color-ink); color: #fff; }
+.site-header--c .menu-toggle:focus-visible { background: var(--tsm-color-ink); color: var(--tsm-color-ink-inverse); }
 @media (max-width: 1199px) {
   .site-header--c { min-height: 92px; grid-template-columns: auto 1fr auto auto; }
   /* `.site-header--c .nav-link` (2 classes) outweighs the shared `nav a:nth-child(-n+3)`
@@ -120,7 +120,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
   grid-template-columns: 54px 1fr auto;
   gap: clamp(18px, 3vw, 44px);
   color: var(--tsm-color-ink);
-  background: #fff;
+  background: var(--tsm-color-surface);
   border-bottom-color: #D5EAF0;
   backdrop-filter: none;
 }
@@ -133,7 +133,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
   padding-inline: 20px;
   border-radius: 999px;
   background: var(--tsm-color-accent);
-  color: #fff;
+  color: var(--tsm-color-accent-ink);
   box-shadow: none;
   transition: background .2s ease, transform .2s ease;
 }
@@ -151,6 +151,6 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 @media (max-width: 767px) {
   .site-header--b { min-height: 68px; grid-template-columns: 46px 1fr 48px; }
   .site-header--b .brand { width: 44px; height: 44px; }
-  .site-header--b nav { background: #fff; border-bottom-color: #D5EAF0; box-shadow: 0 18px 36px rgb(8 42 69 / 10%); }
+  .site-header--b nav { background: var(--tsm-color-surface); border-bottom-color: #D5EAF0; box-shadow: 0 18px 36px rgb(8 42 69 / 10%); }
   .site-header--b nav a { color: var(--tsm-color-ink); }
 }

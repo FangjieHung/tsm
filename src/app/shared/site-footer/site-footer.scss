@@ -18,8 +18,8 @@
    square, not a circle, so radius stays 0 everywhere) using an outline ring instead of a
    box-shadow, in Swiss Blue. */
 .site-footer--c {
-  background: #000;
-  color: #fff;
+  background: var(--tsm-color-surface-accent);
+  color: var(--tsm-color-ink-inverse);
   border-top: 4px solid var(--tsm-color-accent);
 }
 .site-footer--c::after {
@@ -214,7 +214,7 @@ small {
   padding-block: clamp(54px, 6vw, 82px) 32px;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 0.7fr);
   gap: clamp(32px, 5vw, 72px);
-  background: #fff;
+  background: var(--tsm-color-surface);
   color: var(--tsm-color-ink);
   border-top: 1px solid #d5eaf0;
 }

@@ -70,13 +70,13 @@ h3 {
 }
 .theme-c .button--primary {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    border-color: var(--tsm-color-accent);
 }
 .theme-c .button--primary:hover,
 .theme-c .button--primary:focus-visible {
    background: var(--tsm-color-accent-deep);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    border-color: var(--tsm-color-accent-deep);
 }
 .button--secondary {
@@ -85,15 +85,15 @@ h3 {
    background: color-mix(in srgb, var(--tsm-color-surface) 82%, transparent);
 }
 .theme-c .button--secondary {
-   background: #fff;
-   color: #000;
-   border-color: #000;
+   background: var(--tsm-color-surface);
+   color: var(--tsm-color-ink);
+   border-color: var(--tsm-color-ink);
 }
 .theme-c .button--secondary:hover,
 .theme-c .button--secondary:focus-visible {
-   background: #000;
-   color: #fff;
-   border-color: #000;
+   background: var(--tsm-color-surface-accent);
+   color: var(--tsm-color-ink-inverse);
+   border-color: var(--tsm-color-ink);
 }
 .theme-c .button {
    border-radius: 0;
@@ -236,7 +236,7 @@ h3 {
    position: relative;
    overflow: hidden;
    min-height: min(920px, 100svh - 78px);
-   background: #000;
+   background: var(--tsm-color-surface-accent);
 }
 .theme-c .hero-media--c {
    position: absolute;
@@ -272,13 +272,13 @@ h3 {
    border-radius: 0;
    background: transparent;
    box-shadow: none;
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .theme-c .hero-copy--c h1 {
    grid-column: 1;
    margin: 0;
 
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
    letter-spacing: 0.03em;
    line-height: 1.25;
    font-size: clamp(5rem, 2vw + 2rem, 7rem);
@@ -301,25 +301,25 @@ h3 {
 }
 .theme-c .hero-intro .button--primary {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    border-color: var(--tsm-color-accent);
 }
 .theme-c .hero-intro .button--primary:hover,
 .theme-c .hero-intro .button--primary:focus-visible {
    background: var(--tsm-color-accent-deep);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    border-color: var(--tsm-color-accent-deep);
 }
 .theme-c .hero-intro .button--secondary {
    background: transparent;
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
    border-color: rgb(255 255 255 / 0.7);
 }
 .theme-c .hero-intro .button--secondary:hover,
 .theme-c .hero-intro .button--secondary:focus-visible {
-   background: #fff;
-   color: #000;
-   border-color: #fff;
+   background: var(--tsm-color-surface);
+   color: var(--tsm-color-ink);
+   border-color: var(--tsm-color-ink-inverse);
 }
 
 .theme-c .hero-watermark {
@@ -536,7 +536,7 @@ h3 {
 .quick-row:hover,
 .quick-row:focus-visible {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
 }
 .quick-row:hover .quick-row-index,
 .quick-row:focus-visible .quick-row-index,
@@ -546,7 +546,7 @@ h3 {
 }
 .quick-row:hover .quick-row-heading app-symbol,
 .quick-row:focus-visible .quick-row-heading app-symbol {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .quick-row:hover .quick-row-arrow,
 .quick-row:focus-visible .quick-row-arrow {
@@ -842,7 +842,7 @@ h3 {
 }
 .news-card:hover > a,
 .news-card:focus-within > a {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .news-card:hover .news-meta time,
 .news-card:focus-within .news-meta time {
@@ -850,7 +850,7 @@ h3 {
 }
 .news-card:hover .news-read,
 .news-card:focus-within .news-read {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 
 .resources {
@@ -994,11 +994,11 @@ h3 {
 .theme-c .resource-item:hover,
 .theme-c .resource-item:focus-within {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
 }
 .theme-c .resource-item:hover > app-symbol,
 .theme-c .resource-item:focus-within > app-symbol {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .theme-c .resource-item:hover p,
 .theme-c .resource-item:focus-within p {
@@ -1006,7 +1006,7 @@ h3 {
 }
 .theme-c .resource-item:hover a,
 .theme-c .resource-item:focus-within a {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 
 /* Concept-a membership: was a full-bleed background photo with a translucent, backdrop-blurred
@@ -1087,7 +1087,7 @@ h3 {
    color: rgb(255 255 255 / 0.7);
 }
 .member-action--primary > app-symbol:first-child {
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .theme-c .membership {
    width: 100%;
@@ -1165,7 +1165,7 @@ h3 {
 .theme-c .member-action:hover,
 .theme-c .member-action:focus-visible {
    background: var(--tsm-color-ink);
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
 }
 .theme-c .member-action:hover > app-symbol:first-child,
 .theme-c .member-action:focus-visible > app-symbol:first-child {
@@ -1173,7 +1173,7 @@ h3 {
 }
 .theme-c .member-action--primary {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
 }
 .theme-c .member-action--primary:hover,
 .theme-c .member-action--primary:focus-visible {
@@ -1200,7 +1200,7 @@ h3 {
    box-shadow: 0 13px 24px rgb(5 122 120 / 24%);
 }
 .theme-b .button--secondary {
-   background: #fff;
+   background: var(--tsm-color-surface);
    border-color: #a9d5d2;
 }
 
@@ -1290,7 +1290,7 @@ h3 {
 }
 @media (prefers-reduced-transparency: reduce) {
    .b-hero-copy {
-      background: #fff;
+      background: var(--tsm-color-surface);
       -webkit-backdrop-filter: none;
       backdrop-filter: none;
    }
@@ -1470,7 +1470,7 @@ h3 {
 .theme-b .resources-copy,
 .theme-b .membership-content {
    border-radius: var(--tsm-radius-lg);
-   background: #fff;
+   background: var(--tsm-color-surface);
    border: 1px solid var(--tsm-color-line-soft);
 }
 .theme-b .events-copy {
@@ -1509,7 +1509,7 @@ h3 {
    position: absolute;
    z-index: 1;
    inset: clamp(26px, 3vw, 46px) clamp(26px, 3vw, 46px) auto;
-   color: #fff;
+   color: var(--tsm-color-ink-inverse);
    text-shadow: 0 1px 18px rgb(8 42 69 / 45%);
 }
 .theme-b .b-events-caption-title {
@@ -1668,7 +1668,7 @@ h3 {
    white-space: normal;
    border: 1px solid var(--tsm-color-accent-deep);
    border-radius: 999px;
-   background: #fff;
+   background: var(--tsm-color-surface);
    color: var(--tsm-color-link);
    outline: 3px solid rgb(15 141 178 / 42%);
    outline-offset: 3px;
@@ -1689,7 +1689,7 @@ h3 {
    padding: 7px 12px;
    border-radius: 999px;
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    font-size: 11px;
    font-weight: 600;
    letter-spacing: 0.14em;
@@ -1977,7 +1977,7 @@ h3 {
    }
    @media (prefers-reduced-transparency: reduce) {
       .b-hero-copy {
-         background: #fff;
+         background: var(--tsm-color-surface);
          -webkit-backdrop-filter: none;
          backdrop-filter: none;
       }
@@ -2554,7 +2554,7 @@ display:none;
    padding: 6px 13px;
    border-radius: 999px;
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    font-size: 14px;
    letter-spacing: 0.03em;
 }
@@ -2610,7 +2610,7 @@ display:none;
    place-items: center;
    border: 1px solid var(--tsm-color-line-subtle);
    border-radius: 50%;
-   background: #fff;
+   background: var(--tsm-color-surface);
    color: var(--tsm-color-accent);
    transition:
       background 0.2s ease,
@@ -2627,7 +2627,7 @@ display:none;
 .theme-b .news-item:hover .b-news-arrow,
 .theme-b .news-item:focus-within .b-news-arrow {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    transform: translateX(3px);
 }
 .theme-b .membership {
@@ -2735,7 +2735,7 @@ display:none;
    grid-column: 1 / -1;
    place-items: center;
    border-radius: 50%;
-   background: #fff;
+   background: var(--tsm-color-surface);
    color: var(--tsm-color-accent);
    box-shadow: inset 0 0 0 1px rgb(15 141 178 / 9%);
 }
@@ -2767,7 +2767,7 @@ display:none;
    display: grid;
    place-items: center;
    border-radius: 50%;
-   background: #fff;
+   background: var(--tsm-color-surface);
    color: var(--tsm-color-accent);
    box-shadow: 0 8px 18px rgb(8 42 69 / 9%);
    transition:
@@ -2818,7 +2818,7 @@ display:none;
    grid-row: 2;
 }
 .theme-b .member-action--primary .b-member-icon {
-   background: #fff;
+   background: var(--tsm-color-surface);
    color: var(--tsm-color-accent);
    box-shadow: inset 0 0 0 1px rgb(15 141 178 / 14%);
 }
@@ -2826,7 +2826,7 @@ display:none;
    color: var(--tsm-color-ink-subtle);
 }
 .theme-b .member-action--primary .b-member-arrow {
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    background: var(--tsm-color-accent);
 }
 .theme-b .member-action:hover,
@@ -2843,7 +2843,7 @@ display:none;
 .theme-b .member-action:hover .b-member-arrow,
 .theme-b .member-action:focus-visible .b-member-arrow {
    background: var(--tsm-color-accent);
-   color: #fff;
+   color: var(--tsm-color-accent-ink);
    transform: translateX(3px);
 }
 
