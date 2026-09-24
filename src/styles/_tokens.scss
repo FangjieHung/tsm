@@ -19,21 +19,40 @@
     // ---- Layout ----
     --tsm-container: 1392px;
 
-    // ---- Spacing scale (4px grid) ----
-    --tsm-space-1: 4px;
-    --tsm-space-2: 8px;
-    --tsm-space-3: 12px;
-    --tsm-space-4: 16px;
-    --tsm-space-5: 20px;
-    --tsm-space-6: 24px;
-    --tsm-space-7: 28px;
-    --tsm-space-8: 32px;
-    --tsm-space-9: 36px;
-    --tsm-space-10: 40px;
-    --tsm-space-12: 48px;
-    --tsm-space-14: 56px;
-    --tsm-space-16: 64px;
-    --tsm-space-20: 80px;
+    // ---- Spacing scale ----
+    // Named by their pixel value, so `--tsm-space-18` is unambiguously 18px.
+    //
+    // The three concepts were built on a 2px rhythm, not a 4px one: 18px, 14px
+    // and 22px are among the most-used gaps in the stylesheets. Forcing a 4px
+    // grid would have shifted 84 declarations by 2px each, so the dense band
+    // below 32px steps by 2 and everything above it steps by 4. Odd values in
+    // the source were snapped to the nearest step (a <=1px move).
+    --tsm-space-2: 2px;
+    --tsm-space-4: 4px;
+    --tsm-space-6: 6px;
+    --tsm-space-8: 8px;
+    --tsm-space-10: 10px;
+    --tsm-space-12: 12px;
+    --tsm-space-14: 14px;
+    --tsm-space-16: 16px;
+    --tsm-space-18: 18px;
+    --tsm-space-20: 20px;
+    --tsm-space-22: 22px;
+    --tsm-space-24: 24px;
+    --tsm-space-26: 26px;
+    --tsm-space-28: 28px;
+    --tsm-space-30: 30px;
+    --tsm-space-32: 32px;
+    --tsm-space-36: 36px;
+    --tsm-space-40: 40px;
+    --tsm-space-44: 44px;
+    --tsm-space-48: 48px;
+    --tsm-space-52: 52px;
+    --tsm-space-56: 56px;
+    --tsm-space-60: 60px;
+    --tsm-space-64: 64px;
+    --tsm-space-72: 72px;
+    --tsm-space-80: 80px;
 
     // ---- Radius (theme A's values double as the unthemed default) ----
     --tsm-radius-sm: 12px;

@@ -116,7 +116,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 /* Concept B: clinical editorial chrome matching the light reference compositions. */
 .site-header--b {
   min-height: 72px;
-  padding-block: 7px;
+  padding-block: var(--tsm-space-6);
   grid-template-columns: 54px 1fr auto;
   gap: clamp(18px, 3vw, 44px);
   color: var(--tsm-color-ink);
@@ -130,7 +130,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 .site-header--b nav a::after { inset-bottom: 4px; height: 2px; background: var(--tsm-color-accent); }
 .site-header--b .login-link {
   min-height: 46px;
-  padding-inline: 20px;
+  padding-inline: var(--tsm-space-20);
   border-radius: 999px;
   background: var(--tsm-color-accent);
   color: var(--tsm-color-accent-ink);

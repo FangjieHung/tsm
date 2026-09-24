@@ -12,7 +12,7 @@
 header {
     display: grid;
     grid-template-columns: 12rem 1fr;
-    gap: 16px 28px;
+    gap: var(--tsm-space-16) var(--tsm-space-28);
     align-items: center;
     margin-bottom: clamp(44px, 7vw, 96px);
 }
@@ -20,11 +20,11 @@ header img {
     width: 12rem;
     height: 12rem;
     object-fit: contain;
-    padding: 6px;
+    padding: var(--tsm-space-6);
     filter: invert(1);
 }
 header p {
-    margin: 0 0 12px;
+    margin: 0 0 var(--tsm-space-12);
     color: var(--tsm-color-accent);
     font-size: 14px;
     letter-spacing: 0.16em;
@@ -63,7 +63,7 @@ header span {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 24px;
+    gap: var(--tsm-space-24);
 }
 .concept-body small {
     font-weight: 600;
@@ -77,7 +77,7 @@ header span {
     color: var(--tsm-color-accent);
 }
 .concept-body h2 {
-    margin: 10px 0 12px;
+    margin: var(--tsm-space-10) 0 var(--tsm-space-12);
     font-size: clamp(28px, 2.5vw, 42px);
 }
 .concept-body p {
@@ -90,7 +90,7 @@ header span {
 }
 .concept-body a {
     min-height: 52px;
-    padding: 0 22px;
+    padding: 0 var(--tsm-space-22);
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
@@ -131,7 +131,7 @@ header span {
 }
 @media (max-width: 520px) {
     .comparison-shell {
-        padding: 24px 18px;
+        padding: var(--tsm-space-24) var(--tsm-space-18);
     }
     header {
         grid-template-columns: 52px 1fr;
