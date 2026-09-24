@@ -1,0 +1,9 @@
+@layer reset {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { min-height: 100%; margin: 0; }
+  body { min-width: 320px; }
+  img { display: block; max-width: 100%; }
+  button, input, textarea, select { font: inherit; }
+  button, a { -webkit-tap-highlight-color: transparent; }
+}

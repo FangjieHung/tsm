@@ -6,9 +6,9 @@
   grid-template-columns: 64px 1fr auto;
   align-items: center;
   gap: clamp(20px, 3vw, 48px);
-  color: var(--ink);
-  background: color-mix(in srgb, var(--surface) 94%, transparent);
-  border-bottom: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  color: var(--tsm-color-ink);
+  background: color-mix(in srgb, var(--tsm-color-surface) 94%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--tsm-color-ink) 14%, transparent);
   backdrop-filter: blur(18px);
 }
 .brand { width: 58px; height: 58px; display: grid; place-items: center; }
@@ -16,11 +16,11 @@
 nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(18px, 2.4vw, 40px); }
 nav a, .login-link { color: inherit; text-decoration: none; font-weight: 650; letter-spacing: .02em; }
 nav a { position: relative; padding: 14px 0; }
-nav a::after { content: ''; position: absolute; inset: auto 0 7px; height: 2px; background: var(--link); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
+nav a::after { content: ''; position: absolute; inset: auto 0 7px; height: 2px; background: var(--tsm-color-link); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
 nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
-.login-link { min-height: 48px; padding: 0 22px; display: inline-flex; align-items: center; gap: 9px; background: var(--button-bg); color: var(--button-ink); border-radius: var(--radius-sm); }
+.login-link { min-height: 48px; padding: 0 22px; display: inline-flex; align-items: center; gap: 9px; background: var(--tsm-color-accent); color: var(--tsm-color-accent-ink); border-radius: var(--tsm-radius-sm); }
 .login-link app-symbol { font-size: 20px; }
-.menu-toggle { display: none; width: 48px; height: 48px; border: 1px solid var(--line); color: var(--ink); background: var(--surface); border-radius: var(--radius-sm); }
+.menu-toggle { display: none; width: 48px; height: 48px; border: 1px solid var(--tsm-color-line); color: var(--tsm-color-ink); background: var(--tsm-color-surface); border-radius: var(--tsm-radius-sm); }
 .menu-toggle app-symbol { font-size: 28px; }
 @media (max-width: 1199px) {
   .site-header { grid-template-columns: 58px 1fr auto auto; min-height: 92px; }
@@ -34,22 +34,23 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
   .brand { width: 46px; height: 46px; }
   .menu-toggle { grid-column: 3; }
   .login-link { display: none; }
-  nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; gap: 0; padding: 10px 20px 20px; background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: 0 24px 48px rgb(0 0 0 / .12); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
+  nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; gap: 0; padding: 10px 20px 20px; background: var(--tsm-color-surface); border-bottom: 1px solid var(--tsm-color-line); box-shadow: 0 24px 48px rgb(0 0 0 / .12); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
   nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
-  nav a, nav a:nth-child(-n+3) { display: block; min-height: 48px; padding: 14px 4px; border-bottom: 1px solid var(--line); }
+  nav a, nav a:nth-child(-n+3) { display: block; min-height: 48px; padding: 14px 4px; border-bottom: 1px solid var(--tsm-color-line); }
 }
 @media (prefers-reduced-motion: reduce) { nav, nav a::after { transition: none; } }
 
-/* Swiss International Style header overrides for concept-b only — flat white background,
+/* Swiss International Style header overrides for concept-c only — flat white background,
    thick black rule, uppercase wide-tracked nav labels, hard color-invert hover states.
-   Colors/radius already flow through the .theme-b CSS custom properties (--surface,
-   --ink, --button-bg, --radius-sm are already swapped globally); this block only adds the
-   typography treatment, the thicker border, and removes the shared glassmorphism blur. */
+   Colors/radius already flow through the .theme-c design tokens (--tsm-color-surface,
+   --tsm-color-ink, --tsm-color-accent, --tsm-radius-sm are swapped globally); this block
+   only adds the typography treatment, the thicker border, and removes the shared
+   glassmorphism blur. */
 .site-header--c {
   min-height: 96px;
   grid-template-columns: auto 1fr auto;
-  background: var(--surface);
-  border-bottom: 4px solid var(--ink);
+  background: var(--tsm-color-surface);
+  border-bottom: 4px solid var(--tsm-color-ink);
   backdrop-filter: none;
 }
 .site-header--c .brand { display: inline-flex; align-items: center; gap: 14px; width: auto; height: auto; }
@@ -74,16 +75,16 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
    of sight until the hover transform slides it up into place. Without the absolute
    positioning the track is two labels tall, the clip window clips nothing, and every nav
    item renders its label twice. */
-.site-header--c .nav-link-label--accent { position: absolute; top: 100%; left: 0; right: 0; color: var(--accent); }
+.site-header--c .nav-link-label--accent { position: absolute; top: 100%; left: 0; right: 0; color: var(--tsm-color-accent); }
 .site-header--c .nav-link:hover .nav-link-track,
 .site-header--c .nav-link:focus-visible .nav-link-track { transform: translateY(-100%); }
 
 .site-header--c .login-link { text-transform: uppercase; font-weight: 700; letter-spacing: .06em; transition: background .18s ease-out, color .18s ease-out; }
 .site-header--c .login-link:hover,
-.site-header--c .login-link:focus-visible { background: var(--accent); color: #fff; }
-.site-header--c .menu-toggle { border-color: var(--ink); transition: background .18s ease-out, color .18s ease-out; }
+.site-header--c .login-link:focus-visible { background: var(--tsm-color-accent); color: #fff; }
+.site-header--c .menu-toggle { border-color: var(--tsm-color-ink); transition: background .18s ease-out, color .18s ease-out; }
 .site-header--c .menu-toggle:hover,
-.site-header--c .menu-toggle:focus-visible { background: var(--ink); color: #fff; }
+.site-header--c .menu-toggle:focus-visible { background: var(--tsm-color-ink); color: #fff; }
 @media (max-width: 1199px) {
   .site-header--c { min-height: 92px; grid-template-columns: auto 1fr auto auto; }
   /* `.site-header--c .nav-link` (2 classes) outweighs the shared `nav a:nth-child(-n+3)`
@@ -100,7 +101,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 @media (max-width: 767px) {
   .site-header--c { min-height: 76px; grid-template-columns: auto 1fr 48px; }
   .site-header--c .brand img { width: 46px; height: 46px; }
-  .site-header--c nav { box-shadow: none; border: 4px solid var(--ink); border-top: 0; }
+  .site-header--c nav { box-shadow: none; border: 4px solid var(--tsm-color-ink); border-top: 0; }
   /* Mobile opens every link in the dropdown panel, so undo the tablet hiding. */
   .site-header--c .nav-link:nth-child(-n+3) { display: block; }
   .site-header--c nav a { padding: 14px 4px; }

@@ -20,7 +20,7 @@
 .site-footer--c {
   background: #000;
   color: #fff;
-  border-top: 4px solid var(--accent);
+  border-top: 4px solid var(--tsm-color-accent);
 }
 .site-footer--c::after {
   content: "";
@@ -29,7 +29,7 @@
   aspect-ratio: 1;
   right: -120px;
   bottom: -200px;
-  border: 2px solid var(--accent);
+  border: 2px solid var(--tsm-color-accent);
   outline: 8px solid rgb(15 141 178 / 0.12);
   outline-offset: 10px;
   transform: rotate(45deg);
@@ -79,7 +79,7 @@
 }
 .footer-eyebrow {
   margin: 0 0 18px;
-  color: var(--accent);
+  color: var(--tsm-color-accent);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -158,7 +158,7 @@ nav a,
 }
 nav a:hover,
 .footer-utility a:hover {
-  color: var(--accent);
+  color: var(--tsm-color-accent);
 }
 .footer-utility {
   display: grid;

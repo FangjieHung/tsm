@@ -1,0 +1,7 @@
+// Layer order is declared once, here, and is what resolves specificity conflicts
+// across the site — reach for @layer before reaching for !important.
+//   reset      — element normalisation
+//   base       — design tokens, document defaults
+//   components — reusable UI (added in the component-layer phase)
+//   utilities  — single-purpose helpers
+@layer reset, base, components, utilities;

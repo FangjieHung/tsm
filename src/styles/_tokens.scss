@@ -1,0 +1,152 @@
+// Design tokens — the single source of truth for every colour, radius, spacing
+// step and type size in the site. See docs/design-system/tokens.md.
+//
+// Rules:
+//   - Never hardcode a colour, radius or spacing value in a component stylesheet.
+//   - Every token is defined for all three themes, even when the value happens to
+//     be shared today, so that swapping one theme can never fall back to another's.
+//   - Themes are applied by putting `.theme-a` / `.theme-b` / `.theme-c` on a
+//     container; tokens are custom properties, so they inherit into everything
+//     below, including child components with emulated view encapsulation.
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    // Shared fallback stack. Themes A and C pin their own (see below).
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+    // ---- Layout ----
+    --tsm-container: 1392px;
+
+    // ---- Spacing scale (4px grid) ----
+    --tsm-space-1: 4px;
+    --tsm-space-2: 8px;
+    --tsm-space-3: 12px;
+    --tsm-space-4: 16px;
+    --tsm-space-5: 20px;
+    --tsm-space-6: 24px;
+    --tsm-space-7: 28px;
+    --tsm-space-8: 32px;
+    --tsm-space-9: 36px;
+    --tsm-space-10: 40px;
+    --tsm-space-12: 48px;
+    --tsm-space-14: 56px;
+    --tsm-space-16: 64px;
+    --tsm-space-20: 80px;
+
+    // ---- Radius (theme A's values double as the unthemed default) ----
+    --tsm-radius-sm: 12px;
+    --tsm-radius-md: 18px;
+    --tsm-radius-lg: 28px;
+
+    // Unthemed focus ring (the comparison page renders outside any theme).
+    --tsm-color-focus: #f59e0b;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Theme A — 學術典雅風 (Editorial Minimalism)
+  // ---------------------------------------------------------------------------
+  .theme-a {
+    // Pin the pre-existing fallback chain (minus "Inter") so that loading the
+    // Inter webfont for the Swiss (C) redesign cannot shift theme A's rendered
+    // typeface — "Inter" was already first in the shared stack above but was
+    // never actually loaded, so A always rendered in the system-ui fallback.
+    // Keeping A pinned here preserves pixel-identical output now that Inter is
+    // a real, loadable font.
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+    --tsm-color-surface: #ffffff;
+    --tsm-color-surface-muted: #ffffff;
+    --tsm-color-surface-sunken: #ffffff;
+    --tsm-color-surface-accent: #ffffff;
+
+    --tsm-color-ink: #223033;
+    --tsm-color-ink-muted: #5a696d;
+    --tsm-color-ink-subtle: #5a696d;
+    --tsm-color-ink-inverse: #ffffff;
+
+    --tsm-color-line: #c5dce3;
+    --tsm-color-line-subtle: #c5dce3;
+
+    --tsm-color-accent: #0f8db2;
+    --tsm-color-accent-deep: #086a84;
+    --tsm-color-accent-ink: #ffffff;
+    --tsm-color-link: #086a84;
+    --tsm-color-focus: #0f8db2;
+
+    --tsm-radius-sm: 12px;
+    --tsm-radius-md: 18px;
+    --tsm-radius-lg: 28px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Theme B — 親和科技風 (Soft Biotech)
+  // ---------------------------------------------------------------------------
+  .theme-b {
+    --tsm-color-surface: #ffffff;
+    --tsm-color-surface-muted: #ffffff;
+    // Pale blue wash behind cards, rails and quoted blocks.
+    --tsm-color-surface-sunken: #eaf6f9;
+    // Slightly cooler wash reserved for the featured membership card.
+    --tsm-color-surface-accent: #e8f6fe;
+
+    --tsm-color-ink: #082a45;
+    --tsm-color-ink-muted: #587887;
+    --tsm-color-ink-subtle: #6a8ea1;
+    --tsm-color-ink-inverse: #ffffff;
+
+    --tsm-color-line: #d3e8ed;
+    --tsm-color-line-subtle: #cfe4e9;
+
+    --tsm-color-accent: #0f8db2;
+    --tsm-color-accent-deep: #086a84;
+    --tsm-color-accent-ink: #ffffff;
+    --tsm-color-link: #086a84;
+    --tsm-color-focus: #0f8db2;
+
+    --tsm-radius-sm: 999px;
+    --tsm-radius-md: 22px;
+    --tsm-radius-lg: 30px;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Theme C — 強黑實驗室風 (Swiss International Typographic Style)
+  // Pure black/white with a single accent signal colour.
+  // ---------------------------------------------------------------------------
+  .theme-c {
+    font-family: "Inter", "Noto Sans TC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+
+    --tsm-color-surface: #ffffff;
+    --tsm-color-surface-muted: #ffffff;
+    --tsm-color-surface-sunken: #ffffff;
+    // Full-bleed inverted bands (hero, events).
+    --tsm-color-surface-accent: #000000;
+
+    --tsm-color-ink: #000000;
+    --tsm-color-ink-muted: #3a3a3a;
+    --tsm-color-ink-subtle: #3a3a3a;
+    --tsm-color-ink-inverse: #ffffff;
+
+    --tsm-color-line: #000000;
+    --tsm-color-line-subtle: #000000;
+
+    --tsm-color-accent: #0f8db2;
+    --tsm-color-accent-deep: #086a84;
+    --tsm-color-accent-ink: #ffffff;
+    --tsm-color-link: #086a84;
+    --tsm-color-focus: #0f8db2;
+
+    --tsm-radius-sm: 0;
+    --tsm-radius-md: 0;
+    --tsm-radius-lg: 0;
+  }
+
+  body { font-size: 16px; line-height: 1.5; text-rendering: optimizeLegibility; }
+
+  :focus-visible { outline: 3px solid var(--tsm-color-focus); outline-offset: 4px; }
+
+  // Swiss spec: crisp 2px solid focus ring, no glow/blur — narrower than the
+  // shared 3px default, scoped so theme A's focus ring is untouched.
+  .theme-c :focus-visible { outline: 2px solid var(--tsm-color-focus); outline-offset: 3px; box-shadow: none; }
+}
