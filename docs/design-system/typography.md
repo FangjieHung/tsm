@@ -15,7 +15,7 @@ live 檢視：`/#/design-system` 的「02 — 字體排印」。
 | 角色 | 用途 | 步階數 |
 |---|---|---|
 | **Display** | Hero 主標題、裝飾性巨型文字 | 9 |
-| **Headline** | 區塊標題（`h2`）、頁尾字標 | 10 |
+| **Headline** | 區塊標題（`h2`）、頁尾字標 | 9 |
 | **Title** | 卡片與列標題（`h3`） | 12 |
 | **Figure** | 大型數字：區塊序號、活動日期 | 3 |
 | **Body** | 內文、導言 | 7 |
@@ -49,8 +49,7 @@ tabular 對齊需求，而 Material Symbols 的尺寸是字級、不是寬高，
 | `headline-xl` | `clamp(44px, 5vw, 70px)` | A／C 案區塊 `h2` |
 | `headline-xl-sm` | `clamp(38px, 12vw, 52px)` | 同上，< 768px |
 | `headline-lg` | `clamp(40px, 4.2vw, 62px)` | B 案區塊 `h2`（最新消息、會員、通用） |
-| `headline-md` | `clamp(38px, 3.5vw, 54px)` | B 案資源面板標題 |
-| `headline-sm` | `clamp(36px, 3.2vw, 50px)` | B 案活動區塊標題 |
+| `headline-md` | `clamp(36px, 3.2vw, 50px)` | B 案次級區塊標題（活動、資源面板） |
 | `headline-xs` | `clamp(30px, 3.4vw, 52px)` | 頁尾字標 |
 | `headline-2xs` | `clamp(28px, 2.5vw, 42px)` | 方案比較頁卡片標題 |
 | `headline-rail-lg` | `clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem)` | C 案 sticky 左欄標籤（快速入口） |

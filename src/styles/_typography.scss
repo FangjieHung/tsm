@@ -32,8 +32,10 @@
     --tsm-font-size-headline-xl: clamp(44px, 5vw, 70px); // A / C section h2
     --tsm-font-size-headline-xl-sm: clamp(38px, 12vw, 52px); // ditto, <768
     --tsm-font-size-headline-lg: clamp(40px, 4.2vw, 62px); // B section h2
-    --tsm-font-size-headline-md: clamp(38px, 3.5vw, 54px); // B resources panel
-    --tsm-font-size-headline-sm: clamp(36px, 3.2vw, 50px); // B events
+    // B's secondary section headings (events, resources panel). The two used to
+    // differ by 2–4px for no reason; merged downwards because the events heading
+    // carries text-wrap: nowrap and had no room to grow.
+    --tsm-font-size-headline-md: clamp(36px, 3.2vw, 50px);
     --tsm-font-size-headline-xs: clamp(30px, 3.4vw, 52px); // footer wordmark
     --tsm-font-size-headline-2xs: clamp(28px, 2.5vw, 42px); // comparison card h2
     // C's sticky left-rail labels, sized in rem to track the root font size.
