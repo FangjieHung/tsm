@@ -28,5 +28,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/concept/concept-page').then((module) => module.ConceptPage),
   },
+  {
+    path: 'design-system',
+    title: '設計系統｜台灣微生物學會',
+    loadComponent: () =>
+      import('./pages/design-system/design-system-page').then((module) => module.DesignSystemPage),
+  },
   { path: '**', redirectTo: '' },
 ];

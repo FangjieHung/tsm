@@ -1,0 +1,202 @@
+<div class="ds-page">
+  <a class="skip-link" href="#ds-main">跳至主要內容</a>
+
+  <header class="ds-masthead">
+    <div class="ds-masthead-text">
+      <p class="ds-eyebrow">TAIWAN SOCIETY OF MICROBIOLOGY · DESIGN SYSTEM</p>
+      <h1>設計系統</h1>
+      <p class="ds-lede">
+        A／B／C 三案共用同一組 design token 與元件層。本頁的每一個樣本都由專案本身的樣式表渲染，
+        數值則以 <code>getComputedStyle</code> 即時讀回，因此不會與程式碼脫節。
+      </p>
+    </div>
+    <nav class="ds-switcher" aria-label="切換視覺方案">
+      @for (item of concepts; track item.key) {
+        <button
+          type="button"
+          [class.is-active]="concept() === item.key"
+          [attr.aria-pressed]="concept() === item.key"
+          (click)="select(item.key)"
+        >
+          <b>{{ item.key.toUpperCase() }}</b>
+          <span>{{ item.name }}</span>
+        </button>
+      }
+    </nav>
+    <p class="ds-links">
+      <a routerLink="/">← 回到方案比較</a>
+      <a [routerLink]="'/concept-' + concept()">查看 {{ concept().toUpperCase() }} 方案完整頁面 →</a>
+    </p>
+  </header>
+
+  <main id="ds-main">
+    <!-- Everything inside the stage inherits the active theme's tokens. -->
+    <div
+      #stage
+      class="ds-stage concept-page"
+      [class.theme-a]="concept() === 'a'"
+      [class.theme-b]="concept() === 'b'"
+      [class.theme-c]="concept() === 'c'"
+    >
+      <section class="ds-section" aria-labelledby="ds-color">
+        <h2 id="ds-color">01 — 色彩</h2>
+        <p class="ds-note">
+          目前套用 <b>{{ activeConcept().name }}（{{ activeConcept().tagline }}）</b>。
+          僅文字色票顯示對比度，並以它實際被繪製的底色為對照（反白色票對照強調色）；
+          線條與填色不列出比值。標準為 WCAG 2.1 AA：一般文字 4.5:1、大字 3:1。
+        </p>
+        <ul class="ds-swatches">
+          @for (token of colorTokens(); track token.name) {
+            <li>
+              <span class="ds-chip" [style.background]="token.value"></span>
+              <code>{{ token.name }}</code>
+              <b>{{ token.value }}</b>
+              <span class="ds-grade" [attr.data-grade]="token.grade">
+                {{ formatContrast(token.contrast) }}
+                @if (token.grade !== '—') {
+                  <i>{{ token.grade }}</i>
+                }
+              </span>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="ds-section" aria-labelledby="ds-type">
+        <h2 id="ds-type">02 — 字體排印</h2>
+        <p class="ds-note">
+          以下樣本使用與內頁相同的選擇器渲染；右欄是瀏覽器實際解析出的值，會隨方案與視窗寬度改變。
+          Hero 樣本取共用的 <code>.hero h1</code>；B 與 C 案在自己的 hero 版面中另有覆寫
+          （<code>.b-hero-copy h1</code>、<code>.theme-c .hero-copy--c h1</code>），需到內頁檢視。
+        </p>
+        <div class="ds-type-specimens">
+          <div class="hero">
+            <h1 data-type-specimen="Hero 標題" data-type-selector=".hero h1">微生物研究的交會點</h1>
+          </div>
+          <h2 data-type-specimen="區塊標題" data-type-selector="h2">學術活動與年會</h2>
+          <h3 data-type-specimen="卡片標題" data-type-selector="h3">會員專區與投稿服務</h3>
+          <p data-type-specimen="內文" data-type-selector="p">
+            台灣微生物學會自 1968 年成立以來，持續推動微生物學研究、學術交流與人才培育。
+          </p>
+          <p class="section-code" data-type-specimen="標籤" data-type-selector=".section-code">
+            01 · QUICK ACCESS
+          </p>
+        </div>
+        <table class="ds-table">
+          <caption class="sr-only">字級實際解析值</caption>
+          <thead>
+            <tr><th scope="col">用途</th><th scope="col">選擇器</th><th scope="col">字級</th><th scope="col">行高</th><th scope="col">字重</th><th scope="col">字距</th></tr>
+          </thead>
+          <tbody>
+            @for (row of typeSpecimens(); track row.selector) {
+              <tr>
+                <td>{{ row.label }}</td>
+                <td><code>{{ row.selector }}</code></td>
+                <td>{{ row.fontSize }}</td>
+                <td>{{ row.lineHeight }}</td>
+                <td>{{ row.weight }}</td>
+                <td>{{ row.tracking }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </section>
+
+      <section class="ds-section" aria-labelledby="ds-space">
+        <h2 id="ds-space">03 — 間距與圓角</h2>
+        <p class="ds-note">
+          間距為 2px 節奏（32px 以下每 2px 一階，以上每 4px 一階），token 以實際像素值命名。
+          圓角隨方案改變：A 為柔角、B 為膠囊、C 為直角。
+        </p>
+        <ul class="ds-space-scale">
+          @for (token of spaceTokens(); track token.name) {
+            <li>
+              <span class="ds-space-bar" [style.width]="token.value"></span>
+              <code>{{ token.name }}</code>
+              <b>{{ token.value }}</b>
+            </li>
+          }
+        </ul>
+        <ul class="ds-radius-scale">
+          @for (token of radiusTokens(); track token.name) {
+            <li>
+              <span class="ds-radius-box" [style.border-radius]="token.value"></span>
+              <code>{{ token.name }}</code>
+              <b>{{ token.value }}</b>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="ds-section" aria-labelledby="ds-components">
+        <h2 id="ds-components">04 — 元件</h2>
+
+        <article class="ds-specimen">
+          <h3>Button</h3>
+          <p class="ds-note">
+            <code>src/styles/components/_button.scss</code> ·
+            <code>.button</code> + <code>.button--primary</code> |
+            <code>.button--secondary</code>
+          </p>
+          <div class="ds-demo">
+            <a class="button button--primary" href="#ds-components">立即入會 <app-symbol name="arrow_forward" /></a>
+            <a class="button button--secondary" href="#ds-components">了解更多</a>
+          </div>
+          <p class="ds-hint">以 Tab 鍵移入可檢視 focus ring；C 案為 2px 實線，A／B 案為 3px。</p>
+        </article>
+
+        <article class="ds-specimen">
+          <h3>Section shell 與標籤</h3>
+          <p class="ds-note">
+            <code>src/styles/components/_section.scss</code> ·
+            <code>.section-shell</code>、<code>.section-code</code>
+          </p>
+          <div class="ds-demo ds-demo--block">
+            <p class="section-code">02 · ACADEMIC EVENTS</p>
+            <h3>年會與研討會</h3>
+          </div>
+        </article>
+
+        <article class="ds-specimen">
+          <h3>Text link</h3>
+          <p class="ds-note">
+            <code>src/styles/components/_link.scss</code> · <code>.text-link</code>
+          </p>
+          <div class="ds-demo">
+            <a class="text-link" href="#ds-components">查看全部公告 <app-symbol name="arrow_outward" /></a>
+          </div>
+        </article>
+
+        <article class="ds-specimen">
+          <h3>Quick access 列</h3>
+          <p class="ds-note">
+            <code>src/app/pages/concept/concept-page.scss</code> · <code>.quick-item</code>
+            — 仍屬頁面層，尚未升至全域元件層。
+          </p>
+          <div class="ds-demo ds-demo--block">
+            <div class="quick-grid">
+              <a class="quick-item" href="#ds-components">
+                <span class="item-number">01</span>
+                <app-symbol name="groups" />
+                <h3>會員專區</h3>
+                <p>入會申請、會籍查詢與年費繳納。</p>
+                <span>前往 <app-symbol name="arrow_forward" /></span>
+              </a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="ds-section" aria-labelledby="ds-a11y">
+        <h2 id="ds-a11y">05 — 無障礙</h2>
+        <ul class="ds-checklist">
+          <li>互動元素最小點擊區域 44×44px（<code>.button</code> 為 52px、<code>.text-link</code> 為 44px）。</li>
+          <li>Focus ring 使用 <code>--tsm-color-focus</code>，不以 <code>outline: none</code> 移除。</li>
+          <li>裝飾性圖像一律 <code>aria-hidden</code>，僅含圖示的連結必須有 <code>.sr-only</code> 文字。</li>
+          <li><code>prefers-reduced-motion</code> 會關閉所有動畫與平滑捲動。</li>
+          <li>上方色彩表中標示 <b>Fail</b> 的組合不可用於一般文字。</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</div>

@@ -7,11 +7,17 @@ describe('application routes', () => {
       'concept-a',
       'concept-b',
       'concept-c',
+      'design-system',
       '**',
     ]);
-    expect(routes.slice(0, 4).every((route) => typeof route.loadComponent === 'function')).toBe(
+    expect(routes.slice(0, 5).every((route) => typeof route.loadComponent === 'function')).toBe(
       true,
     );
+  });
+
+  it('lazy-loads the design system page', () => {
+    const route = routes.find((r) => r.path === 'design-system');
+    expect(typeof route?.loadComponent).toBe('function');
   });
 
   it('maps B and C routes to their matching visual themes', () => {
