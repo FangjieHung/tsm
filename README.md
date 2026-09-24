@@ -19,6 +19,7 @@ npm start
 - `/concept-a`：精密生技編輯風，冷白、霧灰、薄荷綠
 - `/concept-b`：親和科技風，柔和漸層與圓角語彙，使用甲方指定的明亮藍色系
 - `/concept-c`：強黑實驗室風，瑞士國際主義排版，黑白高反差配單一強調色
+- `/design-system`：三案共用的 design token 與元件層展示頁
 
 ## 驗證與建置
 
@@ -31,6 +32,7 @@ npm run build
 
 ## 內容與素材
 
+- Design token 與元件層：`src/styles/`（文件見 `docs/design-system/`）
 - 共用內容：`src/app/core/site-content.ts`
 - A／B／C 共用語意頁面：`src/app/pages/concept/`
 - 主題與響應式版面：`src/app/pages/concept/concept-page.scss`

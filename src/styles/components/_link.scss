@@ -4,14 +4,14 @@
 // Markup: <a class="text-link">…</a>
 @layer components {
   .text-link {
-     min-height: 44px;
-     display: inline-flex;
-     align-items: center;
-     gap: var(--tsm-space-10);
-     color: var(--tsm-color-link);
-     font-weight: 750;
-     text-decoration: none;
-     width: fit-content;
-     background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--tsm-space-10);
+    color: var(--tsm-color-link);
+    font-weight: 750;
+    text-decoration: none;
+    width: fit-content;
+    background: linear-gradient(currentColor, currentColor) 0 calc(100% - 7px) / 100% 1px no-repeat;
   }
 }
