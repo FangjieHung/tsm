@@ -34,6 +34,15 @@
 
 以下每一條都來自本專案的真實案例。
 
+**❌ 在元件中定義字級**
+```scss
+.card-title { font-size: 22px; }                       // 錯
+.card-title { font-size: var(--tsm-font-size-title-sm); }  // 可
+// <h3 class="tsm-title">…</h3>                        // 新標記請用這個
+```
+字級屬於 Design System 層，見 `typography.md`。新標記一律掛 `.tsm-*` class，
+不在元件 SCSS 中另定字級、行高、字重或字距。
+
 **❌ 硬寫色碼**
 ```scss
 .card { background: #eaf6f9; }          // 錯：改主題不會同步
@@ -71,15 +80,34 @@ git 就是備份。`.gitignore` 已封鎖此模式。
 **❌ 用寫死的檔名對照表決定圖片路徑**
 `concept-page.ts` 的 `mediaPath()` / `newsImage()` 目前如此，屬技術債。
 
+## 自動檢查
+
+```bash
+npm run check:styles
+```
+
+`scripts/check-stylesheet-contract.mjs` 會擋下以下四件事：
+
+1. 任何不是 `var(--tsm-font-size-*)` 的 `font-size`
+2. 任何固定像素但未使用 `--tsm-space-*` 的 `gap`／`row-gap`／`column-gap`
+   （流動式 `clamp()` 允許——固定階梯表達不了）
+3. 色碼字面值超過棘輪值（目前 27，**只能往下調**）
+4. `src/styles/` 下有 partial 沒被 `src/styles.scss` `@use` 引入
+
+色碼那條是棘輪不是目標：每回收一批就把 `COLOUR_LITERAL_BUDGET` 調低，
+守住已經拿到的地。腳本在低於棘輪值時會主動提醒。
+
 ## Code Review Checklist
 
 每個含樣式改動的 PR：
 
+- [ ] `npm run check:styles` 通過
 - [ ] `npm test -- --watch=false` 綠燈
 - [ ] `npm run build` 成功
 - [ ] 三案 × 四斷點（375／768／1024／1440）截圖比對完成
 - [ ] 所有視覺差異都能對應到一條明確決策
-- [ ] 沒有新的硬編碼色碼、間距、斷點
+- [ ] 沒有新的硬編碼色碼、間距、字級、斷點
+- [ ] 新標記的排版使用 `.tsm-*` class，未在元件中另定字級
 - [ ] 新增 SCSS 檔已在 `src/styles.scss` 以 `@use` 引入
 - [ ] 樣式寫在正確的 `@layer`
 - [ ] 互動元素有可見文字或 `aria-label`

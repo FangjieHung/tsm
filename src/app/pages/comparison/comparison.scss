@@ -26,12 +26,12 @@ header img {
 header p {
     margin: 0 0 var(--tsm-space-12);
     color: var(--tsm-color-accent);
-    font-size: 14px;
+    font-size: var(--tsm-font-size-label-lg);
     letter-spacing: 0.16em;
 }
 header h1 {
     margin: 0;
-    font-size: clamp(38px, 5.2vw, 78px);
+    font-size: var(--tsm-font-size-display-lg);
     line-height: 1.08;
     font-weight: 620;
     letter-spacing: -0.045em;
@@ -78,14 +78,14 @@ header span {
 }
 .concept-body h2 {
     margin: var(--tsm-space-10) 0 var(--tsm-space-12);
-    font-size: clamp(28px, 2.5vw, 42px);
+    font-size: var(--tsm-font-size-headline-2xs);
 }
 .concept-body p {
     margin: 0;
     max-width: 70ch;
     line-height: 1.7;
     color: #586067;
-    font-size: 18px;
+    font-size: var(--tsm-font-size-body-md);
     text-align: justify;
 }
 .concept-body a {

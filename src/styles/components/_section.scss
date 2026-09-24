@@ -12,7 +12,7 @@
   .section-code {
     margin: 0 0 var(--tsm-space-18);
     color: var(--tsm-color-link);
-    font-size: 14px;
+    font-size: var(--tsm-font-size-label-lg);
     font-weight: 600;
     letter-spacing: 0.15em;
   }

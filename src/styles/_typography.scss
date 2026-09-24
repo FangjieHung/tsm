@@ -1,0 +1,164 @@
+// Typography — the type ladder and the classes that consume it.
+//
+// Roles follow the Material Design 3 classification (Display / Headline /
+// Title / Body / Label), plus two roles this project genuinely needs:
+//   Figure — large tabular numerals (section counters, event dates)
+//   Icon   — Material Symbols optical sizes, which are font-size driven
+//
+// The ladder lives in :root rather than per theme, because the three concepts
+// pick different steps from one shared ladder rather than redefining a step.
+// Which concept uses which step is in docs/design-system/typography.md.
+//
+// ⚠️ The ladder still carries more steps than a mature system should: the three
+// concepts were drawn independently, so several steps sit 2–4px apart. The
+// candidate merges — and what each one costs in reflow — are listed in
+// docs/design-system/known-issues.md. Do not add a step without checking that
+// an existing one will not do.
+
+@layer base {
+  :root {
+    // ---- Display — hero headlines ------------------------------------------
+    --tsm-font-size-display-2xl: clamp(5rem, 2vw + 2rem, 7rem); // C hero, desktop
+    --tsm-font-size-display-2xl-md: clamp(2.1rem, 2.4vw + 1.5rem, 3rem); // C hero, <1200
+    --tsm-font-size-display-2xl-sm: clamp(2rem, 9vw, 2.6rem); // C hero, <768
+    --tsm-font-size-display-xl: clamp(54px, 5.6vw, 84px); // A hero
+    --tsm-font-size-display-xl-sm: clamp(42px, 12vw, 58px); // A hero, <768
+    --tsm-font-size-display-lg: clamp(38px, 5.2vw, 78px); // comparison page title
+    --tsm-font-size-display-md: clamp(42px, 4.3vw, 66px); // B hero
+    --tsm-font-size-display-md-sm: clamp(38px, 11vw, 52px); // B hero, <768
+    --tsm-font-size-display-watermark: min(14vw, 15rem); // C decorative ghost text
+
+    // ---- Headline — section headings ---------------------------------------
+    --tsm-font-size-headline-xl: clamp(44px, 5vw, 70px); // A / C section h2
+    --tsm-font-size-headline-xl-sm: clamp(38px, 12vw, 52px); // ditto, <768
+    --tsm-font-size-headline-lg: clamp(40px, 4.2vw, 62px); // B section h2
+    --tsm-font-size-headline-md: clamp(38px, 3.5vw, 54px); // B resources panel
+    --tsm-font-size-headline-sm: clamp(36px, 3.2vw, 50px); // B events
+    --tsm-font-size-headline-xs: clamp(30px, 3.4vw, 52px); // footer wordmark
+    --tsm-font-size-headline-2xs: clamp(28px, 2.5vw, 42px); // comparison card h2
+    // C's sticky left-rail labels, sized in rem to track the root font size.
+    --tsm-font-size-headline-rail-lg: clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem);
+    --tsm-font-size-headline-rail-md: clamp(2rem, 1.6vw + 1.6rem, 3.2rem);
+    --tsm-font-size-headline-mobile-xl: clamp(44px, 13vw, 60px); // C membership, <768
+
+    // ---- Title — card and row headings -------------------------------------
+    --tsm-font-size-title-xl: clamp(27px, 2.3vw, 38px);
+    --tsm-font-size-title-lg: clamp(24px, 2vw, 33px);
+    --tsm-font-size-title-md: clamp(24px, 2vw, 31px);
+    // -alt steps sit within 1px of the step above and exist only because the
+    // three concepts were drawn independently. Merging them is the next design
+    // decision, not a free rename — see known-issues.md for the measured cost.
+    --tsm-font-size-title-md-alt: clamp(23px, 2vw, 31px);
+    --tsm-font-size-title-sm: clamp(22px, 1.8vw, 29px);
+    --tsm-font-size-title-sm-alt: clamp(22px, 1.8vw, 30px);
+    --tsm-font-size-title-xs: clamp(21px, 1.8vw, 28px);
+    --tsm-font-size-title-2xs: clamp(20px, 1.6vw, 26px);
+    --tsm-font-size-title-2xs-alt: clamp(20px, 1.55vw, 25px);
+    --tsm-font-size-title-3xs: clamp(20px, 2vw, 24px);
+    --tsm-font-size-title-footer: clamp(24px, 2.4vw, 38px); // footer identity
+    --tsm-font-size-title-footer-b: clamp(22px, 2.2vw, 32px);
+
+    // ---- Figure — large tabular numerals ------------------------------------
+    --tsm-font-size-figure-lg: clamp(54px, 5.2vw, 82px); // B quick-access counter
+    --tsm-font-size-figure-md: clamp(28px, 2.4vw, 40px); // C row index
+    --tsm-font-size-figure-sm: clamp(26px, 2.4vw, 38px); // B event day
+
+    // ---- Body ---------------------------------------------------------------
+    --tsm-font-size-body-xl: clamp(18px, 1.45vw, 22px); // hero lede
+    --tsm-font-size-body-lg-fluid: clamp(15px, 1.25vw, 19px); // B caption title
+    --tsm-font-size-body-md-fluid: clamp(15px, 1vw, 17px); // C hero lede
+    --tsm-font-size-body-lg: 19px;
+    --tsm-font-size-body-md: 18px;
+    --tsm-font-size-body-sm: 17px;
+    --tsm-font-size-body-xs: 16px;
+
+    // ---- Label — eyebrows, meta, counters -----------------------------------
+    --tsm-font-size-label-lg: 14px;
+    --tsm-font-size-label-md: 13px;
+    --tsm-font-size-label-sm: 11px;
+    --tsm-font-size-label-xs: 10px;
+
+    // ---- Icon — Material Symbols optical sizes ------------------------------
+    --tsm-font-size-icon-2xl: 38px;
+    --tsm-font-size-icon-xl: 36px;
+    --tsm-font-size-icon-lg: 30px;
+    --tsm-font-size-icon-md: 28px;
+    --tsm-font-size-icon-sm: 26px;
+    --tsm-font-size-icon-xs: 25px;
+    --tsm-font-size-icon-2xs: 24px;
+    --tsm-font-size-icon-3xs: 21px;
+    --tsm-font-size-icon-4xs: 20px;
+    --tsm-font-size-icon-5xs: 19px;
+    --tsm-font-size-icon-6xs: 18px;
+
+    // ---- Line height ---------------------------------------------------------
+    --tsm-line-height-display: 1.08;
+    --tsm-line-height-headline: 1.06;
+    --tsm-line-height-title: 1.2;
+    --tsm-line-height-body: 1.7;
+    --tsm-line-height-label: 1.4;
+
+    // ---- Weight --------------------------------------------------------------
+    --tsm-font-weight-regular: 400;
+    --tsm-font-weight-medium: 600;
+    --tsm-font-weight-semibold: 650;
+    --tsm-font-weight-bold: 700;
+
+    // ---- Tracking ------------------------------------------------------------
+    --tsm-tracking-display: -0.035em;
+    --tsm-tracking-title: -0.02em;
+    --tsm-tracking-body: normal;
+    --tsm-tracking-label: 0.15em;
+    --tsm-tracking-label-wide: 0.22em;
+  }
+
+  // ---------------------------------------------------------------------------
+  // Typography classes — the API for new markup.
+  //
+  // These bundle size, line height, weight and tracking so a heading needs one
+  // class rather than four declarations. The existing concept pages still style
+  // their headings through element selectors that consume the same tokens;
+  // migrating that markup is tracked in known-issues.md. Nothing here restates
+  // a value — every declaration reads a token.
+  // ---------------------------------------------------------------------------
+  .tsm-display {
+    font-size: var(--tsm-font-size-display-xl);
+    line-height: var(--tsm-line-height-display);
+    font-weight: var(--tsm-font-weight-semibold);
+    letter-spacing: var(--tsm-tracking-display);
+  }
+
+  .tsm-headline {
+    font-size: var(--tsm-font-size-headline-xl);
+    line-height: var(--tsm-line-height-headline);
+    font-weight: var(--tsm-font-weight-semibold);
+    letter-spacing: var(--tsm-tracking-display);
+  }
+
+  .tsm-title {
+    font-size: var(--tsm-font-size-title-xs);
+    line-height: var(--tsm-line-height-title);
+    font-weight: var(--tsm-font-weight-bold);
+    letter-spacing: var(--tsm-tracking-title);
+  }
+
+  .tsm-body {
+    font-size: var(--tsm-font-size-body-sm);
+    line-height: var(--tsm-line-height-body);
+    font-weight: var(--tsm-font-weight-regular);
+    letter-spacing: var(--tsm-tracking-body);
+  }
+
+  .tsm-label {
+    font-size: var(--tsm-font-size-label-lg);
+    line-height: var(--tsm-line-height-label);
+    font-weight: var(--tsm-font-weight-medium);
+    letter-spacing: var(--tsm-tracking-label);
+  }
+
+  // Theme C's section labels are set wider and uppercase.
+  .theme-c .tsm-label {
+    letter-spacing: var(--tsm-tracking-label-wide);
+    text-transform: uppercase;
+  }
+}

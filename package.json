@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "check:styles": "node scripts/check-stylesheet-contract.mjs"
   },
   "private": true,
   "dependencies": {

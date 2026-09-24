@@ -23,6 +23,11 @@ interface ColorRow extends TokenRow {
   readonly grade: 'AAA' | 'AA' | 'AA Large' | 'Fail' | '—';
 }
 
+interface LadderRow extends TokenRow {
+  /** display / headline / title / figure / body / label / icon */
+  readonly role: string;
+}
+
 interface TypeRow {
   readonly label: string;
   readonly selector: string;
@@ -108,7 +113,7 @@ export class DesignSystemPage {
    * Token names are read out of the stylesheets themselves, so a token added to
    * _tokens.scss shows up here without anyone editing this page.
    */
-  private tokenNames(prefix: string): string[] {
+  private tokenNames(prefix: string, sort = true): string[] {
     const names = new Set<string>();
     for (const sheet of Array.from(document.styleSheets)) {
       let rules: CSSRuleList;
@@ -119,7 +124,9 @@ export class DesignSystemPage {
       }
       this.collect(rules, prefix, names);
     }
-    return [...names].sort((a, b) => this.sortToken(a, b));
+    // The type ladder is authored largest-first, and that order carries meaning,
+    // so it is kept as declared; numeric scales are sorted numerically.
+    return sort ? [...names].sort((a, b) => this.sortToken(a, b)) : [...names];
   }
 
   private collect(rules: CSSRuleList, prefix: string, into: Set<string>): void {
@@ -171,6 +178,24 @@ export class DesignSystemPage {
     this.revision();
     return this.tokenNames('--tsm-space-').map((name) => ({ name, value: this.read(name) }));
   });
+
+  /** The type ladder, grouped by role, read straight out of the stylesheets. */
+  readonly fontSizeTokens = computed<LadderRow[]>(() => {
+    this.revision();
+    return this.tokenNames('--tsm-font-size-', false).map((name) => ({
+      name,
+      value: this.read(name),
+      role: name.replace('--tsm-font-size-', '').split('-')[0],
+    }));
+  });
+
+  readonly fontSizeRoles = computed<string[]>(() => [
+    ...new Set(this.fontSizeTokens().map((t) => t.role)),
+  ]);
+
+  tokensForRole(role: string): LadderRow[] {
+    return this.fontSizeTokens().filter((t) => t.role === role);
+  }
 
   readonly radiusTokens = computed<TokenRow[]>(() => {
     this.revision();

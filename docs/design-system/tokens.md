@@ -1,6 +1,8 @@
 # Design Token
 
-所有 token 定義於 **`src/styles/_tokens.scss`**，位於 `@layer base`。
+顏色、間距、圓角與版面 token 定義於 **`src/styles/_tokens.scss`**，位於 `@layer base`。
+字級、行高、字重與字距屬於排版系統，定義於 `src/styles/_typography.scss`，
+見 [`typography.md`](typography.md)。
 token 是 CSS 自訂屬性，會沿 DOM 繼承，因此主題只要掛在容器上
 （`.theme-a` / `.theme-b` / `.theme-c`），底下所有元素——包含使用
 emulated encapsulation 的子元件——都會取到正確的值。
@@ -12,7 +14,8 @@ emulated encapsulation 的子元件——都會取到正確的值。
 ```
 
 - 前綴 `--tsm-` 避免與未來引入的第三方樣式衝突。
-- 類別：`color` / `space` / `radius` / `container`。
+- 類別：`color` / `space` / `radius` / `container`（排版類另見 `typography.md`：
+  `font-size` / `line-height` / `font-weight` / `tracking`）。
 - **每個 token 在三個主題都必須有值**，即使當下三者相同。少寫一個，
   該主題會沿用 `:root` 或繼承到別處的值，這正是重構前 A 案沒有自己
   token 列的原因。

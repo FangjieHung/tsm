@@ -23,7 +23,7 @@ h3 {
 }
 h2 {
    margin-bottom: 0;
-   font-size: clamp(44px, 5vw, 70px);
+   font-size: var(--tsm-font-size-headline-xl);
    line-height: 1.06;
    font-weight: 650;
 }
@@ -45,7 +45,7 @@ h3 {
 .theme-c .swiss-number {
    margin: 0 0 var(--tsm-space-10);
    color: var(--tsm-color-accent);
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
    font-weight: 600;
    text-transform: uppercase;
    letter-spacing: 0.22em;
@@ -92,13 +92,13 @@ h3 {
 .hero h1 {
    max-width: 12ch;
    margin: 0;
-   font-size: clamp(54px, 5.6vw, 84px);
+   font-size: var(--tsm-font-size-display-xl);
    line-height: 1.08;
    font-weight: 650;
 }
 .hero-description {
    margin: var(--tsm-space-32) 0 0;
-   font-size: clamp(18px, 1.45vw, 22px);
+   font-size: var(--tsm-font-size-body-xl);
    color: var(--tsm-color-ink-muted);
 }
 .hero-actions {
@@ -207,7 +207,7 @@ h3 {
    color: var(--tsm-color-ink-inverse);
    letter-spacing: 0.03em;
    line-height: 1.25;
-   font-size: clamp(5rem, 2vw + 2rem, 7rem);
+   font-size: var(--tsm-font-size-display-2xl);
 }
 .theme-c .hero-intro {
    grid-column: 2;
@@ -216,7 +216,7 @@ h3 {
 .theme-c .hero-intro .hero-description {
    margin: 0;
    color: rgb(255 255 255 / 0.82);
-   font-size: clamp(15px, 1vw, 17px);
+   font-size: var(--tsm-font-size-body-md-fluid);
    line-height: 1.65;
 }
 .theme-c .hero-intro .hero-actions {
@@ -265,7 +265,7 @@ h3 {
    letter-spacing: -0.02em;
    line-height: 0.82;
 
-   font-size: min(14vw, 15rem);
+   font-size: var(--tsm-font-size-display-watermark);
    white-space: nowrap;
    pointer-events: none;
    user-select: none;
@@ -326,17 +326,17 @@ h3 {
    font-variant-numeric: tabular-nums;
 }
 .quick-item > app-symbol {
-   font-size: 38px;
+   font-size: var(--tsm-font-size-icon-2xl);
    color: var(--tsm-color-link);
    width: fit-content;
 }
 .quick-item h3 {
    margin-top: 42px;
-   font-size: clamp(27px, 2.3vw, 38px);
+   font-size: var(--tsm-font-size-title-xl);
 }
 .quick-item p {
    color: var(--tsm-color-ink-muted);
-   font-size: 18px;
+   font-size: var(--tsm-font-size-body-md);
 }
 .quick-item a {
    min-height: 48px;
@@ -401,7 +401,7 @@ h3 {
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
-   font-size: clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem);
+   font-size: var(--tsm-font-size-headline-rail-lg);
 }
 .quick-list {
    display: grid;
@@ -424,7 +424,7 @@ h3 {
    border-bottom: 0;
 }
 .quick-row-index {
-   font-size: clamp(28px, 2.4vw, 40px);
+   font-size: var(--tsm-font-size-figure-md);
    font-weight: 900;
    letter-spacing: -0.02em;
    font-variant-numeric: tabular-nums;
@@ -440,22 +440,22 @@ h3 {
    gap: var(--tsm-space-14);
 }
 .quick-row-heading app-symbol {
-   font-size: 26px;
+   font-size: var(--tsm-font-size-icon-sm);
    color: var(--tsm-color-accent);
 }
 .quick-row-heading h3 {
    text-transform: uppercase;
    font-weight: 700;
-   font-size: clamp(22px, 1.8vw, 30px);
+   font-size: var(--tsm-font-size-title-sm-alt);
 }
 .quick-row-body p {
    margin: 0;
    max-width: 46ch;
    color: var(--tsm-color-ink-muted);
-   font-size: 17px;
+   font-size: var(--tsm-font-size-body-sm);
 }
 .quick-row-arrow {
-   font-size: 30px;
+   font-size: var(--tsm-font-size-icon-lg);
    transform: rotate(-45deg);
    transition: transform 0.18s ease-out;
 }
@@ -516,7 +516,7 @@ h3 {
    font-weight: 750;
 }
 .event-item h3 {
-   font-size: clamp(24px, 2vw, 33px);
+   font-size: var(--tsm-font-size-title-lg);
 }
 .event-item time {
    margin-top: var(--tsm-space-12);
@@ -580,7 +580,7 @@ h3 {
 .theme-c .event-item > p {
    text-transform: uppercase;
    letter-spacing: 0.12em;
-   font-size: 13px;
+   font-size: var(--tsm-font-size-label-md);
 }
 
 .theme-c .event-item--c {
@@ -597,7 +597,7 @@ h3 {
    margin: 0 0 var(--tsm-space-8);
    text-transform: uppercase;
    letter-spacing: 0.12em;
-   font-size: 13px;
+   font-size: var(--tsm-font-size-label-md);
    color: var(--tsm-color-accent);
 }
 
@@ -635,7 +635,7 @@ h3 {
    color: var(--tsm-color-link);
 }
 .news-item h3 {
-   font-size: clamp(23px, 2vw, 31px);
+   font-size: var(--tsm-font-size-title-md-alt);
 }
 .news-image {
    display: none;
@@ -693,7 +693,7 @@ h3 {
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
-   font-size: clamp(2rem, 1.6vw + 1.6rem, 3.2rem);
+   font-size: var(--tsm-font-size-headline-rail-md);
 }
 .news-archive {
    width: 100%;
@@ -735,7 +735,7 @@ h3 {
    margin-bottom: var(--tsm-space-8);
    text-transform: uppercase;
    letter-spacing: 0.16em;
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
    font-weight: 600;
    color: var(--tsm-color-accent);
 }
@@ -743,12 +743,12 @@ h3 {
    display: block;
    text-transform: uppercase;
    letter-spacing: 0.12em;
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
    color: var(--tsm-color-ink-muted);
 }
 .news-card h3 {
    margin-top: var(--tsm-space-4);
-   font-size: clamp(21px, 1.8vw, 28px);
+   font-size: var(--tsm-font-size-title-xs);
    font-weight: 700;
    line-height: 1.2;
 }
@@ -760,7 +760,7 @@ h3 {
    font-weight: 700;
    text-transform: uppercase;
    letter-spacing: 0.04em;
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
 }
 .news-card:hover,
 .news-card:focus-within {
@@ -820,11 +820,11 @@ h3 {
 }
 
 .resource-item > app-symbol {
-   font-size: 30px;
+   font-size: var(--tsm-font-size-icon-lg);
    color: var(--tsm-color-link);
 }
 .resource-item h3 {
-   font-size: clamp(22px, 1.8vw, 29px);
+   font-size: var(--tsm-font-size-title-sm);
    line-height: 1.2;
 }
 .resource-item p {
@@ -991,7 +991,7 @@ h3 {
    border-left: 0;
 }
 .member-action > app-symbol:first-child {
-   font-size: 36px;
+   font-size: var(--tsm-font-size-icon-xl);
    color: var(--tsm-color-link);
 }
 .member-action span {
@@ -999,11 +999,11 @@ h3 {
    gap: var(--tsm-space-8);
 }
 .member-action strong {
-   font-size: clamp(20px, 2vw, 24px);
+   font-size: var(--tsm-font-size-title-3xs);
 }
 .member-action small {
    color: var(--tsm-color-ink-muted);
-   font-size: 16px;
+   font-size: var(--tsm-font-size-body-xs);
 }
 .member-action--primary {
    background: var(--tsm-color-accent);
@@ -1188,12 +1188,12 @@ h3 {
 }
 .b-hero-copy .section-code {
    margin-bottom: var(--tsm-space-14);
-   font-size: 10px;
+   font-size: var(--tsm-font-size-label-xs);
 }
 .b-hero-copy h1 {
    max-width: 100%;
    margin: 0;
-   font-size: clamp(42px, 4.3vw, 66px);
+   font-size: var(--tsm-font-size-display-md);
    line-height: 1.2;
    font-weight: 600;
    letter-spacing: 0.01em;
@@ -1203,7 +1203,7 @@ h3 {
    max-width: 52ch;
    margin: var(--tsm-space-22) 0 var(--tsm-space-30);
    color: var(--tsm-color-ink-muted);
-   font-size: 17px;
+   font-size: var(--tsm-font-size-body-sm);
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
    .b-hero-copy {
@@ -1282,7 +1282,7 @@ h3 {
 }
 .theme-b h2 {
    color: var(--tsm-color-ink);
-   font-size: clamp(40px, 4.2vw, 62px);
+   font-size: var(--tsm-font-size-headline-lg);
    font-weight: 600;
    line-height: 1.02;
    letter-spacing: -0.045em;
@@ -1344,7 +1344,7 @@ h3 {
 .theme-b .quick-item .item-number {
    justify-self: start;
    color: var(--tsm-color-accent);
-   font-size: clamp(54px, 5.2vw, 82px);
+   font-size: var(--tsm-font-size-figure-lg);
    font-weight: 600;
    line-height: 0.9;
    letter-spacing: -0.07em;
@@ -1352,14 +1352,14 @@ h3 {
 .theme-b .quick-item h3 {
    max-width: 58%;
    margin-top: var(--tsm-space-26);
-   font-size: clamp(24px, 2vw, 31px);
+   font-size: var(--tsm-font-size-title-md);
    font-weight: 600;
    line-height: 1.12;
 }
 .theme-b .quick-item p {
    max-width: 62%;
    margin-block: var(--tsm-space-12) var(--tsm-space-18);
-   font-size: 16px;
+   font-size: var(--tsm-font-size-body-xs);
    line-height: 1.65;
 }
 /* Reference pins the circular control to the card's bottom-right corner; it previously sat
@@ -1408,7 +1408,7 @@ h3 {
 }
 .theme-b .events-copy h2 {
    margin-bottom: 0;
-   font-size: clamp(36px, 3.2vw, 50px);
+   font-size: var(--tsm-font-size-headline-sm);
    text-wrap: nowrap;
 }
 /* Reference sets the archive pill on the heading's own baseline, not beside the lead. */
@@ -1442,7 +1442,7 @@ h3 {
    max-width: 19ch;
    margin: 0;
    color: inherit;
-   font-size: clamp(15px, 1.25vw, 19px);
+   font-size: var(--tsm-font-size-body-lg-fluid);
    font-weight: 600;
    line-height: 1.5;
    letter-spacing: 0.06em;
@@ -1457,7 +1457,7 @@ h3 {
 .theme-b .b-events-caption-meta {
    margin: 0;
    color: rgb(255 255 255 / 92%);
-   font-size: 13px;
+   font-size: var(--tsm-font-size-label-md);
    font-weight: 600;
    letter-spacing: 0.09em;
 }
@@ -1487,7 +1487,7 @@ h3 {
    border-radius: 999px;
    color: var(--tsm-color-accent);
    background-color: var(--tsm-color-surface-sunken);
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
    font-weight: 600;
    letter-spacing: 0.04em;
    text-decoration: none;
@@ -1518,7 +1518,7 @@ h3 {
    padding: 0;
    border-right: 0;
    color: var(--tsm-color-ink-faint);
-   font-size: 18px;
+   font-size: var(--tsm-font-size-body-md);
    line-height: 1.2;
    letter-spacing: 0.035em;
    font-variant-numeric: tabular-nums;
@@ -1526,7 +1526,7 @@ h3 {
 .theme-b .b-event-date strong {
    margin-block: var(--tsm-space-4) var(--tsm-space-8);
    color: var(--tsm-color-accent);
-   font-size: clamp(26px, 2.4vw, 38px);
+   font-size: var(--tsm-font-size-figure-sm);
    line-height: 1;
    letter-spacing: -0.05em;
 }
@@ -1541,7 +1541,7 @@ h3 {
    text-transform: uppercase;
 }
 .theme-b .b-event-item h3 {
-   font-size: clamp(22px, 1.8vw, 29px);
+   font-size: var(--tsm-font-size-title-sm);
    font-weight: 600;
    line-height: 1.25;
 }
@@ -1554,7 +1554,7 @@ h3 {
    font-weight: 300;
 }
 .theme-b .b-event-detail app-symbol {
-   font-size: 18px;
+   font-size: var(--tsm-font-size-icon-6xs);
    color: var(--tsm-color-accent);
 }
 .theme-b .b-event-description {
@@ -1577,7 +1577,7 @@ h3 {
    white-space: nowrap;
 }
 .theme-b .b-event-item .event-actions .button app-symbol {
-   font-size: 19px;
+   font-size: var(--tsm-font-size-icon-5xs);
 }
 .theme-b .b-event-item .event-actions > .sr-only:focus-visible {
    position: static !important;
@@ -1616,13 +1616,13 @@ h3 {
    border-radius: 999px;
    background: var(--tsm-color-accent);
    color: var(--tsm-color-accent-ink);
-   font-size: 11px;
+   font-size: var(--tsm-font-size-label-sm);
    font-weight: 600;
    letter-spacing: 0.14em;
 }
 .theme-b .b-resource-panel .resources-heading h2 {
    margin-bottom: var(--tsm-space-12);
-   font-size: clamp(38px, 3.5vw, 54px);
+   font-size: var(--tsm-font-size-headline-md);
 }
 .theme-b .b-resource-panel .resource-grid {
    min-height: 0;
@@ -1648,10 +1648,10 @@ h3 {
    border-radius: 50%;
    background: var(--tsm-color-surface-sunken);
    color: var(--tsm-color-accent);
-   font-size: 25px;
+   font-size: var(--tsm-font-size-icon-xs);
 }
 .theme-b .b-resource-panel .resource-item h3 {
-   font-size: clamp(20px, 1.55vw, 25px);
+   font-size: var(--tsm-font-size-title-2xs-alt);
    font-weight: 600;
 }
 .theme-b .b-resource-panel .resource-item p {
@@ -1679,7 +1679,7 @@ h3 {
       transform 0.2s ease;
 }
 .theme-b .b-resource-panel .resource-item a app-symbol {
-   font-size: 24px;
+   font-size: var(--tsm-font-size-icon-2xs);
 }
 .theme-b .b-resource-panel .resource-item:hover a,
 .theme-b .b-resource-panel .resource-item:focus-within a {
@@ -1824,11 +1824,11 @@ h3 {
          inset 0 1px 0 rgb(255 255 255 / 86%);
    }
    .b-hero-copy h1 {
-      font-size: clamp(38px, 11vw, 52px);
+      font-size: var(--tsm-font-size-display-md-sm);
    }
    .b-hero-copy > p:not(.section-code) {
       margin: var(--tsm-space-18) 0 var(--tsm-space-26);
-      font-size: 16px;
+      font-size: var(--tsm-font-size-body-xs);
    }
    .b-hero-copy.reveal-on-view {
       transform: translateY(calc(-50% + 18px));
@@ -2003,7 +2003,7 @@ display:none;
    align-items: center;
    color: white;
    text-decoration: none;
-   font-size: 13px;
+   font-size: var(--tsm-font-size-label-md);
    border-radius: 8px;
 }
 .concept-switcher a:hover {
@@ -2043,7 +2043,7 @@ display:none;
       padding: clamp(72px, 11vh, 120px) 32px clamp(140px, 22vw, 200px);
    }
    .theme-c .hero-copy--c h1 {
-      font-size: clamp(2.1rem, 2.4vw + 1.5rem, 3rem);
+      font-size: var(--tsm-font-size-display-2xl-md);
    }
    .quick-grid {
       grid-template-columns: 1fr 1fr;
@@ -2100,7 +2100,7 @@ display:none;
       padding-block: var(--tsm-space-72);
    }
    h2 {
-      font-size: clamp(38px, 12vw, 52px);
+      font-size: var(--tsm-font-size-headline-xl-sm);
    }
    .hero {
       min-height: auto;
@@ -2120,11 +2120,11 @@ display:none;
       background: var(--tsm-color-surface);
    }
    .hero h1 {
-      font-size: clamp(42px, 12vw, 58px);
+      font-size: var(--tsm-font-size-display-xl-sm);
    }
    .hero-description {
       margin-top: var(--tsm-space-24);
-      font-size: 17px;
+      font-size: var(--tsm-font-size-body-sm);
    }
    .hero-actions {
       width: 100%;
@@ -2165,7 +2165,7 @@ display:none;
    .theme-c .hero-copy--c h1 {
       grid-column: 1;
       max-width: none;
-      font-size: clamp(2rem, 9vw, 2.6rem);
+      font-size: var(--tsm-font-size-display-2xl-sm);
    }
    .theme-c .hero-intro {
       grid-column: 1;
@@ -2203,7 +2203,7 @@ display:none;
    }
    .theme-c .quick-access h2,
    .theme-c .membership-content h2 {
-      font-size: clamp(44px, 13vw, 60px);
+      font-size: var(--tsm-font-size-headline-mobile-xl);
    }
    .quick-split {
       grid-template-columns: 1fr;
@@ -2394,7 +2394,7 @@ display:none;
 }
 .theme-b .b-news-heading h2 {
    color: var(--tsm-color-ink);
-   font-size: clamp(40px, 4.2vw, 62px);
+   font-size: var(--tsm-font-size-headline-lg);
    font-weight: 600;
    line-height: 1;
    letter-spacing: -0.055em;
@@ -2403,7 +2403,7 @@ display:none;
    max-width: 38ch;
    margin: var(--tsm-space-14) 0 0;
    color: var(--tsm-color-ink-subtle);
-   font-size: 16px;
+   font-size: var(--tsm-font-size-body-xs);
    line-height: 1.65;
 }
 /* Reference puts this on the heading's own line at the far right, with no underline. */
@@ -2426,7 +2426,7 @@ display:none;
    color: var(--tsm-color-link);
 }
 .theme-b .b-news-archive app-symbol {
-   font-size: 20px;
+   font-size: var(--tsm-font-size-icon-4xs);
 }
 .theme-b .news-list {
    display: grid;
@@ -2474,14 +2474,14 @@ display:none;
    justify-content: flex-start;
    gap: var(--tsm-space-10);
    color: var(--tsm-color-ink-subtle);
-   font-size: 13px;
+   font-size: var(--tsm-font-size-label-md);
 }
 .theme-b .b-news-action .news-meta b {
    padding: var(--tsm-space-6) var(--tsm-space-12);
    border-radius: 999px;
    background: var(--tsm-color-accent);
    color: var(--tsm-color-accent-ink);
-   font-size: 14px;
+   font-size: var(--tsm-font-size-label-lg);
    letter-spacing: 0.03em;
 }
 .theme-b .b-news-action .news-meta time {
@@ -2502,7 +2502,7 @@ display:none;
    grid-column: 1 / -1;
    margin: 0;
    color: var(--tsm-color-ink);
-   font-size: clamp(21px, 1.8vw, 28px);
+   font-size: var(--tsm-font-size-title-xs);
    font-weight: 600;
    line-height: 1.25;
 }
@@ -2544,7 +2544,7 @@ display:none;
       transform 0.2s ease;
 }
 .theme-b .b-news-arrow app-symbol {
-   font-size: 21px;
+   font-size: var(--tsm-font-size-icon-3xs);
 }
 .theme-b .news-item:hover .news-image img,
 .theme-b .news-item:focus-within .news-image img {
@@ -2585,7 +2585,7 @@ display:none;
 .theme-b .b-membership-heading h2 {
    margin: 0;
    color: var(--tsm-color-ink);
-   font-size: clamp(40px, 4.2vw, 62px);
+   font-size: var(--tsm-font-size-headline-lg);
    font-weight: 600;
    line-height: 1;
    letter-spacing: -0.055em;
@@ -2594,7 +2594,7 @@ display:none;
    max-width: 30ch;
    margin: var(--tsm-space-16) 0 0;
    color: #315b70;
-   font-size: 17px;
+   font-size: var(--tsm-font-size-body-sm);
    line-height: 1.65;
 }
 .theme-b .b-membership-support {
@@ -2666,7 +2666,7 @@ display:none;
    box-shadow: inset 0 0 0 1px rgb(15 141 178 / 9%);
 }
 .theme-b .b-member-icon app-symbol {
-   font-size: 28px;
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .b-member-body {
    align-self: end;
@@ -2677,7 +2677,7 @@ display:none;
 }
 .theme-b .member-action strong {
    color: inherit;
-   font-size: clamp(20px, 1.6vw, 26px);
+   font-size: var(--tsm-font-size-title-2xs);
    font-weight: 600;
    line-height: 1.18;
 }
@@ -2702,7 +2702,7 @@ display:none;
       transform 0.2s ease;
 }
 .theme-b .b-member-arrow app-symbol {
-   font-size: 21px;
+   font-size: var(--tsm-font-size-icon-3xs);
 }
 .theme-b .member-action--primary.b-member-featured {
    min-height: 332px;

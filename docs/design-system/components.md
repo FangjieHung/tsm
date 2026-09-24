@@ -11,6 +11,9 @@
 
 ---
 
+排版另成一層，見 [`typography.md`](typography.md)：`.tsm-display` 等 class 位於
+`@layer base`，是新標記設定字級的唯一方式。
+
 ## 全域元件層
 
 ### Button

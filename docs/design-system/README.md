@@ -7,7 +7,8 @@
 
 | 檔案 | 內容 |
 |---|---|
-| [`tokens.md`](tokens.md) | token 完整對照表、命名規則、新增 token 的流程 |
+| [`tokens.md`](tokens.md) | 顏色、間距、圓角 token 對照表與新增流程 |
+| [`typography.md`](typography.md) | 字級階梯、角色分類、typography class |
 | [`components.md`](components.md) | 元件清單、class 契約、原始碼位置 |
 | [`conventions.md`](conventions.md) | `@layer` 判定、反模式、Code Review checklist |
 | [`known-issues.md`](known-issues.md) | 已知缺陷與尚未完成的遷移 |
@@ -20,7 +21,8 @@ src/
 └─ styles/
    ├─ _layers.scss             @layer 順序宣告（唯一一處）
    ├─ _reset.scss              元素正規化
-   ├─ _tokens.scss             ★ 所有 token 的唯一真相
+   ├─ _tokens.scss             ★ 顏色／間距／圓角 token
+   ├─ _typography.scss         ★ 字級階梯與 typography class
    ├─ _components.scss         @forward components/
    ├─ components/
    │  ├─ _button.scss
@@ -47,7 +49,7 @@ src/
 
 1. 編輯 `src/styles/_tokens.scss`，三個主題都要給值（即使值相同）。
 2. `npm start`，開 `/#/design-system`，切換三案確認。
-3. `npm test -- --watch=false` 與 `npm run build`。
+3. `npm run check:styles`、`npm test -- --watch=false` 與 `npm run build`。
 4. 三案 × 四斷點（375／768／1024／1440）截圖比對。
 
 ## 驗證環境
