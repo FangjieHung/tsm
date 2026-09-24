@@ -79,17 +79,13 @@
     --tsm-font-size-label-xs: 10px;
 
     // ---- Icon — Material Symbols optical sizes ------------------------------
-    --tsm-font-size-icon-2xl: 38px;
-    --tsm-font-size-icon-xl: 36px;
-    --tsm-font-size-icon-lg: 30px;
-    --tsm-font-size-icon-md: 28px;
-    --tsm-font-size-icon-sm: 26px;
-    --tsm-font-size-icon-xs: 25px;
-    --tsm-font-size-icon-2xs: 24px;
-    --tsm-font-size-icon-3xs: 21px;
-    --tsm-font-size-icon-4xs: 20px;
-    --tsm-font-size-icon-5xs: 19px;
-    --tsm-font-size-icon-6xs: 18px;
+    // Four steps on the Material optical scale. The concepts had eleven, drawn
+    // independently; icons are inline and centred in their rows, so collapsing
+    // them costs far less than collapsing a text step would.
+    --tsm-font-size-icon-xl: 40px; // hero-level entry icons
+    --tsm-font-size-icon-lg: 32px; // card and badge icons
+    --tsm-font-size-icon-md: 24px; // list-row icons
+    --tsm-font-size-icon-sm: 20px; // inline icons beside text
 
     // ---- Line height ---------------------------------------------------------
     --tsm-line-height-display: 1.08;

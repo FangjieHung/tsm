@@ -326,7 +326,7 @@ h3 {
    font-variant-numeric: tabular-nums;
 }
 .quick-item > app-symbol {
-   font-size: var(--tsm-font-size-icon-2xl);
+   font-size: var(--tsm-font-size-icon-xl);
    color: var(--tsm-color-link);
    width: fit-content;
 }
@@ -440,7 +440,7 @@ h3 {
    gap: var(--tsm-space-14);
 }
 .quick-row-heading app-symbol {
-   font-size: var(--tsm-font-size-icon-sm);
+   font-size: var(--tsm-font-size-icon-md);
    color: var(--tsm-color-accent);
 }
 .quick-row-heading h3 {
@@ -1554,7 +1554,7 @@ h3 {
    font-weight: 300;
 }
 .theme-b .b-event-detail app-symbol {
-   font-size: var(--tsm-font-size-icon-6xs);
+   font-size: var(--tsm-font-size-icon-md);
    color: var(--tsm-color-accent);
 }
 .theme-b .b-event-description {
@@ -1577,7 +1577,7 @@ h3 {
    white-space: nowrap;
 }
 .theme-b .b-event-item .event-actions .button app-symbol {
-   font-size: var(--tsm-font-size-icon-5xs);
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .b-event-item .event-actions > .sr-only:focus-visible {
    position: static !important;
@@ -1648,7 +1648,7 @@ h3 {
    border-radius: 50%;
    background: var(--tsm-color-surface-sunken);
    color: var(--tsm-color-accent);
-   font-size: var(--tsm-font-size-icon-xs);
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .b-resource-panel .resource-item h3 {
    font-size: var(--tsm-font-size-title-2xs-alt);
@@ -1679,7 +1679,7 @@ h3 {
       transform 0.2s ease;
 }
 .theme-b .b-resource-panel .resource-item a app-symbol {
-   font-size: var(--tsm-font-size-icon-2xs);
+   font-size: var(--tsm-font-size-icon-lg);
 }
 .theme-b .b-resource-panel .resource-item:hover a,
 .theme-b .b-resource-panel .resource-item:focus-within a {
@@ -2426,7 +2426,7 @@ display:none;
    color: var(--tsm-color-link);
 }
 .theme-b .b-news-archive app-symbol {
-   font-size: var(--tsm-font-size-icon-4xs);
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .news-list {
    display: grid;
@@ -2544,7 +2544,7 @@ display:none;
       transform 0.2s ease;
 }
 .theme-b .b-news-arrow app-symbol {
-   font-size: var(--tsm-font-size-icon-3xs);
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .news-item:hover .news-image img,
 .theme-b .news-item:focus-within .news-image img {
@@ -2666,7 +2666,7 @@ display:none;
    box-shadow: inset 0 0 0 1px rgb(15 141 178 / 9%);
 }
 .theme-b .b-member-icon app-symbol {
-   font-size: var(--tsm-font-size-icon-md);
+   font-size: var(--tsm-font-size-icon-lg);
 }
 .theme-b .b-member-body {
    align-self: end;
@@ -2702,7 +2702,7 @@ display:none;
       transform 0.2s ease;
 }
 .theme-b .b-member-arrow app-symbol {
-   font-size: var(--tsm-font-size-icon-3xs);
+   font-size: var(--tsm-font-size-icon-md);
 }
 .theme-b .member-action--primary.b-member-featured {
    min-height: 332px;

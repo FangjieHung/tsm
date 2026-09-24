@@ -20,7 +20,7 @@ live 檢視：`/#/design-system` 的「02 — 字體排印」。
 | **Figure** | 大型數字：區塊序號、活動日期 | 3 |
 | **Body** | 內文、導言 | 7 |
 | **Label** | 英文標籤、meta、日期、分類 | 4 |
-| **Icon** | Material Symbols 光學尺寸（由 `font-size` 驅動） | 11 |
+| **Icon** | Material Symbols 光學尺寸（由 `font-size` 驅動） | 4 |
 
 Figure 與 Icon 不在 MD3 分類中，但這個專案真的需要它們：大型數字有自己的字重與
 tabular 對齊需求，而 Material Symbols 的尺寸是字級、不是寬高，混進 Body／Label
@@ -108,11 +108,19 @@ tabular 對齊需求，而 Material Symbols 的尺寸是字級、不是寬高，
 
 ### Icon
 
-`--tsm-font-size-icon-*`：38、36、30、28、26、25、24、21、20、19、18px。
+| Token | 值 | 用於 |
+|---|---|---|
+| `icon-xl` | `40px` | 快速入口卡片、會員卡片的主圖示 |
+| `icon-lg` | `32px` | 列箭頭、資源卡片、B 案會員徽章 |
+| `icon-md` | `24px` | 列標題與資源列圖示 |
+| `icon-sm` | `20px` | 緊鄰文字的行內圖示、按鈕內圖示、箭頭 |
 
-11 個步階明顯過多——圖示尺寸沒有理由這麼細。這是最容易收斂、且風險最低的一組
-（圖示是行內元素，尺寸微調不造成文字重排），建議收成 4 階：
-40 / 32 / 24 / 20。列於 `known-issues.md`。
+原本有 11 階（38／36／30／28／26／25／24／21／20／19／18px），是三案各自繪製的結果。
+已收斂為 Material 光學尺寸的 4 階，最大位移 4px（36→40、28→32），
+實測影響見 [`known-issues.md`](known-issues.md#icon-階梯收斂的實測結果)。
+
+圖示尺寸由 `font-size` 驅動（Material Symbols 是字型），因此它與文字字級共用同一組
+token 前綴，但**分屬不同角色**——調整內文字級不應該動到圖示。
 
 ## Typography class
 
