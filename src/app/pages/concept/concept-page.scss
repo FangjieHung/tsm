@@ -398,10 +398,10 @@ h3 {
    background-size: 16px 16px;
 }
 .quick-label h2 {
+   font-size: var(--tsm-font-size-headline-rail-lg);
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
-   font-size: var(--tsm-font-size-headline-rail-lg);
 }
 .quick-list {
    display: grid;
@@ -424,7 +424,6 @@ h3 {
    border-bottom: 0;
 }
 .quick-row-index {
-   font-size: var(--tsm-font-size-figure-md);
    font-weight: 900;
    letter-spacing: -0.02em;
    font-variant-numeric: tabular-nums;
@@ -446,13 +445,11 @@ h3 {
 .quick-row-heading h3 {
    text-transform: uppercase;
    font-weight: 700;
-   font-size: var(--tsm-font-size-title-sm-alt);
 }
 .quick-row-body p {
    margin: 0;
    max-width: 46ch;
    color: var(--tsm-color-ink-muted);
-   font-size: var(--tsm-font-size-body-sm);
 }
 .quick-row-arrow {
    font-size: var(--tsm-font-size-icon-lg);
@@ -690,10 +687,10 @@ h3 {
    background-size: 24px 24px;
 }
 .news-label h2 {
+   font-size: var(--tsm-font-size-headline-rail-md);
    text-transform: uppercase;
    font-weight: 900;
    letter-spacing: -0.03em;
-   font-size: var(--tsm-font-size-headline-rail-md);
 }
 .news-archive {
    width: 100%;
@@ -735,7 +732,6 @@ h3 {
    margin-bottom: var(--tsm-space-8);
    text-transform: uppercase;
    letter-spacing: 0.16em;
-   font-size: var(--tsm-font-size-label-lg);
    font-weight: 600;
    color: var(--tsm-color-accent);
 }
@@ -743,12 +739,10 @@ h3 {
    display: block;
    text-transform: uppercase;
    letter-spacing: 0.12em;
-   font-size: var(--tsm-font-size-label-lg);
    color: var(--tsm-color-ink-muted);
 }
 .news-card h3 {
    margin-top: var(--tsm-space-4);
-   font-size: var(--tsm-font-size-title-xs);
    font-weight: 700;
    line-height: 1.2;
 }
@@ -760,7 +754,6 @@ h3 {
    font-weight: 700;
    text-transform: uppercase;
    letter-spacing: 0.04em;
-   font-size: var(--tsm-font-size-label-lg);
 }
 .news-card:hover,
 .news-card:focus-within {
@@ -1188,12 +1181,11 @@ h3 {
 }
 .b-hero-copy .section-code {
    margin-bottom: var(--tsm-space-14);
-   font-size: var(--tsm-font-size-label-xs);
 }
 .b-hero-copy h1 {
+   font-size: var(--tsm-font-size-display-md);
    max-width: 100%;
    margin: 0;
-   font-size: var(--tsm-font-size-display-md);
    line-height: 1.2;
    font-weight: 600;
    letter-spacing: 0.01em;
@@ -1203,7 +1195,6 @@ h3 {
    max-width: 52ch;
    margin: var(--tsm-space-22) 0 var(--tsm-space-30);
    color: var(--tsm-color-ink-muted);
-   font-size: var(--tsm-font-size-body-sm);
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
    .b-hero-copy {

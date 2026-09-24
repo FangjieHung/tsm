@@ -25,9 +25,15 @@
 字重與字距是元件層級的表達，不是角色層級的屬性——C 案的 900 配 −0.055em、
 B 案的 600 配鬆字距，正是三案之所以不同的一部分。綁進 class 等於抹平三案性格。
 
-建議改為：由階梯產生**每階一個 class**（`.tsm-headline-lg` 等，以 SCSS map
-一次產出 token 與 class 維持單一真相），class 只帶 `font-size`（必要時加
-`line-height`），weight 與 tracking 留在元件規則，標記逐區塊遷移並逐次截圖比對。
+**已改為**：由 SCSS map（`$ladder`）一次產出 token 與每階一個 class，
+class 只帶 `font-size`，weight 與 tracking 留在元件規則。
+
+實作時又撞到第二個限制：**未分層的樣式永遠贏過任何 class**。`.hero h1`、`h2`、
+`.section-code` 這類較廣的規則會把掛在元素上的步階 class 蓋掉——第一次遷移因此讓
+B 案 hero 標題從 66px 變成 84px（4.6% 像素差異）。這類元素必須整條規則一起遷移。
+
+加上「共用標記上的步階 class 會說謊」，實際可遷移的只有**單一方案才渲染的標記**，
+目前已遷移 9 處（清單見 `typography.md`）。其餘維持元素選擇器，是刻意的。
 
 ## 字級階梯的合併候選
 

@@ -69,17 +69,19 @@
           Hero 樣本取共用的 <code>.hero h1</code>；B 與 C 案在自己的 hero 版面中另有覆寫
           （<code>.b-hero-copy h1</code>、<code>.theme-c .hero-copy--c h1</code>），需到內頁檢視。
         </p>
-        <h3 class="ds-subhead">Typography class（新程式碼的 API）</h3>
+        <h3 class="ds-subhead">Step class（新標記的 API）</h3>
         <p class="ds-note">
-          <code>src/styles/_typography.scss</code> · 一個 class 同時帶入字級、行高、字重與字距。
-          既有的內頁仍以元素選擇器取用同一組 token，標記層的遷移列於 <code>known-issues.md</code>。
+          <code>src/styles/_typography.scss</code> · 階梯的每一階都有一個同名 class，
+          與 token 由同一份 SCSS map 產出，兩者不可能不一致。
+          <b>class 只帶字級</b>——行高、字重與字距是各案表達角色的方式，不是階的屬性，
+          留在元件規則中。
         </p>
         <div class="ds-type-specimens">
-          <p class="tsm-display">Display</p>
-          <p class="tsm-headline">Headline 區塊標題</p>
-          <p class="tsm-title">Title 卡片標題</p>
-          <p class="tsm-body">Body 內文：台灣微生物學會自 1968 年成立以來，持續推動微生物學研究。</p>
-          <p class="tsm-label">Label · 標籤</p>
+          <p class="tsm-display-xl">display-xl</p>
+          <p class="tsm-headline-xl">headline-xl 區塊標題</p>
+          <p class="tsm-title-xs">title-xs 卡片標題</p>
+          <p class="tsm-body-sm">body-sm 內文：台灣微生物學會自 1968 年成立以來，持續推動微生物學研究。</p>
+          <p class="tsm-label-lg">label-lg · 標籤</p>
         </div>
 
         <h3 class="ds-subhead">實際頁面的選擇器</h3>

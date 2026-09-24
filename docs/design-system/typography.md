@@ -121,28 +121,53 @@ tabular 對齊需求，而 Material Symbols 的尺寸是字級、不是寬高，
 圖示尺寸由 `font-size` 驅動（Material Symbols 是字型），因此它與文字字級共用同一組
 token 前綴，但**分屬不同角色**——調整內文字級不應該動到圖示。
 
-## Typography class
+## Step class
+
+階梯的每一階都有一個同名 class，與 token **由同一份 SCSS map 產出**
+（`$ladder`），兩者不可能不一致。
 
 ```html
-<h1 class="tsm-display">…</h1>
-<h2 class="tsm-headline">…</h2>
-<h3 class="tsm-title">…</h3>
-<p  class="tsm-body">…</p>
-<p  class="tsm-label">…</p>
+<h3 class="tsm-title-xs">卡片標題</h3>
+<p  class="tsm-body-sm">內文</p>
+<b  class="tsm-label-lg">分類</b>
 ```
 
-每個 class 綁定字級、行高、字重、字距四項，**不在元件中再宣告任何一項**。
-class 內部只讀 token，不寫任何字面值。
+**class 只帶 `font-size`。** 行高、字重與字距是各案表達角色的方式，不是階的屬性——
+三案的 label 角色就用了 8 種字距，其中 4 種在 B 案內部。綁進 class 等於抹平三案性格，
+所以它們留在元件規則中。
 
-C 案的 `.tsm-label` 另加大寫與加寬字距，與該案的排版語彙一致。
+### class 位於 `utilities` 層
 
-### 為什麼既有頁面還沒改用 class
+掛一個步階 class 是明確指令，必須贏過元件的預設尺寸（例如 `.section-code` 的 14px），
+所以 class 在 `@layer utilities`，token 在 `@layer base`。
 
-`concept-page.html` 的標題仍由元素選擇器（`h2`、`.quick-item h3`）上樣式，
-那些規則現在讀的是同一組 token，所以兩者不會分歧。把 501 行的標記改成掛 class
-是獨立的一次遷移，風險與收益都應該分開評估，列於 `known-issues.md`。
+### ⚠️ 什麼時候不能用步階 class
 
-**新寫的標記一律用 class。**
+兩個限制，都來自實測：
+
+**1. 未分層的樣式永遠贏過任何 class。** Angular 元件 SCSS 沒有 `@layer`，
+所以只要有一條較廣的頁面規則設了 `font-size`（例如 `h2`、`.hero h1`），
+掛在該元素上的步階 class 就不會生效。這類元素必須整條規則一起遷移，不能只掛 class。
+
+**2. 共用標記上的步階 class 會說謊。** `concept-page.html` 大部分標記三案共用，
+而每一案各自重設同一個元素的字級——例如 `.quick-item h3` 在 A 是 `title-xl`、
+B 覆寫成 `title-md`。同一個 `<h3>` 掛任何一個步階 class，對其中一案就是錯的。
+
+因此步階 class 目前只掛在**單一方案才會渲染**的標記上：
+
+| 元素 | class | 只出現在 |
+|---|---|---|
+| B 案 hero 的 `.section-code` | `tsm-label-xs` | B |
+| B 案 hero 導言 | `tsm-body-sm` | B |
+| C 案快速入口列序號 | `tsm-figure-md` | C |
+| C 案快速入口列 `h3` | `tsm-title-sm-alt` | C |
+| C 案快速入口列說明 | `tsm-body-sm` | C |
+| C 案消息卡 `h3` | `tsm-title-xs` | C |
+| C 案消息卡分類與日期 | `tsm-label-lg` ×2 | C |
+| C 案消息卡閱讀連結 | `tsm-label-lg` | C |
+
+其餘標記仍由元素選擇器上字級——那才是誠實的做法。
+**新寫的、單一方案的標記一律用 step class。**
 
 ## 行高、字重、字距
 

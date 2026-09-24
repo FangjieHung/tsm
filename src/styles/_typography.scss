@@ -1,93 +1,133 @@
-// Typography — the type ladder and the classes that consume it.
+// Typography — the type ladder, emitted once as both tokens and classes.
 //
 // Roles follow the Material Design 3 classification (Display / Headline /
 // Title / Body / Label), plus two roles this project genuinely needs:
 //   Figure — large tabular numerals (section counters, event dates)
 //   Icon   — Material Symbols optical sizes, which are font-size driven
 //
+// $ladder below is the single source: the @each loops emit a
+// --tsm-font-size-<step> custom property and a .tsm-<step> class from the same
+// entry, so the two can never disagree.
+//
 // The ladder lives in :root rather than per theme, because the three concepts
 // pick different steps from one shared ladder rather than redefining a step.
 // Which concept uses which step is in docs/design-system/typography.md.
 //
 // ⚠️ The ladder still carries more steps than a mature system should: the three
-// concepts were drawn independently, so several steps sit 2–4px apart. The
-// candidate merges — and what each one costs in reflow — are listed in
+// concepts were drawn independently, so several steps sit within a few px of
+// each other. The candidate merges — and what each one costs in reflow — are in
 // docs/design-system/known-issues.md. Do not add a step without checking that
 // an existing one will not do.
+//
+// ⚠️ A .tsm-<step> class states a size, so it only belongs on markup that
+// renders at that size in EVERY theme it appears in. Most of concept-page.html
+// is shared across all three concepts, each re-sizing the same element, so a
+// step class there would be true for one concept and false for the other two.
+// See docs/design-system/known-issues.md for which markup qualifies.
+
+$ladder: (
+  // ---- Display — hero headlines --------------------------------------------
+  'display-2xl': clamp(5rem, 2vw + 2rem, 7rem),
+  // C hero, desktop
+  'display-2xl-md': clamp(2.1rem, 2.4vw + 1.5rem, 3rem),
+  // C hero, <1200
+  'display-2xl-sm': clamp(2rem, 9vw, 2.6rem),
+  // C hero, <768
+  'display-xl': clamp(54px, 5.6vw, 84px),
+  // A hero
+  'display-xl-sm': clamp(42px, 12vw, 58px),
+  // A hero, <768
+  'display-lg': clamp(38px, 5.2vw, 78px),
+  // comparison page title
+  'display-md': clamp(42px, 4.3vw, 66px),
+  // B hero
+  'display-md-sm': clamp(38px, 11vw, 52px),
+  // B hero, <768
+  'display-watermark': min(14vw, 15rem),
+  // C decorative ghost text
+
+  // ---- Headline — section headings -----------------------------------------
+  'headline-xl': clamp(44px, 5vw, 70px),
+  // A / C section h2
+  'headline-xl-sm': clamp(38px, 12vw, 52px),
+  // ditto, <768
+  'headline-lg': clamp(40px, 4.2vw, 62px),
+  // B section h2
+  'headline-md': clamp(36px, 3.2vw, 50px),
+  // B secondary headings (events, resources panel)
+  'headline-xs': clamp(30px, 3.4vw, 52px),
+  // footer wordmark
+  'headline-2xs': clamp(28px, 2.5vw, 42px),
+  // comparison card h2
+  'headline-rail-lg': clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem),
+  // C sticky rail label
+  'headline-rail-md': clamp(2rem, 1.6vw + 1.6rem, 3.2rem),
+  // C sticky rail label
+  'headline-mobile-xl': clamp(44px, 13vw, 60px),
+  // C membership h2, <768
+
+  // ---- Title — card and row headings ---------------------------------------
+  'title-xl': clamp(27px, 2.3vw, 38px),
+  'title-lg': clamp(24px, 2vw, 33px),
+  'title-md': clamp(24px, 2vw, 31px),
+  // -alt steps sit within 1px of the step above and exist only because the
+  // three concepts were drawn independently. Merging them is a design decision,
+  // not a free rename — known-issues.md has the measured cost.
+  'title-md-alt': clamp(23px, 2vw, 31px),
+  'title-sm': clamp(22px, 1.8vw, 29px),
+  'title-sm-alt': clamp(22px, 1.8vw, 30px),
+  'title-xs': clamp(21px, 1.8vw, 28px),
+  'title-2xs': clamp(20px, 1.6vw, 26px),
+  'title-2xs-alt': clamp(20px, 1.55vw, 25px),
+  'title-3xs': clamp(20px, 2vw, 24px),
+  'title-footer': clamp(24px, 2.4vw, 38px),
+  'title-footer-b': clamp(22px, 2.2vw, 32px),
+
+  // ---- Figure — large tabular numerals --------------------------------------
+  'figure-lg': clamp(54px, 5.2vw, 82px),
+  // B quick-access counter
+  'figure-md': clamp(28px, 2.4vw, 40px),
+  // C row index
+  'figure-sm': clamp(26px, 2.4vw, 38px),
+  // B event day
+
+  // ---- Body -----------------------------------------------------------------
+  'body-xl': clamp(18px, 1.45vw, 22px),
+  // hero lede
+  'body-lg-fluid': clamp(15px, 1.25vw, 19px),
+  // B caption title
+  'body-md-fluid': clamp(15px, 1vw, 17px),
+  // C hero lede
+  'body-lg': 19px,
+  'body-md': 18px,
+  'body-sm': 17px,
+  'body-xs': 16px,
+
+  // ---- Label — eyebrows, meta, counters --------------------------------------
+  'label-lg': 14px,
+  'label-md': 13px,
+  'label-sm': 11px,
+  'label-xs': 10px,
+
+  // ---- Icon — Material Symbols optical sizes ---------------------------------
+  // Four steps on the Material optical scale. The concepts had eleven, drawn
+  // independently; icons are inline and centred in their rows, so collapsing
+  // them cost far less than collapsing a text step would.
+  'icon-xl': 40px,
+  // hero-level entry icons
+  'icon-lg': 32px,
+  // card and badge icons
+  'icon-md': 24px,
+  // list-row icons
+  'icon-sm': 20px,
+  // inline icons beside text
+);
 
 @layer base {
   :root {
-    // ---- Display — hero headlines ------------------------------------------
-    --tsm-font-size-display-2xl: clamp(5rem, 2vw + 2rem, 7rem); // C hero, desktop
-    --tsm-font-size-display-2xl-md: clamp(2.1rem, 2.4vw + 1.5rem, 3rem); // C hero, <1200
-    --tsm-font-size-display-2xl-sm: clamp(2rem, 9vw, 2.6rem); // C hero, <768
-    --tsm-font-size-display-xl: clamp(54px, 5.6vw, 84px); // A hero
-    --tsm-font-size-display-xl-sm: clamp(42px, 12vw, 58px); // A hero, <768
-    --tsm-font-size-display-lg: clamp(38px, 5.2vw, 78px); // comparison page title
-    --tsm-font-size-display-md: clamp(42px, 4.3vw, 66px); // B hero
-    --tsm-font-size-display-md-sm: clamp(38px, 11vw, 52px); // B hero, <768
-    --tsm-font-size-display-watermark: min(14vw, 15rem); // C decorative ghost text
-
-    // ---- Headline — section headings ---------------------------------------
-    --tsm-font-size-headline-xl: clamp(44px, 5vw, 70px); // A / C section h2
-    --tsm-font-size-headline-xl-sm: clamp(38px, 12vw, 52px); // ditto, <768
-    --tsm-font-size-headline-lg: clamp(40px, 4.2vw, 62px); // B section h2
-    // B's secondary section headings (events, resources panel). The two used to
-    // differ by 2–4px for no reason; merged downwards because the events heading
-    // carries text-wrap: nowrap and had no room to grow.
-    --tsm-font-size-headline-md: clamp(36px, 3.2vw, 50px);
-    --tsm-font-size-headline-xs: clamp(30px, 3.4vw, 52px); // footer wordmark
-    --tsm-font-size-headline-2xs: clamp(28px, 2.5vw, 42px); // comparison card h2
-    // C's sticky left-rail labels, sized in rem to track the root font size.
-    --tsm-font-size-headline-rail-lg: clamp(2.2rem, 1.8vw + 1.8rem, 3.6rem);
-    --tsm-font-size-headline-rail-md: clamp(2rem, 1.6vw + 1.6rem, 3.2rem);
-    --tsm-font-size-headline-mobile-xl: clamp(44px, 13vw, 60px); // C membership, <768
-
-    // ---- Title — card and row headings -------------------------------------
-    --tsm-font-size-title-xl: clamp(27px, 2.3vw, 38px);
-    --tsm-font-size-title-lg: clamp(24px, 2vw, 33px);
-    --tsm-font-size-title-md: clamp(24px, 2vw, 31px);
-    // -alt steps sit within 1px of the step above and exist only because the
-    // three concepts were drawn independently. Merging them is the next design
-    // decision, not a free rename — see known-issues.md for the measured cost.
-    --tsm-font-size-title-md-alt: clamp(23px, 2vw, 31px);
-    --tsm-font-size-title-sm: clamp(22px, 1.8vw, 29px);
-    --tsm-font-size-title-sm-alt: clamp(22px, 1.8vw, 30px);
-    --tsm-font-size-title-xs: clamp(21px, 1.8vw, 28px);
-    --tsm-font-size-title-2xs: clamp(20px, 1.6vw, 26px);
-    --tsm-font-size-title-2xs-alt: clamp(20px, 1.55vw, 25px);
-    --tsm-font-size-title-3xs: clamp(20px, 2vw, 24px);
-    --tsm-font-size-title-footer: clamp(24px, 2.4vw, 38px); // footer identity
-    --tsm-font-size-title-footer-b: clamp(22px, 2.2vw, 32px);
-
-    // ---- Figure — large tabular numerals ------------------------------------
-    --tsm-font-size-figure-lg: clamp(54px, 5.2vw, 82px); // B quick-access counter
-    --tsm-font-size-figure-md: clamp(28px, 2.4vw, 40px); // C row index
-    --tsm-font-size-figure-sm: clamp(26px, 2.4vw, 38px); // B event day
-
-    // ---- Body ---------------------------------------------------------------
-    --tsm-font-size-body-xl: clamp(18px, 1.45vw, 22px); // hero lede
-    --tsm-font-size-body-lg-fluid: clamp(15px, 1.25vw, 19px); // B caption title
-    --tsm-font-size-body-md-fluid: clamp(15px, 1vw, 17px); // C hero lede
-    --tsm-font-size-body-lg: 19px;
-    --tsm-font-size-body-md: 18px;
-    --tsm-font-size-body-sm: 17px;
-    --tsm-font-size-body-xs: 16px;
-
-    // ---- Label — eyebrows, meta, counters -----------------------------------
-    --tsm-font-size-label-lg: 14px;
-    --tsm-font-size-label-md: 13px;
-    --tsm-font-size-label-sm: 11px;
-    --tsm-font-size-label-xs: 10px;
-
-    // ---- Icon — Material Symbols optical sizes ------------------------------
-    // Four steps on the Material optical scale. The concepts had eleven, drawn
-    // independently; icons are inline and centred in their rows, so collapsing
-    // them costs far less than collapsing a text step would.
-    --tsm-font-size-icon-xl: 40px; // hero-level entry icons
-    --tsm-font-size-icon-lg: 32px; // card and badge icons
-    --tsm-font-size-icon-md: 24px; // list-row icons
-    --tsm-font-size-icon-sm: 20px; // inline icons beside text
+    @each $step, $size in $ladder {
+      --tsm-font-size-#{$step}: #{$size};
+    }
 
     // ---- Line height ---------------------------------------------------------
     --tsm-line-height-display: 1.08;
@@ -97,6 +137,9 @@
     --tsm-line-height-label: 1.4;
 
     // ---- Weight --------------------------------------------------------------
+    // ⚠️ src/index.html currently loads wght@400;500;700;900 only, so 600 and
+    // 650 have no font instance and are rendered by the nearest loaded weight or
+    // synthesised. See docs/design-system/production-readiness.md.
     --tsm-font-weight-regular: 400;
     --tsm-font-weight-medium: 600;
     --tsm-font-weight-semibold: 650;
@@ -109,54 +152,23 @@
     --tsm-tracking-label: 0.15em;
     --tsm-tracking-label-wide: 0.22em;
   }
+}
 
+@layer utilities {
   // ---------------------------------------------------------------------------
-  // Typography classes — the API for new markup.
+  // Step classes — one per rung, size only.
   //
-  // These bundle size, line height, weight and tracking so a heading needs one
-  // class rather than four declarations. The existing concept pages still style
-  // their headings through element selectors that consume the same tokens;
-  // migrating that markup is tracked in known-issues.md. Nothing here restates
-  // a value — every declaration reads a token.
+  // Size is the only property that belongs to a step. Line height, weight and
+  // tracking are how a concept expresses a role, not properties of the rung:
+  // across the three concepts the label role alone uses eight tracking values,
+  // four of them inside concept B. Binding them into these classes would flatten
+  // what makes the concepts distinct, so they stay in the component rules.
+  //
+  // Markup: <h3 class="tsm-title-xs">…</h3>
   // ---------------------------------------------------------------------------
-  .tsm-display {
-    font-size: var(--tsm-font-size-display-xl);
-    line-height: var(--tsm-line-height-display);
-    font-weight: var(--tsm-font-weight-semibold);
-    letter-spacing: var(--tsm-tracking-display);
-  }
-
-  .tsm-headline {
-    font-size: var(--tsm-font-size-headline-xl);
-    line-height: var(--tsm-line-height-headline);
-    font-weight: var(--tsm-font-weight-semibold);
-    letter-spacing: var(--tsm-tracking-display);
-  }
-
-  .tsm-title {
-    font-size: var(--tsm-font-size-title-xs);
-    line-height: var(--tsm-line-height-title);
-    font-weight: var(--tsm-font-weight-bold);
-    letter-spacing: var(--tsm-tracking-title);
-  }
-
-  .tsm-body {
-    font-size: var(--tsm-font-size-body-sm);
-    line-height: var(--tsm-line-height-body);
-    font-weight: var(--tsm-font-weight-regular);
-    letter-spacing: var(--tsm-tracking-body);
-  }
-
-  .tsm-label {
-    font-size: var(--tsm-font-size-label-lg);
-    line-height: var(--tsm-line-height-label);
-    font-weight: var(--tsm-font-weight-medium);
-    letter-spacing: var(--tsm-tracking-label);
-  }
-
-  // Theme C's section labels are set wider and uppercase.
-  .theme-c .tsm-label {
-    letter-spacing: var(--tsm-tracking-label-wide);
-    text-transform: uppercase;
+  @each $step, $size in $ladder {
+    .tsm-#{$step} {
+      font-size: var(--tsm-font-size-#{$step});
+    }
   }
 }

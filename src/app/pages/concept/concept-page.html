@@ -11,9 +11,9 @@
     @if (concept() === 'b') {
       <section id="about" class="hero hero--b" aria-labelledby="hero-title">
         <div class="b-hero-copy" appRevealOnView>
-          <p class="section-code">TAIWAN SOCIETY OF MICROBIOLOGY</p>
+          <p class="section-code tsm-label-xs">TAIWAN SOCIETY OF MICROBIOLOGY</p>
           <h1 id="hero-title">{{ content.hero.title }}</h1>
-          <p>{{ content.hero.description }}</p>
+          <p class="tsm-body-sm">{{ content.hero.description }}</p>
           <a class="button button--primary" [href]="content.hero.primaryAction.href">
             {{ content.hero.primaryAction.label }} <app-symbol name="arrow_forward" />
           </a>
@@ -113,13 +113,13 @@
           <div class="quick-list">
             @for (item of content.quickAccess; track item.key; let index = $index) {
               <a class="quick-row" [href]="item.href" appRevealOnView>
-                <span class="quick-row-index" aria-hidden="true">0{{ index + 1 }}</span>
+                <span class="quick-row-index tsm-figure-md" aria-hidden="true">0{{ index + 1 }}</span>
                 <span class="quick-row-body">
                   <span class="quick-row-heading">
                     <app-symbol [name]="item.symbol" />
-                    <h3>{{ item.title }}</h3>
+                    <h3 class="tsm-title-sm-alt">{{ item.title }}</h3>
                   </span>
-                  <p>{{ item.description }}</p>
+                  <p class="tsm-body-sm">{{ item.description }}</p>
                   <span class="sr-only">{{ item.label }}</span>
                 </span>
                 <app-symbol name="arrow_forward" class="quick-row-arrow" />
@@ -280,9 +280,9 @@
                   appRevealOnView
                 >
                   <a [href]="item.href">
-                    <span class="news-meta"><b>{{ item.category }}</b><time>{{ item.date }}</time></span>
-                    <h3>{{ item.title }}</h3>
-                    <span class="news-read">閱讀更多 <app-symbol name="arrow_forward" /></span>
+                    <span class="news-meta"><b class="tsm-label-lg">{{ item.category }}</b><time class="tsm-label-lg">{{ item.date }}</time></span>
+                    <h3 class="tsm-title-xs">{{ item.title }}</h3>
+                    <span class="news-read tsm-label-lg">閱讀更多 <app-symbol name="arrow_forward" /></span>
                   </a>
                 </article>
               }
