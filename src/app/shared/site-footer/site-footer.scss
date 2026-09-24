@@ -215,7 +215,7 @@ small {
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 0.7fr);
   gap: clamp(32px, 5vw, 72px);
   background: #fff;
-  color: #082a45;
+  color: var(--tsm-color-ink);
   border-top: 1px solid #d5eaf0;
 }
 .site-footer--b .footer-logo {
@@ -235,14 +235,14 @@ small {
 }
 .site-footer--b nav a,
 .site-footer--b .footer-utility a {
-  color: #082a45;
+  color: var(--tsm-color-ink);
   font-weight: 700;
 }
 .site-footer--b nav a:hover,
 .site-footer--b nav a:focus-visible,
 .site-footer--b .footer-utility a:hover,
 .site-footer--b .footer-utility a:focus-visible {
-  color: #0f8db2;
+  color: var(--tsm-color-accent);
 }
 .site-footer--b small {
   border-top-color: #d5eaf0;

@@ -25,7 +25,7 @@ header img {
 }
 header p {
     margin: 0 0 12px;
-    color: #0f8db2;
+    color: var(--tsm-color-accent);
     font-size: 14px;
     letter-spacing: 0.16em;
 }
@@ -68,13 +68,13 @@ header span {
 .concept-body small {
     font-weight: 600;
     letter-spacing: 0.14em;
-    color: #0f8db2;
+    color: var(--tsm-color-accent);
 }
 .concept-card--c small {
-    color: #0f8db2;
+    color: var(--tsm-color-accent);
 }
 .concept-card--b small {
-    color: #0f8db2;
+    color: var(--tsm-color-accent);
 }
 .concept-body h2 {
     margin: 10px 0 12px;
@@ -101,15 +101,15 @@ header span {
     border-radius: 12px;
 }
 .concept-card--a a:hover {
-    background: #0f8db2;
+    background: var(--tsm-color-accent);
     color: white;
 }
 .concept-card--c a:hover {
-    background: #0f8db2;
+    background: var(--tsm-color-accent);
     color: white;
 }
 .concept-card--b a:hover {
-    background: #0f8db2;
+    background: var(--tsm-color-accent);
     color: white;
 }
 @media (max-width: 1180px) {

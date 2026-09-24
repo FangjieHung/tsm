@@ -40,6 +40,12 @@
     --tsm-radius-md: 18px;
     --tsm-radius-lg: 28px;
 
+    // Brand accent — identical in all three themes, so it doubles as the
+    // unthemed default for surfaces rendered outside a theme (comparison page).
+    --tsm-color-accent: #0f8db2;
+    --tsm-color-accent-deep: #086a84;
+    --tsm-color-accent-ink: #ffffff;
+
     // Unthemed focus ring (the comparison page renders outside any theme).
     --tsm-color-focus: #f59e0b;
   }
@@ -64,9 +70,11 @@
     --tsm-color-ink: #223033;
     --tsm-color-ink-muted: #5a696d;
     --tsm-color-ink-subtle: #5a696d;
+    --tsm-color-ink-faint: #5a696d;
     --tsm-color-ink-inverse: #ffffff;
 
     --tsm-color-line: #c5dce3;
+    --tsm-color-line-soft: #c5dce3;
     --tsm-color-line-subtle: #c5dce3;
 
     --tsm-color-accent: #0f8db2;
@@ -92,11 +100,17 @@
     --tsm-color-surface-accent: #e8f6fe;
 
     --tsm-color-ink: #082a45;
-    --tsm-color-ink-muted: #587887;
-    --tsm-color-ink-subtle: #6a8ea1;
+    --tsm-color-ink-muted: #4d7477;
+    // Grey-blue body copy used throughout the B reference sections.
+    --tsm-color-ink-subtle: #587887;
+    // Weakest step: meta lines, dates, counters.
+    --tsm-color-ink-faint: #6a8ea1;
     --tsm-color-ink-inverse: #ffffff;
 
-    --tsm-color-line: #d3e8ed;
+    --tsm-color-line: #c5dce3;
+    // Lighter rules around cards and media tiles.
+    --tsm-color-line-soft: #d3e8ed;
+    // Hairlines between list rows.
     --tsm-color-line-subtle: #cfe4e9;
 
     --tsm-color-accent: #0f8db2;
@@ -126,9 +140,11 @@
     --tsm-color-ink: #000000;
     --tsm-color-ink-muted: #3a3a3a;
     --tsm-color-ink-subtle: #3a3a3a;
+    --tsm-color-ink-faint: #3a3a3a;
     --tsm-color-ink-inverse: #ffffff;
 
     --tsm-color-line: #000000;
+    --tsm-color-line-soft: #000000;
     --tsm-color-line-subtle: #000000;
 
     --tsm-color-accent: #0f8db2;
