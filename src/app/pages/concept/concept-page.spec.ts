@@ -72,10 +72,10 @@ describe('ConceptPage', () => {
 
   it('renders B with the dedicated hero collage media and a full concept switcher', async () => {
     const host = await renderConcept('b');
-    expect(host.querySelector('img[src="media/b/hero.png"]')).not.toBeNull();
-    expect(host.querySelector('img[src="media/b/b-hero-researcher.png"]')).not.toBeNull();
-    expect(host.querySelector('img[src="media/b/b-hero-data.png"]')).not.toBeNull();
-    expect(host.querySelector('img[src="media/b/b-hero-equipment.png"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/hero.webp"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-researcher.webp"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-data.webp"]')).not.toBeNull();
+    expect(host.querySelector('img[src="media/b/b-hero-equipment.webp"]')).not.toBeNull();
 
     const switcherLinks = [...host.querySelectorAll<HTMLAnchorElement>('.concept-switcher a')].map(
       (link) => link.getAttribute('href'),
@@ -179,7 +179,7 @@ describe('ConceptPage', () => {
       expect(action.querySelector('app-symbol')).not.toBeNull();
       expect(action.querySelector('.sr-only')?.textContent?.trim()).toBeTruthy();
     }
-    expect(host.querySelector('#resources img')?.getAttribute('src')).toBe('media/b/researcher.png');
+    expect(host.querySelector('#resources img')?.getAttribute('src')).toBe('media/b/researcher.webp');
     expect(host.querySelector<HTMLAnchorElement>('.theme-b .b-events-archive')?.getAttribute('href')).toBe('#events-list');
     expect(host.querySelector('#events-list')).not.toBeNull();
     expect(host.querySelector('.theme-b .b-resource-lead')?.textContent?.trim()).toBeTruthy();

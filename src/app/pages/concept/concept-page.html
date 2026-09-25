@@ -19,21 +19,21 @@
           </a>
         </div>
         <div class="b-hero-cell" aria-hidden="true">
-          <img src="media/b/hero.png" alt="" width="1672" height="941" fetchpriority="high" />
+          <img src="media/b/hero.webp" alt="" width="1672" height="941" fetchpriority="high" />
         </div>
         <div class="b-hero-researcher" aria-hidden="true">
-          <img src="media/b/b-hero-researcher.png" alt="" width="866" height="639" loading="eager" />
+          <img src="media/b/b-hero-researcher.webp" alt="" width="866" height="639" loading="eager" />
           <strong>共創研究新篇章</strong>
         </div>
         <div class="b-hero-dna" aria-hidden="true">
-          <img src="media/b/latest-news.png" alt="" width="1672" height="941" loading="eager" />
+          <img src="media/b/latest-news.webp" alt="" width="1672" height="941" loading="eager" />
           <span>會員服務</span><b>5.5K</b>
         </div>
         <div class="b-hero-data" aria-hidden="true">
-          <img src="media/b/b-hero-data.png" alt="" width="294" height="335" loading="eager" />
+          <img src="media/b/b-hero-data.webp" alt="" width="294" height="335" loading="eager" />
         </div>
         <div class="b-hero-equipment" aria-hidden="true">
-          <img src="media/b/b-hero-equipment.png" alt="" width="302" height="386" loading="eager" />
+          <img src="media/b/b-hero-equipment.webp" alt="" width="302" height="386" loading="eager" />
         </div>
       </section>
     } @else {
@@ -142,7 +142,7 @@
               [class.quick-item--lead]="index === 0"
               [class.b-quick-card]="concept() === 'b'"
               [style.--quick-visual]="
-                concept() === 'b' ? 'url(media/b/quick-visual/quick-visual-0' + (index + 1) + '-cutout.png)' : null
+                concept() === 'b' ? 'url(media/b/quick-visual/quick-visual-0' + (index + 1) + '-cutout.webp)' : null
               "
               appRevealOnView
             >
@@ -351,7 +351,7 @@
       <div class="resources-media" [class.image-fallback]="!imageAvailable('resources')" appRevealOnView>
         @if (imageAvailable('resources')) {
           <img
-            [src]="concept() === 'b' ? 'media/b/researcher.png' : mediaPath('resources')"
+            [src]="concept() === 'b' ? 'media/b/researcher.webp' : mediaPath('resources')"
             [alt]="concept() === 'b' ? '' : '培養皿、研究標本與專業期刊'"
             width="1672"
             height="941"

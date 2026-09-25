@@ -19,7 +19,7 @@
 
 import { createServer } from 'node:http';
 import { readFile, mkdir, rm, cp, writeFile } from 'node:fs/promises';
-import { existsSync } from 'node:fs';
+import { existsSync, statSync } from 'node:fs';
 import path from 'node:path';
 
 // Playwright is not a project dependency — it is only needed to regenerate the
@@ -214,10 +214,6 @@ async function buildConcept(concept) {
   await rm(dir, { recursive: true, force: true });
   await mkdir(dir, { recursive: true });
 
-  await cp('public/media/' + concept.key, path.join(dir, 'media', concept.key), { recursive: true });
-  await cp('public/assets/logo', path.join(dir, 'assets/logo'), { recursive: true });
-  if (existsSync('public/favicon.ico')) await cp('public/favicon.ico', path.join(dir, 'favicon.ico'));
-
   const doc = `<!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -241,13 +237,42 @@ ${html}
 </html>
 `;
   await writeFile(path.join(dir, 'index.html'), doc);
-  return { dir, htmlBytes: Buffer.byteLength(doc), cssBytes: Buffer.byteLength(cleanedCss) };
+
+  // Copy only what the page actually references. Copying the whole media folder
+  // shipped assets no concept uses — concept C's two *-foreground.png files
+  // alone were 2MB of dead weight in the template.
+  const referenced = new Set(
+    [...doc.matchAll(/(?:src="|url\(&quot;?|url\(\"?|url\()((?:media|assets)\/[^"')]+)/g)].map(
+      (m) => m[1],
+    ),
+  );
+  if (existsSync('public/favicon.ico')) referenced.add('favicon.ico');
+
+  let assetBytes = 0;
+  for (const asset of referenced) {
+    const from = path.join('public', asset);
+    if (!existsSync(from)) {
+      throw new Error(`concept ${concept.key} references ${asset}, which is not in public/`);
+    }
+    await mkdir(path.dirname(path.join(dir, asset)), { recursive: true });
+    await cp(from, path.join(dir, asset));
+    assetBytes += statSync(from).size;
+  }
+
+  return {
+    dir,
+    htmlBytes: Buffer.byteLength(doc),
+    cssBytes: Buffer.byteLength(cleanedCss),
+    assets: referenced.size,
+    assetBytes,
+  };
 }
 
 for (const concept of CONCEPTS) {
-  const { dir, htmlBytes, cssBytes } = await buildConcept(concept);
+  const { dir, htmlBytes, cssBytes, assets, assetBytes } = await buildConcept(concept);
   console.log(
-    `${dir}/index.html — ${(htmlBytes / 1024).toFixed(0)} KB（其中 CSS ${(cssBytes / 1024).toFixed(0)} KB）`,
+    `${dir}/index.html — ${(htmlBytes / 1024).toFixed(0)} KB（其中 CSS ${(cssBytes / 1024).toFixed(0)} KB）` +
+      `　素材 ${assets} 個 / ${(assetBytes / 1024 / 1024).toFixed(1)} MB`,
   );
 }
 

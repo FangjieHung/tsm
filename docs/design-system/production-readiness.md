@@ -103,7 +103,7 @@ B 案受害最深——它幾乎只用 600（18 處中的 18），而 600 沒有
 | 搜尋 | 學會網站通常需要公告／資源搜尋 |
 | 分析 | 無 GA／Plausible 之類 |
 | 路由模式 | 目前是 hash 路由（`/#/concept-a`）。正式站建議改 path 路由，需要伺服器端 rewrite 設定 |
-| 圖片格式 | A／C 用 `.webp`、B 用 `.png`，體積不一致；也沒有 responsive `srcset` |
+| 圖片格式 | 已統一為 `.webp`（B 案 11.9MB → 0.9MB）。仍沒有 responsive `srcset`，也仍有 2 個未引用的 C 案素材會被部署 |
 | 法遵 | 台灣個資法要求的隱私權政策、Cookie 告知、服務條款都還沒有 |
 
 最後一項若要處理，這個環境有 `web-legal-risk-tw` skill 可以做完整的法律風險盤點。

@@ -45,9 +45,9 @@ export class ConceptPage {
   mediaPath(key: 'events' | 'resources' | 'membership'): string {
     if (this.concept() === 'b') {
       const bMedia = {
-        events: 'academic-events.png',
-        resources: 'professional-resources.png',
-        membership: 'laboratory-instrument.png',
+        events: 'academic-events.webp',
+        resources: 'professional-resources.webp',
+        membership: 'laboratory-instrument.webp',
       } as const;
       return `media/b/${bMedia[key]}`;
     }
@@ -65,7 +65,7 @@ export class ConceptPage {
       return `media/${this.concept()}/${fallback}.webp`;
     }
 
-    return ['media/b/latest-news.png', 'media/b/academic-events.png', 'media/b/professional-resources.png'][
+    return ['media/b/latest-news.webp', 'media/b/academic-events.webp', 'media/b/professional-resources.webp'][
       index % 3
     ];
   }

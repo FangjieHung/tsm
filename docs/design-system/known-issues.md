@@ -114,7 +114,8 @@ B 案 hero 標題從 66px 變成 84px（4.6% 像素差異）。這類元素必�
 |---|---|---|
 | 5 | 展示頁重複載入 `concept-page.scss` | `/#/design-system` 的 lazy chunk 約 96KB（raw）。這是刻意的取捨：直接引入原檔可保證樣本與內頁由同一份程式碼渲染。待項目 1 完成後可縮減 |
 | 6 | `mediaPath()` / `newsImage()` 寫死檔名對照 | `concept-page.ts`，內容與程式碼耦合，接 CMS 時應移入 `site-content.ts` |
-| 7 | 圖片格式不一致 | A／C 用 `.webp`、B 用 `.png`，載入體積不一致 |
+| 7 | ~~圖片格式不一致~~ | **已解決。** B 案 12 張 PNG 轉為 WebP（quality 0.9），11.9MB → 0.9MB，感知層級無差異（四個寬度全頁比對僅 1 個像素超出容差） |
+| 11 | `public/media/c/` 有 2 個未引用的素材 | `hero-foreground.png`、`academic-events-foreground.png` 共約 2MB，程式碼中沒有任何引用，但仍會被 build 複製進部署產物 |
 | 8 | 導覽與內容連結皆為提案用錨點 | 未串接會員、繳費、投稿或 CMS 後端 |
 | 9 | 沒有自動化視覺回歸測試 | 目前靠手動截圖比對，流程見 `conventions.md` |
 | 10 | 27 個色碼字面值待回收 | `npm run check:styles` 以棘輪值守住，每回收一批就調低。分布見下表 |
