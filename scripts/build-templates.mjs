@@ -11,9 +11,11 @@
 //     removing the scoping cannot collide.
 //   - The other two concepts' theme rules are dropped, leaving only the CSS the
 //     template actually needs.
-//   - The reveal-on-view entrance animation is removed: it needs JavaScript to
-//     add .is-visible, and without it every revealed block would sit at
-//     opacity 0 in a file opened straight from disk.
+//   - The reveal-on-view entrance animation is kept, but its CSS is gated behind
+//     a .js class so a file opened without JavaScript still shows its content.
+//     template.js re-implements the four behaviours the Angular app provides:
+//     the entrance animation, the mobile menu, the active news card, and the
+//     image-load fallback.
 //
 // Run: npm run build:templates   (requires npm run build first)
 
@@ -104,7 +106,9 @@ const CLEAN_IN_PAGE = `(concept) => {
     for (const attr of [...el.attributes]) {
       if (/^(_ngcontent|_nghost|ng-reflect|ng-version)/.test(attr.name)) el.removeAttribute(attr.name);
     }
-    el.classList.remove('reveal-on-view', 'is-visible', 'ng-star-inserted');
+    // reveal-on-view stays: template.js drives it. is-visible does not — it is
+    // the state the script applies, and baking it in would freeze the animation.
+    el.classList.remove('is-visible', 'ng-star-inserted');
     if (el.classList.length === 0 && el.hasAttribute('class')) el.removeAttribute('class');
   }
 
@@ -115,7 +119,10 @@ const CLEAN_IN_PAGE = `(concept) => {
     text
       .split(',')
       .map((s) => s.trim())
-      .filter((s) => s && !foreign.some((f) => s.includes(f)) && !s.includes('reveal-on-view'))
+      .filter((s) => s && !foreign.some((f) => s.includes(f)))
+      // The entrance animation starts at opacity 0, so gate it behind the class
+      // the head script adds. Without JavaScript the content is simply there.
+      .map((s) => (s.includes('reveal-on-view') ? '.js ' + s : s))
       .join(', ');
 
   const serialise = (rules) => {
@@ -221,6 +228,9 @@ async function buildConcept(concept) {
 <title>台灣微生物學會｜${concept.name}（${concept.english}）</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
+<!-- Set before first paint so the entrance animation never flashes, and so a
+     page opened with JavaScript off shows its content instead of nothing. -->
+<script>document.documentElement.classList.add('js');</script>
 <meta name="description" content="台灣微生物學會網站版型範本 — ${concept.name}">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -233,6 +243,7 @@ ${cleanedCss.trim()}
 </head>
 <body>
 ${html}
+<script src="template.js"></script>
 </body>
 </html>
 `;
@@ -247,6 +258,7 @@ ${html}
     ),
   );
   if (existsSync('public/favicon.ico')) referenced.add('favicon.ico');
+  await cp('scripts/template-runtime.js', path.join(dir, 'template.js'));
 
   let assetBytes = 0;
   for (const asset of referenced) {

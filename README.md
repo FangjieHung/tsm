@@ -33,8 +33,8 @@ npm run build
 ## 獨立版型範本
 
 `templates/` 下有三個自足的靜態 HTML 範本，各對應一個方案，雙擊即開、不需 build。
-由 `npm run build:templates` 從實際建置的網站擷取產生，說明見
-`templates/README.md`。
+由 `npm run build:templates` 從實際建置的網站擷取產生，`npm run verify:templates`
+檢查互動行為，說明見 `templates/README.md`。
 
 ## 內容與素材
 

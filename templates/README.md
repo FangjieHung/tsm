@@ -13,7 +13,8 @@
 
 ```
 concept-a/
-├─ index.html      單一檔案，CSS 內嵌於 <style>
+├─ index.html      版型，CSS 內嵌於 <style>
+├─ template.js     互動行為（約 60 行原生 JS）
 ├─ media/a/        該案影像
 ├─ assets/logo/    學會標誌
 └─ favicon.ico
@@ -28,8 +29,7 @@ concept-a/
 
 1. 移除 Angular 的 view encapsulation 屬性，選擇器同步還原
 2. 丟掉另外兩案的主題規則，只留這一案需要的 CSS
-3. 移除進場動畫（`reveal-on-view`）——它需要 JavaScript 才會加上 `is-visible`，
-   直接開檔時內容會停在 `opacity: 0`
+3. 進場動畫的 CSS 加上 `.js` 前綴，只有腳本確實執行時才套用
 4. `:host` 選擇器改寫成對應的元素標籤
 
 因此範本**不可能與網站本體脫節**：改了 `src/`，重跑產生器就同步。
@@ -63,10 +63,35 @@ npm run build:templates
 殘差來自沒有 JavaScript 的部分：C 案固定定位的顆粒膜在長截圖中的貼齊方式，
 以及少數依賴進場動畫的次像素位移。版面、字級、顏色、間距完全一致。
 
+## 互動行為
+
+`template.js` 以原生 JavaScript 還原 Angular 提供的四個行為，
+不依賴任何框架或函式庫：
+
+| 行為 | 對應的 Angular 實作 |
+|---|---|
+| 進場動畫（捲到才顯示） | `RevealOnViewDirective` |
+| 行動版選單開合（含 Esc 關閉、點連結關閉） | `SiteHeaderComponent` |
+| 消息卡 hover／focus 切換高亮 | `ConceptPage` 的 `activeNews` |
+| 圖片載入失敗改用佔位樣式 | `ConceptPage` 的 `markImageFailed()` |
+
+進場動畫遵守 `prefers-reduced-motion`：使用者要求減少動態時，所有區塊直接顯示。
+
+**全部可降級。** 進場動畫的 CSS 掛在 `<html class="js">` 之下，這個 class 由
+`<head>` 裡的一行腳本在首次繪製前加上。停用 JavaScript 或 `template.js` 載入失敗時，
+頁面完整呈現，只是沒有動畫、選單與高亮。
+
+### 驗證
+
+```bash
+npm run verify:templates
+```
+
+三案各跑 9 項檢查：腳本無錯誤、進場動畫覆蓋所有區塊、選單開合與 Esc、
+消息卡高亮初始與切換、圖片備援、以及停用 JavaScript 後仍正常渲染。
+
 ## 這些範本不包含什麼
 
-- **沒有 JavaScript。** 行動版的選單開合、消息卡的 hover 切換、進場動畫都不會運作。
-  導覽列的漢堡按鈕在行動尺寸會出現但按下無反應。
 - **沒有路由。** 所有連結都是頁內錨點，與提案網站相同。
 - **只有首頁版型。** 專案目前只設計了首頁一種版型。
 
