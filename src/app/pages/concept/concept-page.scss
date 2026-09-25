@@ -9,25 +9,25 @@
 }
 
 
-h1,
-h2,
-h3,
-p {
+:where(.concept-page) h1,
+:where(.concept-page) h2,
+:where(.concept-page) h3,
+:where(.concept-page) p {
    text-wrap: pretty;
 }
-h1,
-h2,
-h3 {
+:where(.concept-page) h1,
+:where(.concept-page) h2,
+:where(.concept-page) h3 {
    margin-top: 0;
    letter-spacing: -0.035em;
 }
-h2 {
+:where(.concept-page) h2 {
    margin-bottom: 0;
    font-size: var(--tsm-font-size-headline-xl);
    line-height: 1.06;
    font-weight: 650;
 }
-h3 {
+:where(.concept-page) h3 {
    margin-bottom: 0;
 }
 
@@ -338,7 +338,7 @@ h3 {
    color: var(--tsm-color-ink-muted);
    font-size: var(--tsm-font-size-body-md);
 }
-.quick-item a {
+.quick-item .quick-item-cta {
    min-height: 48px;
    display: flex;
    align-items: center;
@@ -350,7 +350,7 @@ h3 {
    border-top: 1px solid var(--tsm-color-line);
    padding-top: var(--tsm-space-18);
 }
-.quick-item--lead a {
+.quick-item--lead .quick-item-cta {
    width: fit-content;
    min-width: 190px;
    padding: var(--tsm-space-14) var(--tsm-space-18);
@@ -379,6 +379,8 @@ h3 {
    of the bordered split, instead of collapsing to text height and leaving a white void under
    it); the heading inside is what sticks while the row list scrolls past. */
 .quick-label {
+   /* Owns the stacking context its ::before texture paints into. */
+   isolation: isolate;
    padding: clamp(40px, 5vw, 88px);
    border-right: 4px solid var(--tsm-color-ink);
    position: relative;
@@ -551,6 +553,8 @@ h3 {
    object-position: 50% 45%;
 }
 .theme-c .events-copy {
+   /* Owns the stacking context its ::before texture paints into. */
+   isolation: isolate;
    order: 2;
    padding: clamp(48px, 6vw, 96px);
    border: 0;
@@ -666,6 +670,8 @@ h3 {
    border-bottom: 4px solid var(--tsm-color-ink);
 }
 .news-label {
+   /* Owns the stacking context its ::before texture paints into. */
+   isolation: isolate;
    padding: clamp(40px, 5vw, 80px) clamp(28px, 3.2vw, 56px);
    border-right: 4px solid var(--tsm-color-ink);
    display: flex;
@@ -845,6 +851,8 @@ h3 {
    padding: var(--tsm-space-32) var(--tsm-space-36);
 }
 .theme-c .resources {
+   /* Owns the stacking context its ::before texture paints into. */
+   isolation: isolate;
    width: 100%;
    max-width: none;
    padding-block: 0;
@@ -1030,6 +1038,8 @@ h3 {
    border-right: 4px solid var(--tsm-color-ink);
 }
 .theme-c .membership-content {
+   /* Owns the stacking context its ::before texture paints into. */
+   isolation: isolate;
    width: auto;
    grid-template-columns: 1fr;
    max-width: none;
@@ -1355,7 +1365,7 @@ h3 {
 }
 /* Reference pins the circular control to the card's bottom-right corner; it previously sat
    directly under the copy at the left, leaving the corner empty. */
-.theme-b .quick-item a {
+.theme-b .quick-item .quick-item-cta {
    display: none;
 }
 .theme-b .events,
@@ -2090,7 +2100,7 @@ display:none;
       width: calc(100% - 40px);
       padding-block: var(--tsm-space-72);
    }
-   h2 {
+   :where(.concept-page) h2 {
       font-size: var(--tsm-font-size-headline-xl-sm);
    }
    .hero {
@@ -2834,7 +2844,7 @@ display:none;
       transition: none;
    }
    .theme-b .button,
-   .theme-b .quick-item a app-symbol,
+   .theme-b .quick-item .quick-item-cta app-symbol,
    .theme-b .b-resource-panel .resource-item a,
    .theme-b .news-image img,
    .theme-b .news-item > a > app-symbol,

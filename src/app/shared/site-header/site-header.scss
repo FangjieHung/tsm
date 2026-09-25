@@ -13,19 +13,19 @@
 }
 .brand { width: 58px; height: 58px; display: grid; place-items: center; }
 .brand img { width: 100%; height: 100%; object-fit: contain; }
-nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(18px, 2.4vw, 40px); }
-nav a, .login-link { color: inherit; text-decoration: none; font-weight: 650; letter-spacing: .02em; }
-nav a { position: relative; padding: 14px 0; }
-nav a::after { content: ''; position: absolute; inset: auto 0 7px; height: 2px; background: var(--tsm-color-link); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
-nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+:where(.site-header) nav { display: flex; align-items: center; justify-content: flex-end; gap: clamp(18px, 2.4vw, 40px); }
+:where(.site-header) nav a, .login-link { color: inherit; text-decoration: none; font-weight: 650; letter-spacing: .02em; }
+:where(.site-header) nav a { position: relative; padding: 14px 0; }
+:where(.site-header) nav a::after { content: ''; position: absolute; inset: auto 0 7px; height: 2px; background: var(--tsm-color-link); transform: scaleX(0); transform-origin: right; transition: transform .25s ease; }
+:where(.site-header) nav a:hover::after, :where(.site-header) nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
 .login-link { min-height: 48px; padding: 0 22px; display: inline-flex; align-items: center; gap: 9px; background: var(--tsm-color-accent); color: var(--tsm-color-accent-ink); border-radius: var(--tsm-radius-sm); }
 .login-link app-symbol { font-size: 20px; }
 .menu-toggle { display: none; width: 48px; height: 48px; border: 1px solid var(--tsm-color-line); color: var(--tsm-color-ink); background: var(--tsm-color-surface); border-radius: var(--tsm-radius-sm); }
 .menu-toggle app-symbol { font-size: 28px; }
 @media (max-width: 1199px) {
   .site-header { grid-template-columns: 58px 1fr auto auto; min-height: 92px; }
-  nav { justify-self: end; }
-  nav a:nth-child(-n+3) { display: none; }
+  :where(.site-header) nav { justify-self: end; }
+  :where(.site-header) nav a:nth-child(-n+3) { display: none; }
   .menu-toggle { display: grid; place-items: center; grid-column: 3; }
   .login-link { grid-column: 4; }
 }
@@ -34,11 +34,11 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
   .brand { width: 46px; height: 46px; }
   .menu-toggle { grid-column: 3; }
   .login-link { display: none; }
-  nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; gap: 0; padding: 10px 20px 20px; background: var(--tsm-color-surface); border-bottom: 1px solid var(--tsm-color-line); box-shadow: 0 24px 48px rgb(0 0 0 / .12); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
-  nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
-  nav a, nav a:nth-child(-n+3) { display: block; min-height: 48px; padding: 14px 4px; border-bottom: 1px solid var(--tsm-color-line); }
+  :where(.site-header) nav { position: absolute; top: 100%; left: 0; right: 0; display: grid; gap: 0; padding: 10px 20px 20px; background: var(--tsm-color-surface); border-bottom: 1px solid var(--tsm-color-line); box-shadow: 0 24px 48px rgb(0 0 0 / .12); transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s; }
+  :where(.site-header) nav.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+  :where(.site-header) nav a, :where(.site-header) nav a:nth-child(-n+3) { display: block; min-height: 48px; padding: 14px 4px; border-bottom: 1px solid var(--tsm-color-line); }
 }
-@media (prefers-reduced-motion: reduce) { nav, nav a::after { transition: none; } }
+@media (prefers-reduced-motion: reduce) { nav, :where(.site-header) nav a::after { transition: none; } }
 
 /* Swiss International Style header overrides for concept-c only — flat white background,
    thick black rule, uppercase wide-tracked nav labels, hard color-invert hover states.
@@ -92,7 +92,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
      leaving the hamburger and the full nav on screen at once and overflowing the grid.
      Re-hide them at matching specificity. */
   .site-header--c .nav-link:nth-child(-n+3) { display: none; }
-  /* The markup order is brand, menu-toggle, nav, login-link. menu-toggle claims column 3
+  /* The markup order is brand, menu-toggle, :where(.site-header) nav, login-link. menu-toggle claims column 3
      explicitly, so when nav then asks for column 2 the auto-placement cursor has to move
      backwards, which per spec bumps it to a new row — taking login-link with it and growing
      the header from 92px to 153px. Pinning the row as well as the column keeps one line. */
@@ -142,7 +142,7 @@ nav a:hover::after, nav a:focus-visible::after { transform: scaleX(1); transform
 .site-header--b .menu-toggle { border-color: #C8E2E9; color: var(--tsm-color-link); background: #F1FAFC; border-radius: 16px; }
 @media (max-width: 1199px) {
   .site-header--b { min-height: 76px; grid-template-columns: 54px 1fr auto auto; }
-  /* Markup order is brand, menu-toggle, nav, login-link, and menu-toggle claims column 3
+  /* Markup order is brand, menu-toggle, :where(.site-header) nav, login-link, and menu-toggle claims column 3
      explicitly. Auto-placing nav into column 2 would move the cursor backwards, which per
      spec starts a new row and drags login-link down with it — the header rendered as two
      stacked lines. Pinning nav's column and row keeps it on one line. */

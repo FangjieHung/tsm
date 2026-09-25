@@ -30,6 +30,12 @@ npm run build
 
 正式版輸出至 `dist/website/browser/`。Angular CLI 的本機磁碟快取已在 `angular.json` 關閉，以避開部分 macOS 環境的 LMDB 原生快取錯誤；不影響正式輸出。
 
+## 獨立版型範本
+
+`templates/` 下有三個自足的靜態 HTML 範本，各對應一個方案，雙擊即開、不需 build。
+由 `npm run build:templates` 從實際建置的網站擷取產生，說明見
+`templates/README.md`。
+
 ## 內容與素材
 
 - Design token 與元件層：`src/styles/`（文件見 `docs/design-system/`）

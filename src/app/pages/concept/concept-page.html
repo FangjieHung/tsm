@@ -152,13 +152,15 @@
               }
               <h3>{{ item.title }}</h3>
               <p>{{ item.description }}</p>
-              <a [href]="item.href" [class.b-quick-arrow]="concept() === 'b'">
+              <!-- A span, not a link: the whole card is already a link to the same
+                   href, and an anchor inside an anchor is invalid HTML. -->
+              <span class="quick-item-cta" [class.b-quick-arrow]="concept() === 'b'">
                 @if (concept() === 'b') {
                   <span class="sr-only">{{ item.label }}</span><app-symbol name="arrow_forward" />
                 } @else {
                   {{ item.label }} <app-symbol name="arrow_forward" />
                 }
-              </a>
+              </span>
             </a>
           }
         </div>

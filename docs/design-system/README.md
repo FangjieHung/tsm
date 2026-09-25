@@ -16,6 +16,12 @@
 | [`production-readiness.md`](production-readiness.md) | 選定一案後還缺什麼 |
 | [`known-issues.md`](known-issues.md) | 已知缺陷與尚未完成的遷移 |
 
+## 獨立版型範本
+
+`templates/` 下有三個自足的靜態 HTML 範本，由 `npm run build:templates`
+從實際建置的網站擷取產生，因此不會與這裡的 token 與元件脫節。
+見 [`templates/README.md`](../../templates/README.md)。
+
 ## 檔案結構
 
 ```

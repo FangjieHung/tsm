@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "check:styles": "node scripts/check-stylesheet-contract.mjs"
+    "check:styles": "node scripts/check-stylesheet-contract.mjs",
+    "build:templates": "node scripts/build-templates.mjs"
   },
   "private": true,
   "dependencies": {
